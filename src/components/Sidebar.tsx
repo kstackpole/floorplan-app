@@ -1,24 +1,20 @@
 import { Search, Layers } from "lucide-react";
 import { useState } from "react";
-import useFPState from "../store/useFPState";
 import type { OptionKey } from "../store/useFPState";
-// ...existing code...
 
-function Sidebar() {
-  const state = useFPState();
-  const groups: { key: OptionKey; label: string }[] = [
-    { key: "primaryRetreat", label: "Primary Retreat" },
-    { key: "morningKitchen", label: "Morning Kitchen" },
-    { key: "bbq", label: "BBQ Connection" },
-    { key: "coveredPatio", label: "Covered Patio" },
-    { key: "luxuryBath", label: "Luxury Bath" },
-    { key: "study", label: "Study" },
-    { key: "dining", label: "Dining" },
-    { key: "primaryTwo", label: "Primary bedroom 2/primary bath 2" },
-  ];
+type Option = { key: OptionKey; label: string };
 
+type SidebarProps = {
+  options: Option[];
+  active: Record<OptionKey, boolean>;
+  setActive: (k: OptionKey, v: boolean) => void;
+  reset: () => void;
+  lockedKeys?: string[];
+};
+
+function Sidebar({ options, active, setActive, reset, lockedKeys = [] }: SidebarProps) {
   const [query, setQuery] = useState("");
-  const filtered = groups.filter((g) => g.label.toLowerCase().includes(query.toLowerCase()));
+  const filtered = options.filter((g) => g.label.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <div className="flex h-full w-80 flex-col border-r border-gray-200 bg-white/90 backdrop-blur">
@@ -27,7 +23,7 @@ function Sidebar() {
           <Search size={16} />
           <input className="w-full border-none outline-none bg-transparent text-sm" placeholder="Search options" value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>
-        <button onClick={state.reset} className="rounded-lg p-2 hover:bg-gray-100" title="Clear">
+        <button onClick={reset} className="rounded-lg p-2 hover:bg-gray-100" title="Clear">
           <Layers size={16} />
         </button>
       </div>
@@ -40,8 +36,9 @@ function Sidebar() {
             <input
               type="checkbox"
               className="h-4 w-4"
-              checked={!!state.active[g.key]}
-              onChange={(e) => state.setActive(g.key, e.currentTarget.checked)}
+              checked={!!active[g.key]}
+              onChange={(e) => setActive(g.key, e.currentTarget.checked)}
+              disabled={lockedKeys.length > 0} // disables ALL checkboxes if pco is present
             />
           </label>
         ))}

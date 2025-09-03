@@ -1,23 +1,38 @@
 import { useState, useEffect } from "react";
 
-export type OptionKey = "primaryRetreat" | "morningKitchen" | "bbq" | "coveredPatio" | "luxuryBath" | "study" | "dining" | "primaryTwo";
+export type OptionKey = string; // Now any string
 
 export type FPState = {
   active: Record<OptionKey, boolean>;
   setActive: (k: OptionKey, v: boolean) => void;
-  reset: () => void;
+  reset: (initialKeys?: OptionKey[]) => void; // Accepts keys to reset
+  setKeys: (keys: OptionKey[]) => void; // New: set available keys
 };
 
 const useFPState = (() => {
   const subscribers = new Set<() => void>();
+  let keys: OptionKey[] = [];
   const state: FPState = {
-    active: { primaryRetreat: false, morningKitchen: false, bbq: false, coveredPatio: false, luxuryBath: false, study: false, dining: false, primaryTwo: false },
+    active: {},
     setActive: (k, v) => {
       state.active[k] = v;
       subscribers.forEach((cb) => cb());
     },
-    reset: () => {
-      state.active = { primaryRetreat: false, morningKitchen: false, bbq: false, coveredPatio: false, luxuryBath: false, study: false, dining: false, primaryTwo: false };
+    reset: (initialKeys = keys) => {
+      state.active = {};
+      initialKeys.forEach((k) => (state.active[k] = false));
+      subscribers.forEach((cb) => cb());
+    },
+    setKeys: (newKeys) => {
+      keys = newKeys;
+      // Remove keys not in newKeys
+      Object.keys(state.active).forEach((k) => {
+        if (!newKeys.includes(k)) delete state.active[k];
+      });
+      // Add new keys
+      newKeys.forEach((k) => {
+        if (!(k in state.active)) state.active[k] = false;
+      });
       subscribers.forEach((cb) => cb());
     },
   };

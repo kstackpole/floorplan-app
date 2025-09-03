@@ -1,8 +1,13 @@
 import type { SVGProps } from "../types/floorplan";
-import { PlanASVG } from "./planA";
-import { PlanBSVG } from "./planB";
+import { planAOptions, PlanASVG } from "./planA";
+import { planBOptions, PlanBSVG } from "./planB";
 
-export const plans: Record<string, React.ComponentType<SVGProps>> = {
-  plana: PlanASVG,
-  planb: PlanBSVG,
+type Plan = {
+  SVG: React.ComponentType<SVGProps>;
+  options: { key: string; label: string }[];
+};
+
+export const plans: Record<string, Plan> = {
+  plana: { SVG: PlanASVG, options: planAOptions },
+  planb: { SVG: PlanBSVG, options: planBOptions },
 };
