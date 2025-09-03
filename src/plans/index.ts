@@ -1,33 +1,44 @@
-import type { SVGProps } from "../types/floorplan";
-import { planAOptions, PlanASVG } from "./planA";
-import { planBOptions, PlanBSVG } from "./planB";
-import { planCOptions, PlanCSVG } from "./planC";
+import type { SVGProps as BaseSVGProps } from "../types/floorplan";
+import { planA } from "./planA";
+import { planB } from "./planB";
+import { planC } from "./planC";
 
-type Floor = {
-  name: string;
-  SVG: React.ComponentType<SVGProps>;
-  options: { key: string; label: string }[];
+// ---- Shared types used by the app ----
+export type OptionDef = { key: string; label: string };
+export type SVGProps = BaseSVGProps;
+
+export type Floor = {
+  id: string;                                   // "main" | "second" | "basement" ...
+  name: string;                                 // display label
+  SVG: React.ComponentType<SVGProps>;           // floor-specific SVG component
+  options: OptionDef[];                         // floor-specific options
 };
 
-type Plan = { floors: Floor[] };
+export type Plan = {
+  code: string;                                 // e.g. "plana"
+  floors: Floor[];
+};
+
+// ---- Build the plans map (lowercased keys) ----
+const toLowerKey = (code: string) => code.toLowerCase();
 
 export const plans: Record<string, Plan> = {
-  plana: {
-    floors: [
-      { name: "Main Level", SVG: PlanASVG, options: planAOptions },
-    ],
-  },
-  planb: {
-    floors: [
-      { name: "Main Level", SVG: PlanBSVG, options: planBOptions },
-      { name: "Second Floor", SVG: PlanBSVG, options: planBOptions },
-    ],
-  },
-  planc: {
-    floors: [
-      { name: "Main Level", SVG: PlanCSVG, options: planCOptions },
-      { name: "Second Floor", SVG: PlanCSVG, options: planCOptions },
-      { name: "Basement", SVG: PlanCSVG, options: planCOptions },
-    ],
-  },
+  [toLowerKey(planA.code)]: planA,
+  [toLowerKey(planB.code)]: planB,
+  [toLowerKey(planC.code)]: planC,
 };
+
+// ---- Safe selectors used by App.tsx ----
+export function selectPlan(planId?: string): Plan {
+  const key = toLowerKey(planId ?? "plana");
+  return plans[key] ?? plans["plana"] ?? Object.values(plans)[0];
+}
+
+export function selectFloor(plan: Plan, floorIndex: number): Floor {
+  return plan.floors[floorIndex] ?? plan.floors[0];
+}
+
+// Optional: find by floor id ("main", "second", ...)
+export function findFloor(plan: Plan, floorId: string): Floor | undefined {
+  return plan.floors.find(f => f.id === floorId);
+}

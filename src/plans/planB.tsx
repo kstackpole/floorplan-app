@@ -2324,17 +2324,10 @@ export const planBSecondOptions = [
     { key: "opt4", label: "Option 4" },
 ];
 
-export const planBBasementOptions = [
-    { key: "opt1", label: "Option 1" },
-    { key: "opt2", label: "Option 2" },
-    { key: "opt3", label: "Option 3" },
-];
-
 export const planB = {
     code: "planB",
     floors: [
         { id: "main", name: "Main Level", SVG:PlanBSVG, options: planBMainOptions },
         { id: "second", name: "Second Level", SVG:EmptySVG, options: planBSecondOptions },
-        { id: "basement", name: "Basement", SVG:EmptySVG, options: planBBasementOptions },
     ],
 };

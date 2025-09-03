@@ -2318,23 +2318,9 @@ export const planAMainOptions = [
     { key: "morningKitchen", label: "Morning Kitchen" },
 ];
 
-export const planASecondOptions = [
-    { key: "opt2", label: "Option 2" },
-    { key: "opt3", label: "Option 3" },
-    { key: "opt4", label: "Option 4" },
-];
-
-export const planABasementOptions = [
-    { key: "opt1", label: "Option 1" },
-    { key: "opt2", label: "Option 2" },
-    { key: "opt3", label: "Option 3" },
-];
-
 export const planA = {
     code: "planA",
     floors: [
         { id: "main", name: "Main Level", SVG:PlanASVG, options: planAMainOptions },
-        { id: "second", name: "Second Level", SVG:EmptySVG, options: planASecondOptions },
-        { id: "basement", name: "Basement", SVG:EmptySVG, options: planABasementOptions },
     ],
 };

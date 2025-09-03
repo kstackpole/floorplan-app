@@ -5,9 +5,7 @@ import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
 import FloorPlan from "./components/FloorPlan";
-import { plans } from "./plans";
-
-type PlanKey = keyof typeof plans;
+import { selectPlan, selectFloor } from "./plans";
 
 function FloorPlanPage() {
   const { planId } = useParams();
@@ -15,16 +13,16 @@ function FloorPlanPage() {
   const state = useFPState();
   const [selectedFloor, setSelectedFloor] = useState(0); // index of the floor
 
-  const planKey = (planId?.toLowerCase() as PlanKey) ?? "plana";
-  const plan = plans[planKey] || plans["plana"];
-  const floor = plan.floors[selectedFloor];
+  // Pull the plan and the current floor using helpers
+  const plan = selectPlan(planId);
+  const floor = selectFloor(plan, selectedFloor);
   const options = floor.options;
   const PlanSVG = floor.SVG;
 
   // Reset to the first floor when plan changes
   useEffect(() => {
     setSelectedFloor(0);
-  }, [planKey]);
+  }, [plan.code]);
 
   // Get preselected options from query string
   const pco = searchParams.get("pco");
@@ -41,7 +39,7 @@ function FloorPlanPage() {
     } else {
       state.reset(keys);
     }
-  }, [planKey, options, pco]); // options changes when selectedFloor changes
+  }, [plan.code, options, pco]); // options changes when selectedFloor changes
 
   return (
     <div className="flex h-[calc(100vh-3rem)]">
