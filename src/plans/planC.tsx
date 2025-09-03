@@ -2304,3 +2304,37 @@ export function PlanCSVG({ active, panZoom }: SVGProps) {
 
   );
 }
+
+
+// ❗ if you have a placeholder, TYPE IT so it matches Floor['SVG']
+export const EmptySVG: React.FC<SVGProps> = () => null;
+
+export const planCMainOptions = [
+    { key: "primaryRetreat", label: "Primary Retreat" },
+    { key: "primaryDoorToPat", label: "Primary Patio Entry" },
+    { key: "bbqConn", label: "BBQ Connection" },
+    { key: "greatRmFire", label: "Great Room Fireplace" },
+    { key: "kitchenDblOvn", label: "Kitchen Double Oven" },
+    { key: "morningKitchen", label: "Morning Kitchen" },
+];
+
+export const planCSecondOptions = [
+    { key: "opt2", label: "Option 2" },
+    { key: "opt3", label: "Option 3" },
+    { key: "opt4", label: "Option 4" },
+];
+
+export const planCBasementOptions = [
+    { key: "opt1", label: "Option 1" },
+    { key: "opt2", label: "Option 2" },
+    { key: "opt3", label: "Option 3" },
+];
+
+export const planC = {
+    code: "planC",
+    floors: [
+        { id: "main", name: "Main Level", SVG:PlanCSVG, options: planCMainOptions },
+        { id: "second", name: "Second Level", SVG:EmptySVG, options: planCSecondOptions },
+        { id: "basement", name: "Basement", SVG:EmptySVG, options: planCBasementOptions },
+    ],
+};
