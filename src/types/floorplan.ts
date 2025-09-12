@@ -11,4 +11,6 @@ export type SVGProps = {
     tx: number;
     ty: number;
   };
+    svgRef?: React.Ref<SVGSVGElement>;
+    mirror?: boolean; 
 };

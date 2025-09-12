@@ -1,41 +1,68 @@
+import { useEffect, useRef } from "react";
 import type { SVGProps } from "../types/floorplan";
 
-export const planAOptions = [
-  { key: "primaryRetreat", label: "Primary Retreat" },
-  { key: "primaryDoorToPat", label: "Primary Door to Covered Patio" },
-  { key: "bbqConn", label: "BBQ Connection" },
-  { key: "greatRmFire", label: "Great Room Fireplace" },
-  { key: "kitchenDblOvn", label: "Kitchen Double Oven" },
-  { key: "morningKitchen", label: "Morning Kitchen" },
-];
-
-export function PlanASVG({ active, panZoom }: SVGProps) {
+export function PlanASVG({
+  active,
+  panZoom,
+  mirror = false,
+  svgRef,                 // ← accept the ref from FloorPlan
+}: SVGProps) {
   const { onWheel, onPointerDown, onPointerMove, onPointerUp, scale, tx, ty } = panZoom;
 
+  const VBW = 1200;                       // must match your viewBox width
+  const worldRef = useRef<SVGGElement | null>(null);
+
+  // Re-flip text glyphs in-place when mirrored so they read normally
+  useEffect(() => {
+    const g = worldRef.current;
+    if (!g) return;
+
+    const texts = g.querySelectorAll<SVGGraphicsElement>("text");
+    texts.forEach((t) => {
+      // Save original transform once
+      if (!t.hasAttribute("data-orig-transform")) {
+        t.setAttribute("data-orig-transform", t.getAttribute("transform") ?? "");
+      }
+      const orig = t.getAttribute("data-orig-transform") ?? "";
+
+      if (!mirror) {
+        // Restore original when mirror is off
+        t.setAttribute("transform", orig);
+        return;
+      }
+
+      // Flip glyphs around their own center so position stays put
+      const b = t.getBBox();
+      const cx = b.x + b.width / 2;
+      t.setAttribute("transform", `${orig} translate(${cx},0) scale(-1,1) translate(${-cx},0)`);
+    });
+  }, [mirror]);
+
   return (
-        <svg
-            className="h-full w-full touch-none select-none"
-            viewBox="0 0 1200 1200"
-            onWheel={onWheel}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerUp}
-        >
-            <defs>
-                <pattern id="diag" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
-                    <rect width="8" height="8" fill="white" />
-                    <path d="M 0 0 L 0 8" stroke="#e5e7eb" strokeWidth="2" />
-                </pattern>
-                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor="#777" floodOpacity="0.7" />
-                </filter>
-            </defs>
+    <svg
+      ref={svgRef}                        // ← attach the ref here
+      className="h-full w-full touch-none select-none"
+      viewBox="0 0 1200 1200"
+      onWheel={onWheel}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+    >
+      <defs>
+        <pattern id="diag" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(45)">
+          <rect width="8" height="8" fill="white" />
+          <path d="M 0 0 L 0 8" stroke="#e5e7eb" strokeWidth="2" />
+        </pattern>
+      </defs>
 
-            {/* canvas background */}
-            <rect x={0} y={0} width={1200} height={1200} fill="url(#diag)" />
+      {/* keep background outside world transform */}
+      <rect x={0} y={0} width={1200} height={1200} fill="url(#diag)" />
 
-            {/* World transform */}
-            <g transform={`translate(${tx},${ty}) scale(${scale})`}>
+      {/* WORLD: mirror first, then pan/zoom */}
+      <g
+        ref={worldRef}
+        transform={`${mirror ? `translate(${VBW},0) scale(-1,1) ` : ""}translate(${tx},${ty}) scale(${scale})`}
+      >
                 {/* FP-LINES */}
                 <g id="v.1">
                     <g id="XMLID_00000084499648169429763300000010449682447304860293_">
@@ -2316,6 +2343,7 @@ export const planAMainOptions = [
     { key: "greatRmFire", label: "Great Room Fireplace" },
     { key: "kitchenDblOvn", label: "Kitchen Double Oven" },
     { key: "morningKitchen", label: "Morning Kitchen" },
+    { key: "bsOpt1", label: "Just BSING" },
 ];
 
 export const planA = {

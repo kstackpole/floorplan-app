@@ -10,21 +10,18 @@ import { selectPlan, selectFloor } from "./plans";
 function FloorPlanPage() {
   const { planId } = useParams();
   const [searchParams] = useSearchParams();
-  const state = useFPState();
-  const [selectedFloor, setSelectedFloor] = useState(0); // index of the floor
+  const state = useFPState();                    // <- has mirror + setMirror
+  const [selectedFloor, setSelectedFloor] = useState(0);
 
-  // Pull the plan and the current floor using helpers
   const plan = selectPlan(planId);
   const floor = selectFloor(plan, selectedFloor);
   const options = floor.options;
   const PlanSVG = floor.SVG;
 
-  // Reset to the first floor when plan changes
   useEffect(() => {
     setSelectedFloor(0);
   }, [plan.code]);
 
-  // Get preselected options from query string
   const pco = searchParams.get("pco");
   const lockedKeys = pco ? pco.split(",") : [];
 
@@ -39,7 +36,8 @@ function FloorPlanPage() {
     } else {
       state.reset(keys);
     }
-  }, [plan.code, options, pco]); // options changes when selectedFloor changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plan.code, options, pco]); // re-run when plan or floor options change
 
   return (
     <div className="flex h-[calc(100vh-3rem)]">
@@ -52,9 +50,13 @@ function FloorPlanPage() {
         setActive={state.setActive}
         reset={state.reset}
         lockedKeys={lockedKeys}
+        // NEW ↓
+        mirror={state.mirror}
+        setMirror={state.setMirror}
       />
       <div className="flex-1">
-        <FloorPlan active={state.active} SVG={PlanSVG} />
+        {/* Pass mirror down so the SVG can flip */}
+        <FloorPlan active={state.active} SVG={PlanSVG} mirror={state.mirror} />
       </div>
     </div>
   );

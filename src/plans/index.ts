@@ -1,5 +1,6 @@
 import type { SVGProps as BaseSVGProps } from "../types/floorplan";
 import { planA } from "./planA";
+import { ravenP33R } from "./raven-p33r";
 import { planB } from "./planB";
 import { planC } from "./planC";
 
@@ -26,6 +27,7 @@ export const plans: Record<string, Plan> = {
   [toLowerKey(planA.code)]: planA,
   [toLowerKey(planB.code)]: planB,
   [toLowerKey(planC.code)]: planC,
+  [toLowerKey(ravenP33R.code)]: ravenP33R,
 };
 
 // ---- Safe selectors used by App.tsx ----

@@ -2,7 +2,7 @@ import { Search, Layers, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { OptionKey } from "../store/useFPState";
 
-type Option = { key: OptionKey; label: string };
+type Option = { key: OptionKey; label: string; group?: string };
 type FloorTab = { name: string };
 
 type SidebarProps = {
@@ -10,11 +10,14 @@ type SidebarProps = {
   selectedFloor: number;
   onSelectFloor: (idx: number) => void;
 
-  options: Option[]; // for currently selected floor
+  options: Option[];
   active: Record<OptionKey, boolean>;
   setActive: (k: OptionKey, v: boolean) => void;
   reset: () => void;
   lockedKeys?: string[];
+
+  mirror: boolean;
+  setMirror: (v: boolean) => void;
 };
 
 export default function Sidebar({
@@ -26,14 +29,13 @@ export default function Sidebar({
   setActive,
   reset,
   lockedKeys = [],
+  mirror,
+  setMirror,
 }: SidebarProps) {
   const [query, setQuery] = useState("");
   const [expandedIndex, setExpandedIndex] = useState<number | null>(selectedFloor);
 
-  // Keep the expanded panel in sync if parent changes selected floor
-  useEffect(() => {
-    setExpandedIndex(selectedFloor);
-  }, [selectedFloor]);
+  useEffect(() => setExpandedIndex(selectedFloor), [selectedFloor]);
 
   const filtered = options.filter((o) =>
     o.label.toLowerCase().includes(query.toLowerCase())
@@ -41,7 +43,6 @@ export default function Sidebar({
 
   const handleFloorClick = (idx: number) => {
     if (idx === selectedFloor) {
-      // toggle visibility but DO NOT change the active floor
       setExpandedIndex((cur) => (cur === idx ? null : idx));
     } else {
       onSelectFloor(idx);
@@ -51,8 +52,26 @@ export default function Sidebar({
 
   return (
     <div className="flex h-full w-80 flex-col border-r border-gray-200 bg-white/90 backdrop-blur">
+      {/* Plan-level settings (GLOBAL) */}
+      <div className="p-3">
+        <div className="rounded-xl border border-gray-200 bg-white px-3 py-2 flex items-center justify-between">
+          <span className="text-xs font-medium uppercase tracking-wider text-gray-500">
+            Plan settings
+          </span>
+          <label className="flex items-center gap-2 text-sm text-gray-700">
+            <input
+              type="checkbox"
+              checked={mirror}
+              onChange={(e) => setMirror(e.currentTarget.checked)}
+              className="h-4 w-4"
+            />
+            Mirror plan
+          </label>
+        </div>
+      </div>
+
       {/* Floors accordion */}
-      <div className="p-3 flex flex-col gap-2">
+      <div className="p-3 pt-0 flex flex-col gap-2">
         {floors.map((f, idx) => {
           const isActive = selectedFloor === idx;
           const isOpen = expandedIndex === idx;
@@ -68,10 +87,7 @@ export default function Sidebar({
                 aria-controls={`floor-panel-${idx}`}
               >
                 <span className="font-medium">{f.name}</span>
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
-                />
+                <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
               </button>
 
               <div
@@ -81,9 +97,9 @@ export default function Sidebar({
                 }`}
               >
                 <div className="overflow-hidden">
-                  {/* Only render controls for the selected floor; hide when collapsed */}
                   {isActive && (
                     <>
+                      {/* Search + Clear for this floor's options */}
                       <div className="flex items-center gap-2 p-3">
                         <div className="rounded-xl border border-gray-200 px-2 py-1 flex items-center gap-2 w-full bg-white">
                           <Search size={16} />
@@ -118,7 +134,15 @@ export default function Sidebar({
                               type="checkbox"
                               className="h-4 w-4"
                               checked={!!active[opt.key]}
-                              onChange={(e) => setActive(opt.key, e.currentTarget.checked)}
+                              onChange={(e) => {
+                                const checked = e.currentTarget.checked;
+                                if (checked && opt.group) {
+                                  options
+                                    .filter((o) => o.group === opt.group && o.key !== opt.key)
+                                    .forEach((o) => setActive(o.key, false));
+                                }
+                                setActive(opt.key, checked);
+                              }}
                               disabled={lockedKeys.length > 0}
                             />
                           </label>
