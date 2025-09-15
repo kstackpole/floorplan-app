@@ -24,7 +24,7 @@ export default function VideoPanel() {
   return (
     <div className="mx-3 mb-4 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
       <div className="flex items-center justify-between px-3 py-2 border-b border-gray-100">
-        <div className="font-medium text-gray-800 truncate">{video.title}</div>
+        <div className="font-medium text-gray-800">{video.title}</div>
         <button
           onClick={() => setVideo(null)}
           aria-label="Close video"

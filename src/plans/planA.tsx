@@ -12,7 +12,7 @@ export function MudroomHotspot() {
     id: "mudroom",
     title: "Tame dirt and clutter before you enter",
     text: "Built-in bench, hooks, and cubbies keep daily items organized.",
-    src: "https://youtu.be/dQw4w9WgXcQ?si=RzOHn5zxEV2WCi3c", // or MP4/Vimeo
+    src: "https://onlinedesigninternal.richmondamerican.com/2025_Specials/_misc/videos/FP%20Videos/CON01256355_FP%20Video_Pearl%20(VIR)/CON07243543_Floor%20Plan%20Video_Pearl_VIR_9x16.mp4", // or MP4/Vimeo
     thumb: "/assets/thumbs/mudroom.jpg",
   };
 
@@ -43,7 +43,7 @@ export function GreatRoomHotspot() {
   return (
     <g
       role="button"
-      tabIndex={0}
+      tabIndex={1}
       onClick={() => setVideo(media)}
       onKeyDown={(e) => e.key === "Enter" && setVideo(media)}
       className="cursor-pointer"
