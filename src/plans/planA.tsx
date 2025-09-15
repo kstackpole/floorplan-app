@@ -1,5 +1,62 @@
 import { useEffect, useRef } from "react";
 import type { SVGProps } from "../types/floorplan";
+import useFPState from "../store/useFPState";
+
+
+
+
+export function MudroomHotspot() {
+  const { setVideo } = useFPState();
+
+  const media = {
+    id: "mudroom",
+    title: "Tame dirt and clutter before you enter",
+    text: "Built-in bench, hooks, and cubbies keep daily items organized.",
+    src: "https://youtu.be/dQw4w9WgXcQ?si=RzOHn5zxEV2WCi3c", // or MP4/Vimeo
+    thumb: "/assets/thumbs/mudroom.jpg",
+  };
+
+  return (
+    <g
+      role="button"
+      tabIndex={0}
+      onClick={() => setVideo(media)}
+      onKeyDown={(e) => e.key === "Enter" && setVideo(media)}
+      className="cursor-pointer"
+    >
+      <circle cx={610} cy={570} r={20} fill="#af272f" opacity={0.9} />
+      <text x={610} y={574} textAnchor="middle" fill="white" fontSize={12}>1</text>
+    </g>
+  );
+}
+export function GreatRoomHotspot() {
+  const { setVideo } = useFPState();
+
+  const media = {
+    id: "greatroom", 
+    title: "Great Room Gathering Space",
+    text: "Spacious great room with optional fireplace and large windows for natural light.",
+    src: "https://youtu.be/dQw4w9WgXcQ?si=RzOHn5zxEV2WCi3c",
+    thumb: "/assets/thumbs/greatroom.jpg",
+  };
+
+  return (
+    <g
+      role="button"
+      tabIndex={0}
+      onClick={() => setVideo(media)}
+      onKeyDown={(e) => e.key === "Enter" && setVideo(media)}
+      className="cursor-pointer"
+    >
+      <circle cx={660} cy={450} r={20} fill="#af272f" opacity={0.9} />
+      <text x={660} y={454} textAnchor="middle" fill="white" fontSize={12}>
+        2
+      </text>
+    </g>
+  );
+}
+
+
 
 export function PlanASVG({
   active,
@@ -90,7 +147,7 @@ export function PlanASVG({
                                 528.747,545.121 528.747,547.578 528.747,552.978 528.747,574.947 528.747,584.406 528.747,590.157 526.38,590.157 
                                 526.38,541.512 526.38,525.285 515.562,525.285 510.837,525.285 510.837,522.918 526.38,522.918 526.38,512.433 528.747,512.433 
                                 528.747,533.043 557.133,533.043 557.133,490.464 528.747,490.464 528.747,493.506 			"></polygon>
-                            <polygon points="687.273,570.213 677.437,570.213 677.437,570.771 677.437,610.182 677.437,610.767 697.255,610.767 
+                            <polygon points="687.273,566.213 677.437,570.213 677.437,570.771 677.437,610.182 677.437,610.767 697.255,610.767 
                                 697.506,610.767 698.812,610.767 699.063,610.767 701.773,610.767 701.773,643.545 704.815,643.545 704.815,645.912 
                                 678.786,645.912 678.786,649.971 675.07,649.971 675.07,638.478 677.437,638.478 677.437,643.545 688.588,643.545 
                                 691.044,643.545 691.549,643.545 699.406,643.545 699.406,613.134 691.549,613.134 691.044,613.134 688.588,613.134 
@@ -2326,11 +2383,15 @@ export function PlanASVG({
                         </g>
                     </g>
                 </g>
+                {/* Hotspots: Mudroom Hotspot */}
+                <MudroomHotspot />
+                <GreatRoomHotspot />
             </g>
         </svg>
 
   );
 }
+
 
 
 // ❗ if you have a placeholder, TYPE IT so it matches Floor['SVG']

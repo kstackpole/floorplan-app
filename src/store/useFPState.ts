@@ -3,15 +3,26 @@ import { useState, useEffect } from "react";
 
 export type OptionKey = string;
 
+export type MediaRef = {
+  id: string;            // e.g., "mudroom"
+  title: string;         // e.g., "Tame dirt and clutter..."
+  text?: string;         // short blurb
+  src: string;           // mp4 | YouTube | Vimeo URL (full URL)
+  thumb?: string;        // optional preview image
+};
+
 export type FPState = {
   active: Record<OptionKey, boolean>;
   setActive: (k: OptionKey, v: boolean) => void;
   reset: (initialKeys?: OptionKey[]) => void;
   setKeys: (keys: OptionKey[]) => void;
 
-  // NEW
   mirror: boolean;
   setMirror: (v: boolean) => void;
+
+  // NEW ↓
+  video: MediaRef | null;
+  setVideo: (m: MediaRef | null) => void;
 };
 
 const useFPState = (() => {
@@ -40,10 +51,16 @@ const useFPState = (() => {
       subscribers.forEach((cb) => cb());
     },
 
-    // NEW
     mirror: false,
     setMirror: (v: boolean) => {
       state.mirror = v;
+      subscribers.forEach((cb) => cb());
+    },
+
+    // NEW ↓
+    video: null,
+    setVideo: (m) => {
+      state.video = m;
       subscribers.forEach((cb) => cb());
     },
   };

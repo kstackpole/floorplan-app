@@ -1,5 +1,6 @@
 import { Search, Layers, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
+import VideoPanel from "./VideoPanel";
 import type { OptionKey } from "../store/useFPState";
 
 type Option = { key: OptionKey; label: string; group?: string };
@@ -159,6 +160,15 @@ export default function Sidebar({
           );
         })}
       </div>
+      // Sidebar.tsx (bottom section)
+      {/* Optional footer */}
+      <div className="mt-auto px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
+        Highlights
+      </div>
+      <div className="px-0 pb-4">
+        <VideoPanel />
+      </div>
+
 
       {/* Optional footer */}
       <div className="mt-auto px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
