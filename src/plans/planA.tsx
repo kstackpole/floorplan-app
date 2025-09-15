@@ -12,8 +12,8 @@ export function MudroomHotspot() {
     id: "mudroom",
     title: "Tame dirt and clutter before you enter",
     text: "Built-in bench, hooks, and cubbies keep daily items organized.",
-    src: "https://onlinedesigninternal.richmondamerican.com/2025_Specials/_misc/videos/FP%20Videos/CON01256355_FP%20Video_Pearl%20(VIR)/CON07243543_Floor%20Plan%20Video_Pearl_VIR_9x16.mp4", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.jpg",
+    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
+    thumb: "/assets/thumbs/mudroom.png",
   };
 
   return (

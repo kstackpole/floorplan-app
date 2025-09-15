@@ -3,9 +3,12 @@ import { X } from "lucide-react";
 import useFPState from "../store/useFPState";
 
 function ytId(url: string) {
-  const m = url.match(/(?:youtube\.com\/.*[?&]v=|youtu\.be\/)([\w-]{11})/i);
+  const m = url.match(
+    /(?:youtube\.com\/(?:.*[?&]v=|shorts\/)|youtu\.be\/)([\w-]{11})/i
+  );
   return m?.[1] ?? null;
 }
+
 
 function vimeoId(url: string) {
   const m = url.match(/vimeo\.com\/(\d+)/i);
@@ -35,17 +38,17 @@ export default function VideoPanel() {
       </div>
 
       <div className="p-3">
-        <div className="w-full h-96 rounded-xl overflow-hidden bg-black/5">
-          {yid && (
-            <iframe
-              className="w-full h-full"
-              src={`https://www.youtube.com/embed/${yid}`}
-              title={video.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          )}
+        <div className="w-full aspect-[9/16] rounded-xl overflow-hidden bg-black/5">
+            {yid && (
+                <iframe
+                className="w-full h-full"
+                src={`https://www.youtube-nocookie.com/embed/${yid}?modestbranding=1&rel=0&iv_load_policy=3&controls=1&playsinline=1`}
+                title={video.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+                />
+            )}
           {!yid && vid && (
             <iframe
               className="w-full h-full"
