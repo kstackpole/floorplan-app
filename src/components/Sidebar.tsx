@@ -1,4 +1,4 @@
-import { Search, Layers, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import MediaPanel from "./MediaPanel";
 import type { OptionKey } from "../store/useFPState";

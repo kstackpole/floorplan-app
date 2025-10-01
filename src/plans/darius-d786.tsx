@@ -1,24 +1,45 @@
 import { useEffect, useRef } from "react";
 import type { SVGProps } from "../types/floorplan";
 import useFPState from "../store/useFPState";
+import WaterSaverGame from "../components/games/WaterSaverGame";
+import InsulationSavingsGame from "../components/games/InsulationSavingsGame";
+import WindowIRGame from "../components/games/WindowIRGame";
 
 
 
 export function GreatRoomHotspot() {
-  const { openGallery } = useFPState();
+  const { openGallery, openModal } = useFPState();
 
   const gallery = {
     title: "GET GOOD REST",
     text: "The research is in! TV is a sleep disruptor. But we’ve got you covered. We’ve made sure that our great room TV is thoughtfully placed away from the bedrooms.",
-    index: 0, // optional start index
+    index: 0,
     items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp", alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp", alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp", alt: "Great room — view 3", meta: "Seating layout" },
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
+        alt: "Great room — view 1",
+        meta: "View toward TV",
+      },
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
+        alt: "Great room — view 2",
+        meta: "View toward kitchen",
+      },
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
+        alt: "Great room — view 3",
+        meta: "Seating layout",
+      },
     ],
   } as const;
 
-  const open = () => openGallery({ ...gallery, items: [...gallery.items] });
+  const open = () => {
+    openGallery({ ...gallery, items: [...gallery.items] });
+    openModal(); // 👈 also open the modal by default
+  };
 
   return (
     <g
@@ -29,10 +50,13 @@ export function GreatRoomHotspot() {
       className="cursor-pointer"
     >
       <circle cx={260} cy={280} r={20} fill="#af272f" opacity={0.9} />
-      <text x={260} y={284} textAnchor="middle" fill="white" fontSize={12}>1</text>
+      <text x={260} y={284} textAnchor="middle" fill="white" fontSize={12}>
+        1
+      </text>
     </g>
   );
 }
+
 export function MudroomHotspot() {
   const { setVideo } = useFPState();
 
@@ -58,22 +82,26 @@ export function MudroomHotspot() {
   );
 }
 export function GuestHotspot() {
-  const { setVideo } = useFPState();
+  const {openGallery} = useFPState();
 
-  const media = {
-    id: "guest",
+  const gallery = {
     title: "MAKE ROOM FOR GUESTS",
     text: "This guest suite has an attached living area and bath, perfect for a mother- in-law, live-in nanny or frequent out of town visitors.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
+    index: 0, // optional start index
+    items: [
+      { src: "https://www.richmondamerican.com//Content/Plans/Media-41334.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-41334.webp", alt: "Guest suite — view 1", meta: "View toward bed" },
+      { src: "https://www.richmondamerican.com//Content/Plans/Media-41335.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-41335.webp", alt: "Guest suite — view 2", meta: "View toward sitting area" },
+      { src: "https://www.richmondamerican.com//Content/Plans/Media-45982.jpg", thumb: "https://www.richmondamerican.com//Content/Plans/Media-45982.webp", alt: "Guest suite — view 3", meta: "View toward bath" },
+    ],
+  } as const;
+  const open = () => openGallery({ ...gallery, items: [...gallery.items] });
 
   return (
     <g
       role="button"
       tabIndex={0}
-      onClick={() => setVideo(media)}
-      onKeyDown={(e) => e.key === "Enter" && setVideo(media)}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
       className="cursor-pointer"
     >
       <circle cx={900} cy={601} r={20} fill="#af272f" opacity={0.9} />
@@ -201,8 +229,101 @@ export function StoreTwoHotspot() {
     </g>
   );
 }
+export function WindowIRHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "IR Window Efficiency",
+      text: "Point the virtual IR laser at a standard window vs our high-efficiency window and see interior surface temperature, heat flow, and $/hr impact under today’s weather.",
+      render: () => <WindowIRGame />,
+    });
+    openModal();
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open IR window efficiency game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="cursor-pointer"
+    >
+      {/* Set these to the window location you want */}
+      <circle cx={800} cy={60} r={20} fill="#ebde34" opacity={0.9} />
+      <text x={800} y={64} textAnchor="middle" fill="white" fontSize={12}>IR</text>
+    </g>
+  );
+}
 
 
+export function ShowerWaterSaverHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "Save Water in the Shower",
+      text:
+        "Adjust your shower length, press Play, and see how our efficient fixtures compare to standard ones.",
+      render: () => (
+        <WaterSaverGame
+          gpmStandard={2.5}   // standard shower head
+          gpmEfficient={1.8}  // your fixture
+          costPerGallon={0.015}
+        />
+      ),
+    });
+    openModal(); // bring the app front-and-center by default
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open water saver game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="cursor-pointer"
+    >
+      {/* TODO: set to your shower coords */}
+      <circle cx={890} cy={320} r={20} fill="#049dcc" opacity={0.9} />
+      <text x={890} y={324} textAnchor="middle" fill="white" fontSize={12}>
+        W
+      </text>
+    </g>
+  );
+}
+export function InsulationHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "Insulation Savings",
+      text:
+        "Compare seasonal heating & cooling costs between standard insulation and our specialized system. Adjust R-value, climate, and rates—then press Play.",
+      render: () => <InsulationSavingsGame />,
+    });
+    openModal(); // front and center by default
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open insulation savings mini-game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="cursor-pointer"
+    >
+      {/* set these to the wall/attic you want */}
+      <circle cx={220} cy={820} r={20} fill="#cca104" opacity={0.9} />
+      <text x={220} y={824} textAnchor="middle" fill="white" fontSize={12}>
+        I
+      </text>
+    </g>
+  );
+}
 
 export function DariusD786mainSVG({
   active,
@@ -792,6 +913,9 @@ export function DariusD786mainSVG({
                 <GuestHotspot />
                 <TowelHotspot />
                 <StorageHotspot />
+                <ShowerWaterSaverHotspot />
+                <InsulationHotspot />
+                <WindowIRHotspot />
             </g>
         </svg>
 

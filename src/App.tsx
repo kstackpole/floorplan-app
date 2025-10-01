@@ -6,6 +6,7 @@ import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
 import FloorPlan from "./components/FloorPlan";
 import { selectPlan, selectFloor } from "./plans";
+import MediaModal from "./components/mediaModal";
 
 function FloorPlanPage() {
   const { planId } = useParams();
@@ -41,6 +42,7 @@ function FloorPlanPage() {
 
   return (
     <div className="flex h-[calc(100vh-3rem)]">
+      <MediaModal />
       <Sidebar
         floors={plan.floors}
         selectedFloor={selectedFloor}

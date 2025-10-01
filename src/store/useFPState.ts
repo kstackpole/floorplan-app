@@ -1,5 +1,6 @@
 // store/useFPState.ts
 import { useState, useEffect } from "react";
+import type { ReactNode } from "react"; // add this
 
 export type OptionKey = string;
 
@@ -12,7 +13,7 @@ export type MediaRef = {
   thumb?: string;    // optional preview image
 };
 
-/** NEW: gallery types */
+/** Gallery types */
 export type ImageItem = {
   src: string;
   alt?: string;
@@ -27,10 +28,18 @@ export type GalleryPayload = {
   text?: string;
 };
 
-/** NEW: unified media state */
+/** NEW: mini-app payload */
+export type AppPayload = {
+  title: string;
+  text?: string;            // optional blurb shown under app
+  render: () => ReactNode; // factory that returns your mini-app component
+};
+
+/** Unified media state */
 export type MediaPanelState =
   | { kind: "video"; item: MediaRef }
   | { kind: "gallery"; payload: GalleryPayload }
+  | { kind: "app"; payload: AppPayload }   // ← NEW
   | null;
 
 export type FPState = {
@@ -46,13 +55,20 @@ export type FPState = {
   video: MediaRef | null;
   setVideo: (m: MediaRef | null) => void;
 
-  /** NEW: unified media panel */
+  /** Unified media panel */
   mediaPanel: MediaPanelState;
   openVideo: (item: MediaRef) => void;
   openGallery: (payload: GalleryPayload) => void;
+  openApp: (payload: AppPayload) => void;      // ← NEW
   closeMedia: () => void;
 
-  /** NEW: gallery navigation helpers */
+  /** Modal controls */
+  isModalOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+  toggleModal: () => void;
+
+  /** Gallery navigation helpers */
   nextMedia: () => void;
   prevMedia: () => void;
   setMediaIndex: (i: number) => void;
@@ -105,7 +121,7 @@ const useFPState = (() => {
       notify();
     },
 
-    /** NEW unified media panel + controls */
+    /** Unified media panel + controls */
     mediaPanel: null,
     openVideo: (item) => {
       state.video = null; // keep legacy field clear to avoid confusion
@@ -120,12 +136,33 @@ const useFPState = (() => {
       };
       notify();
     },
+    openApp: (payload) => {
+      state.video = null;
+      state.mediaPanel = { kind: "app", payload };
+      notify();
+    },
     closeMedia: () => {
       state.mediaPanel = null;
-      // don't touch legacy `video`; keep it as-is
+      // Intentionally do not change isModalOpen; the modal checks both.
       notify();
     },
 
+    /** Modal controls */
+    isModalOpen: false,
+    openModal: () => {
+      state.isModalOpen = true;
+      notify();
+    },
+    closeModal: () => {
+      state.isModalOpen = false;
+      notify();
+    },
+    toggleModal: () => {
+      state.isModalOpen = !state.isModalOpen;
+      notify();
+    },
+
+    /** Gallery nav helpers */
     nextMedia: () => {
       const s = state.mediaPanel;
       if (s?.kind !== "gallery") return;

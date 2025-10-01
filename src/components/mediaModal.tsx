@@ -1,5 +1,5 @@
-// components/MediaPanel.tsx
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+// components/MediaModal.tsx
+import { Minimize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import useFPState from "../store/useFPState";
 import type { ImageItem } from "../types/media";
@@ -13,21 +13,20 @@ function vimeoId(url: string) {
   return m?.[1] ?? null;
 }
 
-export default function MediaPanel() {
+export default function MediaModal() {
   const {
     mediaPanel,
-    closeMedia,
+    isModalOpen,
+    closeModal,
     nextMedia,
     prevMedia,
     setMediaIndex,
-    isModalOpen,
-    openModal,
   } = useFPState();
 
   useEffect(() => {
-    if (!mediaPanel) return;
+    if (!isModalOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMedia();
+      if (e.key === "Escape") closeModal();
       if (mediaPanel?.kind === "gallery") {
         if (e.key === "ArrowRight") nextMedia();
         if (e.key === "ArrowLeft") prevMedia();
@@ -35,74 +34,67 @@ export default function MediaPanel() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mediaPanel, closeMedia, nextMedia, prevMedia]);
+  }, [isModalOpen, mediaPanel, closeModal, nextMedia, prevMedia]);
 
-  if (!mediaPanel) return null;
+  if (!mediaPanel || !isModalOpen) return null;
 
-  // Title / blurb works for all kinds
-  const panelTitle =
+  const title =
     mediaPanel.kind === "video" ? mediaPanel.item.title : mediaPanel.payload.title;
-  const panelText =
+  const blurb =
     mediaPanel.kind === "video" ? mediaPanel.item.text : mediaPanel.payload.text;
 
-  const wrapperBase = "w-full rounded-xl overflow-hidden bg-black/5 relative select-none";
   const wrapperClass =
-    mediaPanel.kind === "video" ? `${wrapperBase} aspect-[9/16]` : wrapperBase;
+    mediaPanel.kind === "video"
+      ? "w-full aspect-[16/9] bg-black/5 rounded-xl overflow-hidden relative"
+      : "w-full bg-black/5 rounded-xl overflow-hidden relative";
 
   return (
-    <div className="mx-3 mb-4 rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-      <div className="flex items-center justify-between px-3 py-2 border-b border-gray-100">
-        <div className="font-medium text-gray-800">{panelTitle}</div>
-
-        <div className="flex items-center gap-2">
-          {mediaPanel && !isModalOpen && (
-            <button
-              onClick={openModal}
-              className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-medium hover:bg-gray-200"
-              aria-label="Open modal"
-              title="Open modal"
-            >
-              <Maximize2 className="w-3.5 h-3.5" />
-              Expand
-            </button>
-          )}
-          <button onClick={closeMedia} aria-label="Close" className="rounded-lg p-1 hover:bg-gray-100">
-            <X size={16} />
+    <div className="fixed inset-0 z-[100] flex items-center justify-center" aria-modal="true" role="dialog">
+      {/* backdrop */}
+      <div className="absolute inset-0 bg-black/50" onClick={closeModal} aria-hidden="true" />
+      {/* modal card */}
+      <div className="relative z-[101] w-[min(92vw,1100px)] max-h-[90vh] rounded-2xl bg-white shadow-2xl overflow-hidden">
+        <div className="flex items-center justify-between px-4 py-3 border-b">
+          <h2 className="font-semibold text-gray-900 truncate">{title}</h2>
+          <button onClick={closeModal} aria-label="Minimize modal" className="rounded-lg p-1 hover:bg-gray-100">
+            <Minimize2 size={18} />
           </button>
         </div>
-      </div>
 
-      <div className="p-3">
-        <div className={wrapperClass}>
-          {/* VIDEO */}
-          {mediaPanel.kind === "video" && (
-            <VideoEmbed
-              title={mediaPanel.item.title}
-              src={mediaPanel.item.src}
-              thumb={mediaPanel.item.thumb}
-            />
-          )}
+        {/* make inner scrollable if content is tall */}
+        <div className="p-4 overflow-auto">
+          <div className={wrapperClass}>
+            {/* VIDEO */}
+            {mediaPanel.kind === "video" && (
+              <VideoEmbed
+                title={mediaPanel.item.title}
+                src={mediaPanel.item.src}
+                thumb={mediaPanel.item.thumb}
+              />
+            )}
 
-          {/* GALLERY */}
-          {mediaPanel.kind === "gallery" && (
-            <GalleryView
-              items={mediaPanel.payload.items}
-              index={mediaPanel.payload.index ?? 0}
-              onPrev={prevMedia}
-              onNext={nextMedia}
-              onJump={setMediaIndex}
-            />
-          )}
+            {/* GALLERY */}
+            {mediaPanel.kind === "gallery" && (
+              <GalleryView
+                items={mediaPanel.payload.items}
+                index={mediaPanel.payload.index ?? 0}
+                onPrev={prevMedia}
+                onNext={nextMedia}
+                onJump={setMediaIndex}
+              />
+            )}
 
-          {/* APP / MINI-GAME */}
-          {mediaPanel.kind === "app" && (
-            <div className="w-full p-2">
-              {mediaPanel.payload.render()}
-            </div>
-          )}
+            {/* APP / MINI-GAME */}
+            {mediaPanel.kind === "app" && (
+              <div className="p-4 bg-white rounded-xl w-full">
+                {mediaPanel.payload.render()}
+              </div>
+            )}
+          </div>
+
+          {/* blurb (works for video, gallery, app if provided) */}
+          {blurb && <p className="mt-3 text-sm text-gray-700 leading-relaxed">{blurb}</p>}
         </div>
-
-        {panelText && <p className="mt-3 text-sm text-gray-600">{panelText}</p>}
       </div>
     </div>
   );
@@ -143,7 +135,7 @@ function VideoEmbed({ title, src, thumb }: { title: string; src: string; thumb?:
       </video>
     );
   }
-  return <div className="flex items-center justify-center h-full text-sm text-gray-500">Unsupported video</div>;
+  return <div className="flex items-center justify-center h-[50vh] text-sm text-gray-500">Unsupported video</div>;
 }
 
 function GalleryView({
@@ -161,6 +153,7 @@ function GalleryView({
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
+  // swipe
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -185,6 +178,7 @@ function GalleryView({
     };
   }, [onNext, onPrev]);
 
+  // preload neighbors
   useEffect(() => {
     if (items.length < 2) return;
     const prev = items[(index - 1 + items.length) % items.length];
@@ -198,25 +192,25 @@ function GalleryView({
   const current = items[index];
 
   return (
-    <div ref={ref} className="w-full h-full relative">
+    <div ref={ref} className="w-full relative">
       <img
         src={current.src}
         alt={current.alt ?? ""}
-        className="w-full h-full object-contain"
+        className="w-full h-auto max-h-[75vh] object-contain"
         loading="eager"
         draggable={false}
       />
       {items.length > 1 && (
         <>
           <button
-            className="absolute top-1/2 left-2 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white shadow"
+            className="absolute top-1/2 left-3 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white shadow"
             onClick={onPrev}
             aria-label="Previous photo"
           >
             <ChevronLeft className="w-5 h-5 text-gray-700" />
           </button>
           <button
-            className="absolute top-1/2 right-2 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white shadow"
+            className="absolute top-1/2 right-3 -translate-y-1/2 rounded-full p-2 bg-white/80 hover:bg-white shadow"
             onClick={onNext}
             aria-label="Next photo"
           >
