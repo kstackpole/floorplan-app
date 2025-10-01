@@ -1,6 +1,6 @@
 import { Search, Layers, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
-import VideoPanel from "./VideoPanel";
+import MediaPanel from "./MediaPanel";
 import type { OptionKey } from "../store/useFPState";
 
 type Option = { key: OptionKey; label: string; group?: string };
@@ -102,22 +102,9 @@ export default function Sidebar({
                     <>
                       {/* Search + Clear for this floor's options */}
                       <div className="flex items-center gap-2 p-3">
-                        <div className="rounded-xl border border-gray-200 px-2 py-1 flex items-center gap-2 w-full bg-white">
-                          <Search size={16} />
-                          <input
-                            className="w-full border-none outline-none bg-transparent text-sm"
-                            placeholder="Search options"
-                            value={query}
-                            onChange={(e) => setQuery(e.target.value)}
-                          />
+                        <div className=" px-2 py-1 flex items-center gap-2 w-full bg-white">
+                          &nbsp;
                         </div>
-                        <button
-                          onClick={reset}
-                          className="rounded-lg p-2 hover:bg-gray-100"
-                          title="Clear"
-                        >
-                          <Layers size={16} />
-                        </button>
                       </div>
 
                       <div className="px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
@@ -166,7 +153,7 @@ export default function Sidebar({
         Highlights
       </div>
       <div className="px-0 pb-4">
-        <VideoPanel />
+        <MediaPanel />
       </div>
 
 

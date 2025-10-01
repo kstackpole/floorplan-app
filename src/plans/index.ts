@@ -3,6 +3,7 @@ import { planA } from "./planA";
 import { ravenP33R } from "./raven-p33r";
 import { planB } from "./planB";
 import { planC } from "./planC";
+import { dariusD786 } from "./darius-d786";
 
 // ---- Shared types used by the app ----
 export type OptionDef = { key: string; label: string };
@@ -28,6 +29,7 @@ export const plans: Record<string, Plan> = {
   [toLowerKey(planB.code)]: planB,
   [toLowerKey(planC.code)]: planC,
   [toLowerKey(ravenP33R.code)]: ravenP33R,
+  [toLowerKey(dariusD786.code)]: dariusD786,
 };
 
 // ---- Safe selectors used by App.tsx ----
