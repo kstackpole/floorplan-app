@@ -53,7 +53,7 @@ export default function MediaModal() {
       {/* backdrop */}
       <div className="absolute inset-0 bg-black/50" onClick={closeModal} aria-hidden="true" />
       {/* modal card */}
-      <div className="relative z-[101] w-[min(92vw,1100px)] max-h-[90vh] rounded-2xl bg-white shadow-2xl overflow-hidden">
+      <div className="relative z-[101] w-[min(92vw,1100px)] max-h-[99vh] rounded-2xl bg-white shadow-2xl overflow-hidden">
         <div className="flex items-center justify-between px-4 py-3 border-b">
           <h2 className="font-semibold text-gray-900 truncate">{title}</h2>
           <button onClick={closeModal} aria-label="Minimize modal" className="rounded-lg p-1 hover:bg-gray-100">

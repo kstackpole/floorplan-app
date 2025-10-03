@@ -102,9 +102,6 @@ export default function Sidebar({
                     <>
                       {/* Search + Clear for this floor's options */}
                       <div className="flex items-center gap-2 p-3">
-                        <div className=" px-2 py-1 flex items-center gap-2 w-full bg-white">
-                          &nbsp;
-                        </div>
                       </div>
 
                       <div className="px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
@@ -146,14 +143,6 @@ export default function Sidebar({
             </div>
           );
         })}
-      </div>
-      // Sidebar.tsx (bottom section)
-      {/* Optional footer */}
-      <div className="mt-auto px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
-        Highlights
-      </div>
-      <div className="px-0 pb-4">
-        <MediaPanel />
       </div>
 
 
