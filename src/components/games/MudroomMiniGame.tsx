@@ -389,21 +389,24 @@ export default function MudroomMiniGame({
   function onPointerDownItem(e: React.PointerEvent, itemId: string) {
     e.currentTarget.setPointerCapture(e.pointerId);
     setDragId(itemId);
+
     const svg = svgRef.current!;
     const { x, y } = clientToSvgCoords(svg, e.clientX, e.clientY);
-    setItems((prev) =>
-      prev.map((i) => {
-        if (i.id !== itemId) return i;
-        const dx = x - i.x;
-        const dy = y - i.y;
-        return { ...i, isPickedUp: true };
-      })
-    );
+
+    // find the item once
     const item = items.find((i) => i.id === itemId)!;
-    const { x: currX, y: currY } = item;
-    const svgPt = clientToSvgCoords(svg, e.clientX, e.clientY);
-    setDragOffset({ x: svgPt.x - currX, y: svgPt.y - currY });
+
+    // these were previously unused — make them the drag offset
+    const dx = x - item.x;
+    const dy = y - item.y;
+    setDragOffset({ x: dx, y: dy });
+
+    // just mark it picked up
+    setItems((prev) =>
+      prev.map((i) => (i.id === itemId ? { ...i, isPickedUp: true } : i))
+    );
   }
+
 
   function onPointerMove(e: React.PointerEvent) {
     if (!dragId) return;
@@ -418,7 +421,7 @@ export default function MudroomMiniGame({
     if (item) updateHoverFor({ ...item, x: nx, y: ny });
   }
 
-  function onPointerUp(e: React.PointerEvent) {
+  function onPointerUp(_: React.PointerEvent) {
     if (!dragId) return;
     const item = items.find((i) => i.id === dragId)!;
     const slot = findCompatibleSlot(item);

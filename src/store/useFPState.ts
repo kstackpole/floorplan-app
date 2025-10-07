@@ -1,10 +1,10 @@
 // store/useFPState.ts
 import { useState, useEffect } from "react";
-import type { ReactNode } from "react"; // add this
+import type { ReactNode } from "react";
 
 export type OptionKey = string;
 
-/** Existing video payload (kept) */
+/** Existing video payload */
 export type MediaRef = {
   id: string;        // e.g., "mudroom"
   title: string;     // e.g., "Tame dirt and clutter..."
@@ -32,7 +32,7 @@ export type GalleryPayload = {
 export type AppPayload = {
   title: string;
   text?: string;            // optional blurb shown under app
-  render: () => ReactNode; // factory that returns your mini-app component
+  render: () => ReactNode; // factory that returns a mini-app component
 };
 
 /** Unified media state */

@@ -50,7 +50,6 @@ function FloorPlanPage() {
         options={options}
         active={state.active}
         setActive={state.setActive}
-        reset={state.reset}
         lockedKeys={lockedKeys}
         // NEW ↓
         mirror={state.mirror}

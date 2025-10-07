@@ -1,7 +1,6 @@
 import type { SVGProps as BaseSVGProps } from "../types/floorplan";
 import { planA } from "./planA";
 import { ravenP33R } from "./raven-p33r";
-import { planB } from "./planB";
 import { planC } from "./planC";
 import { dariusD786 } from "./darius-d786";
 
@@ -26,7 +25,6 @@ const toLowerKey = (code: string) => code.toLowerCase();
 
 export const plans: Record<string, Plan> = {
   [toLowerKey(planA.code)]: planA,
-  [toLowerKey(planB.code)]: planB,
   [toLowerKey(planC.code)]: planC,
   [toLowerKey(ravenP33R.code)]: ravenP33R,
   [toLowerKey(dariusD786.code)]: dariusD786,
