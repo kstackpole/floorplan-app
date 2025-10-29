@@ -6,6 +6,10 @@ type Option = { key: OptionKey; label: string; group?: string };
 type FloorTab = { name: string };
 
 type SidebarProps = {
+  // NEW: plan-level content
+  planTitle: string;
+  planDescription: string;
+
   floors: FloorTab[];
   selectedFloor: number;
   onSelectFloor: (idx: number) => void;
@@ -20,6 +24,8 @@ type SidebarProps = {
 };
 
 export default function Sidebar({
+  planTitle,
+  planDescription,
   floors,
   selectedFloor,
   onSelectFloor,
@@ -31,6 +37,7 @@ export default function Sidebar({
   setMirror,
 }: SidebarProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(selectedFloor);
+  const [descOpen, setDescOpen] = useState(false);
 
   useEffect(() => setExpandedIndex(selectedFloor), [selectedFloor]);
 
@@ -42,6 +49,12 @@ export default function Sidebar({
       setExpandedIndex(idx);
     }
   };
+
+  // Fallback teaser for when Tailwind line-clamp isn't configured
+  const teaser =
+    planDescription && planDescription.length > 180
+      ? planDescription.slice(0, 180) + "…"
+      : planDescription;
 
   return (
     <div className="flex h-full w-80 flex-col border-r border-gray-200 bg-white/90 backdrop-blur">
@@ -124,7 +137,9 @@ export default function Sidebar({
                           </label>
                         ))}
                         {options.length === 0 && (
-                          <div className="px-3 pb-3 text-sm text-gray-400">No options available.</div>
+                          <div className="px-3 pb-3 text-sm text-gray-400">
+                            No options available.
+                          </div>
                         )}
                       </div>
                     </>
@@ -136,6 +151,46 @@ export default function Sidebar({
         })}
       </div>
 
+      <div className="flex flex-col gap-2 p-3 pt-0">
+        {/* NEW: Plan headline + expandable description */}
+        <div className="mt-3 rounded-xl border border-gray-200 bg-white px-3 py-3">
+          <h1 className="text-lg font-semibold leading-tight text-gray-900">{planTitle}</h1>
+
+          {/* Teaser (shown when collapsed) */}
+          {!descOpen && teaser && (
+            <p className="mt-1 text-sm leading-6 text-gray-700">{teaser}</p>
+          )}
+
+          {/* Expand/collapse area */}
+          <div
+            id="plan-desc"
+            className={`mt-1 grid transition-[grid-template-rows] duration-300 ease-out ${
+              descOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+            aria-hidden={!descOpen}
+          >
+            <div className="overflow-hidden">
+              <p className="text-sm leading-6 text-gray-700 whitespace-pre-line">
+                {planDescription}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setDescOpen((o) => !o)}
+            aria-expanded={descOpen}
+            aria-controls="plan-desc"
+            className="bg-gray-800 mt-2 inline-flex items-center gap-1 text-xs font-medium text-gray-300"
+          >
+            <ChevronDown
+              size={16}
+              className={`transition-transform ${descOpen ? "rotate-180" : ""}`}
+            />
+            {descOpen ? "Show less" : "Show description"}
+          </button>
+        </div>
+      </div>
       {/* Optional footer */}
       <div className="mt-auto px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
         Components

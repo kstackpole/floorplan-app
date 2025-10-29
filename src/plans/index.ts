@@ -1,26 +1,13 @@
-import type { SVGProps as BaseSVGProps } from "../types/floorplan";
+// plans/index.ts
+import type { Plan } from "../types/floorplan";
 import { planA } from "./planA";
 import { ravenP33R } from "./raven-p33r";
 import { planC } from "./planC";
 import { dariusD786 } from "./darius-d786";
+import { danielD237 } from "./daniel-d237";
+import { AugustaP740 } from "./augusta-p740";
+import { RaleighP741 } from "./raleigh-p741";
 
-// ---- Shared types used by the app ----
-export type OptionDef = { key: string; label: string };
-export type SVGProps = BaseSVGProps;
-
-export type Floor = {
-  id: string;                                   // "main" | "second" | "basement" ...
-  name: string;                                 // display label
-  SVG: React.ComponentType<SVGProps>;           // floor-specific SVG component
-  options: OptionDef[];                         // floor-specific options
-};
-
-export type Plan = {
-  code: string;                                 // e.g. "plana"
-  floors: Floor[];
-};
-
-// ---- Build the plans map (lowercased keys) ----
 const toLowerKey = (code: string) => code.toLowerCase();
 
 export const plans: Record<string, Plan> = {
@@ -28,19 +15,30 @@ export const plans: Record<string, Plan> = {
   [toLowerKey(planC.code)]: planC,
   [toLowerKey(ravenP33R.code)]: ravenP33R,
   [toLowerKey(dariusD786.code)]: dariusD786,
+  [toLowerKey(danielD237.code)]: danielD237,
+  [toLowerKey(AugustaP740.code)]: AugustaP740,
+  [toLowerKey(RaleighP741.code)]: RaleighP741,
 };
 
-// ---- Safe selectors used by App.tsx ----
-export function selectPlan(planId?: string): Plan {
+const humanize = (s: string) =>
+  s.replace(/[-_]/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
+
+export function selectPlan(planId?: string): Plan & { title: string; description: string } {
   const key = toLowerKey(planId ?? "plana");
-  return plans[key] ?? plans["plana"] ?? Object.values(plans)[0];
+  const plan = plans[key] ?? plans["plana"] ?? Object.values(plans)[0];
+
+  // guarantee fields for UI
+  return {
+    ...plan,
+    title: plan.title ?? humanize(plan.code),
+    description: plan.description ?? "",
+  };
 }
 
-export function selectFloor(plan: Plan, floorIndex: number): Floor {
+export function selectFloor(plan: Plan, floorIndex: number) {
   return plan.floors[floorIndex] ?? plan.floors[0];
 }
 
-// Optional: find by floor id ("main", "second", ...)
-export function findFloor(plan: Plan, floorId: string): Floor | undefined {
-  return plan.floors.find(f => f.id === floorId);
+export function findFloor(plan: Plan, floorId: string) {
+  return plan.floors.find((f) => f.id === floorId);
 }

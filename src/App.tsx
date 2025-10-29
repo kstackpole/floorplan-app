@@ -44,6 +44,8 @@ function FloorPlanPage() {
     <div className="flex h-[calc(100vh-3rem)]">
       <MediaModal />
       <Sidebar
+        planTitle={plan.title}
+        planDescription={plan.description}
         floors={plan.floors}
         selectedFloor={selectedFloor}
         onSelectFloor={setSelectedFloor}
