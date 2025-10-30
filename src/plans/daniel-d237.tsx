@@ -4659,6 +4659,9 @@ export function DanielD237basementSVG({
                 <text transform="matrix(1 0 0 1 846.2822 520.353)" fill="#425563" fontFamily="Fredoka, sans-serif" fontSize="8.5539px">basement bath</text>
               </g>
           </g>
+
+          <g id="slidingGlass" data-option="slidingGlass" style={{ display: active.slidingGlass ? "block" : "none" }} fill="#CC0001">
+          </g>
       </g>
     </g>
   </svg>
