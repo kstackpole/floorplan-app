@@ -1,5 +1,5 @@
 // App.tsx
-import { BrowserRouter, Routes, Route, Navigate, useParams, useSearchParams } from "react-router-dom";
+import { Routes, Route, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
@@ -69,12 +69,11 @@ export default function App() {
   return (
     <div className="h-screen w-screen bg-gray-50">
       <Topbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/plana" replace />} />
-          <Route path="/:planId" element={<FloorPlanPage />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="plana" replace />} />
+        <Route path=":planId" element={<FloorPlanPage />} />
+        <Route path="*" element={<Navigate to="plana" replace />} />
+      </Routes>
     </div>
   );
 }
