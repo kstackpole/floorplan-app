@@ -9823,7 +9823,7 @@ export const EmptySVG: React.FC<SVGProps> = () => null;
 export const RaleighP741: Plan = {
     code: "RaleighP741",
     title: "Meet the Raleigh",
-    description: "The Raleigh is a spacious two-story home featuring four bedrooms, three bathrooms,",
+    description: "Busy mornings, muddy shoes, and backpacks, oh my! This home is built to keep up with real life. With smart storage where you need it, a layout that flows with your family’s rhythm, and a private study for focused work sessions, every detail is designed to make your days run smoother. This is not just a house—it’s a partner in the beautiful chaos of your life.",
     floors: [
         { 
             id: "main", 
