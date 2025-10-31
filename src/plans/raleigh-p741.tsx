@@ -1,5 +1,6 @@
 import { useEffect, } from "react";
 import type { SVGProps } from "../types/floorplan";
+import type { Plan } from "../types/floorplan"
 import useFPState from "../store/useFPState";
 import WaterSaverGame from "../components/games/WaterSaverGame";
 import InsulationSavingsGame from "../components/games/InsulationSavingsGame";
@@ -9819,16 +9820,20 @@ export function RaleighP741mainSVG({
 // ❗ if you have a placeholder, TYPE IT so it matches Floor['SVG']
 export const EmptySVG: React.FC<SVGProps> = () => null;
 
-export const RaleighP741AMainOptions = [
-    { key: "fourthBed", label: "Optional Fourth Bedroom" },
-    { key: "fifthBed", label: "Extra Bed & Bath" },
-    { key: "multiSlide", label: "Multi-slide Patio Door" },
-];
-export const AugustaP740BasementOptions = [
-];
-export const RaleighP741 = {
+export const RaleighP741: Plan = {
     code: "RaleighP741",
+    title: "Meet the Raleigh",
+    description: "The Raleigh is a spacious two-story home featuring four bedrooms, three bathrooms,",
     floors: [
-        { id: "main", name: "Main Level", SVG:RaleighP741mainSVG, options: RaleighP741AMainOptions },
+        { 
+            id: "main", 
+            name: "Main Level", 
+            SVG:RaleighP741mainSVG, 
+            options: [
+                { key: "fourthBed", label: "Optional Fourth Bedroom" },
+                { key: "fifthBed", label: "Extra Bed & Bath" },
+                { key: "multiSlide", label: "Multi-slide Patio Door" },
+            ]
+        },
     ],
 };
