@@ -1,6 +1,7 @@
 // App.tsx
 import { Routes, Route, Navigate, useParams, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { ChevronRight } from "lucide-react";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
@@ -8,11 +9,27 @@ import FloorPlan from "./components/FloorPlan";
 import { selectPlan, selectFloor } from "./plans";
 import MediaModal from "./components/mediaModal";
 
+/** Lock page scroll when drawer is open */
+function useBodyScrollLock(locked: boolean) {
+  useEffect(() => {
+    const { body } = document;
+    const prev = body.style.overflow;
+    if (locked) body.style.overflow = "hidden";
+    return () => {
+      body.style.overflow = prev;
+    };
+  }, [locked]);
+}
+
 function FloorPlanPage() {
   const { planId } = useParams();
   const [searchParams] = useSearchParams();
-  const state = useFPState();                    // <- has mirror + setMirror
+  const state = useFPState();
   const [selectedFloor, setSelectedFloor] = useState(0);
+
+  // Mobile drawer state
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  useBodyScrollLock(drawerOpen);
 
   const plan = selectPlan(planId);
   const floor = selectFloor(plan, selectedFloor);
@@ -23,52 +40,142 @@ function FloorPlanPage() {
     setSelectedFloor(0);
   }, [plan.code]);
 
-  const pco = searchParams.get("pco");
-  const lockedKeys = pco ? pco.split(",") : [];
+  const lockedKeys = useMemo(() => {
+    const pco = searchParams.get("pco");
+    return pco ? pco.split(",") : [];
+  }, [searchParams]);
 
   useEffect(() => {
     const keys = Array.isArray(options) ? options.map(o => o.key) : [];
     state.setKeys(keys);
-
     if (lockedKeys.length > 0) {
-      keys.forEach((key) => {
-        state.setActive(key, lockedKeys.includes(key));
-      });
+      keys.forEach((key) => state.setActive(key, lockedKeys.includes(key)));
     } else {
       state.reset(keys);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [plan.code, options, pco]); // re-run when plan or floor options change
+  }, [plan.code, options, lockedKeys.join("|")]);
 
   return (
-    <div className="flex h-[calc(100vh-3rem)]">
+    <>
       <MediaModal />
-      <Sidebar
-        planTitle={plan.title}
-        planDescription={plan.description}
-        floors={plan.floors}
-        selectedFloor={selectedFloor}
-        onSelectFloor={setSelectedFloor}
-        options={options}
-        active={state.active}
-        setActive={state.setActive}
-        lockedKeys={lockedKeys}
-        // NEW ↓
-        mirror={state.mirror}
-        setMirror={state.setMirror}
-      />
-      <div className="flex-1">
-        {/* Pass mirror down so the SVG can flip */}
-        <FloorPlan active={state.active} SVG={PlanSVG} mirror={state.mirror} />
+
+      {/* Desktop ≥ md: sidebar grid; Mobile: plan full-bleed + drawer */}
+      <div className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-3.5rem)] flex-1 overflow-hidden md:grid md:grid-cols-[320px_minmax(0,1fr)] bg-gray-50">
+
+        {/* Sidebar (desktop/tablet) */}
+        <aside className="hidden md:block border-r bg-white overflow-y-auto">
+          <Sidebar
+            planTitle={plan.title}
+            planDescription={plan.description}
+            floors={plan.floors}
+            selectedFloor={selectedFloor}
+            onSelectFloor={setSelectedFloor}
+            options={options}
+            active={state.active}
+            setActive={state.setActive}
+            lockedKeys={lockedKeys}
+            mirror={state.mirror}
+            setMirror={state.setMirror}
+          />
+        </aside>
+
+        {/* Floorplan area */}
+        <main className="relative overflow-hidden flex-1 h-[calc(100dvh-3rem)] md:h-auto">
+          <FloorPlan active={state.active} SVG={PlanSVG} mirror={state.mirror} />
+
+          {/* Left-edge tab (mobile only) */}
+          <button
+            type="button"
+            onClick={() => setDrawerOpen(v => !v)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setDrawerOpen(v => !v);
+              }
+            }}
+            aria-label={drawerOpen ? "Close options" : "Open options"}
+            aria-expanded={drawerOpen}
+            aria-controls="mobile-options-drawer"
+            className="md:hidden fixed z-50 top-1/2 -translate-y-1/2 -left-1
+                       w-12 h-28 rounded-r-2xl
+                       bg-white border shadow-xl
+                       flex items-center justify-center
+                       active:scale-[0.98]
+                       focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
+            style={{ touchAction: "manipulation" }}
+          >
+            <span className={`transition-transform duration-200 ${drawerOpen ? "rotate-180" : "rotate-0"}`}>
+              <ChevronRight className="w-7 h-7" aria-hidden="true" />
+            </span>
+          </button>
+        </main>
       </div>
-    </div>
+
+      {/* Mobile drawer (now sits ABOVE topbar and starts below it) */}
+      <div
+        id="mobile-options-drawer"
+        className={`md:hidden fixed left-0 right-0 top-[3rem] bottom-0 z-[60] ${drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        aria-hidden={!drawerOpen}
+      >
+        {/* Backdrop (does NOT cover Topbar now) */}
+        <div
+          className={`absolute inset-0 bg-black/40 transition-opacity ${drawerOpen ? 'opacity-100' : 'opacity-0'}`}
+          onClick={() => setDrawerOpen(false)}
+        />
+
+        {/* Drawer panel */}
+        <div
+          className={`absolute left-0 top-0 h-full w-[88%] max-w-[360px] bg-white shadow-xl border-r
+                      transition-transform will-change-transform
+                      ${drawerOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          role="dialog"
+          aria-modal="true"
+        >
+          {/* Drawer header (always visible now) */}
+          <div className="sticky top-0 z-10 flex items-center justify-between p-3 border-b bg-white">
+            <div className="text-sm font-semibold">Options</div>
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(false)}
+              className="rounded-md border px-2 py-1 text-xs"
+              aria-label="Close options"
+            >
+              Close
+            </button>
+          </div>
+
+          {/* Drawer body */}
+          <div className="h-[calc(100dvh-3rem-49px)] overflow-y-auto">
+            <Sidebar
+              planTitle={plan.title}
+              planDescription={plan.description}
+              floors={plan.floors}
+              selectedFloor={selectedFloor}
+              onSelectFloor={(i) => { setSelectedFloor(i); }}
+              options={options}
+              active={state.active}
+              setActive={state.setActive}
+              lockedKeys={lockedKeys}
+              mirror={state.mirror}
+              setMirror={state.setMirror}
+            />
+          </div>
+
+          <div className="h-[env(safe-area-inset-bottom)]" />
+        </div>
+      </div>
+    </>
   );
 }
 
 export default function App() {
   return (
-    <div className="h-screen w-screen bg-gray-50">
-      <Topbar />
+    <div className="min-h-dvh w-screen bg-gray-50">
+      <div className="sticky top-0 z-50">
+        <Topbar />
+      </div>
+
       <Routes>
         <Route path="/" element={<Navigate to="plana" replace />} />
         <Route path=":planId" element={<FloorPlanPage />} />

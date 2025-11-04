@@ -191,11 +191,6 @@ export default function Sidebar({
           </button>
         </div>
       </div>
-      {/* Optional footer */}
-      <div className="mt-auto px-3 pb-2 text-xs font-medium uppercase tracking-wider text-gray-500">
-        Components
-      </div>
-      <div className="px-3 pb-4 text-sm text-gray-400">(Coming soon)</div>
     </div>
   );
 }

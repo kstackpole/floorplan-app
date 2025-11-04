@@ -110,4 +110,8 @@ svg .hotspot:focus-visible .dot {
 }
 svg.dragging .pulse, svg.dragging [filter], svg.dragging [mask] { opacity: 0 !important; }
 
+/* e.g., in index.css */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
 

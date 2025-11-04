@@ -7,7 +7,7 @@ export default function topBar() {
           <img src={planLogo} className="h-6 w-6" alt="Plan Logo" />
           <div className="text-sm font-semibold tracking-wide text-gray-500">Interactive Floor Plan</div>
         </div>
-        <div className="text-xs text-gray-500">Demo – not for production</div>
+        <div className="text-xs text-gray-500"></div>
       </div>
     )
 }
