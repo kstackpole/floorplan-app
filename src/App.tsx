@@ -215,9 +215,9 @@ export default function App() {
       </div> */}
 
       <Routes>
-        <Route path="/" element={<Navigate to="plana" replace />} />
+        <Route path="/" element={<Navigate to="raleighp741" replace />} />
         <Route path=":planId" element={<FloorPlanPage />} />
-        <Route path="*" element={<Navigate to="plana" replace />} />
+        <Route path="*" element={<Navigate to="raleighp741" replace />} />
       </Routes>
     </div>
   );
