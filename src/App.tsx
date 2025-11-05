@@ -1,13 +1,43 @@
 // App.tsx
 import { Routes, Route, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { ChevronRight } from "lucide-react";
+// import { ChevronRight } from "lucide-react";  // <- not needed for the tabs anymore
 import Sidebar from "./components/Sidebar";
 // import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
 import FloorPlan from "./components/FloorPlan";
 import { selectPlan, selectFloor } from "./plans";
 import MediaModal from "./components/mediaModal";
+
+/** Hard-sized chevron that ignores global icon CSS */
+function BigChevron({
+  direction = "right",
+  size = 40,
+  className = "",
+}: {
+  direction?: "right" | "left";
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      className={`shrink-0 ${direction === "left" ? "rotate-180" : ""} ${className}`}
+      aria-hidden="true"
+    >
+      <path
+        d="M9 18l6-6-6-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 /** Lock page scroll when drawer is open */
 function useBodyScrollLock(locked: boolean) {
@@ -84,35 +114,26 @@ function FloorPlanPage() {
         <main className="relative overflow-hidden flex-1 h-[100dvh] md:h-auto">
           <FloorPlan active={state.active} SVG={PlanSVG} mirror={state.mirror} />
 
-          {/* Left-edge tab (mobile only) — opens drawer; chevron flips for state hint */}
-          <button
-            type="button"
-            onClick={() => setDrawerOpen(v => !v)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                setDrawerOpen(v => !v);
-              }
-            }}
-            aria-label={drawerOpen ? "Close options" : "Open options"}
-            aria-expanded={drawerOpen}
-            aria-controls="mobile-options-drawer"
-            className="md:hidden fixed z-50 top-1/2 -translate-y-1/2 -left-1
-                       w-12 h-28 rounded-r-2xl
-                       bg-white border shadow-xl
-                       flex items-center justify-center
-                       active:scale-[0.98]
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-500"
-            style={{ touchAction: "manipulation" }}
-          >
-            <span className={`transition-transform duration-200 ${drawerOpen ? "rotate-180" : "rotate-0"}`}>
-              <ChevronRight className="w-7 h-7" aria-hidden="true" />
-            </span>
-          </button>
+          {/* LEFT-EDGE TAB — show ONLY when drawer is CLOSED */}
+          {!drawerOpen && (
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              className="md:hidden fixed z-50 top-1/2 -translate-y-1/2 -left-1
+                         w-12 h-28 rounded-r-2xl bg-white border shadow-xl
+                         flex items-center justify-center text-gray-600
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Open options"
+              style={{ touchAction: "manipulation" }}
+            >
+              {/* Right-facing big chevron */}
+              <BigChevron direction="right" size={25} />
+            </button>
+          )}
         </main>
       </div>
 
-      {/* Mobile drawer (full screen since Topbar is disabled) */}
+      {/* Mobile drawer */}
       <div
         id="mobile-options-drawer"
         className={`md:hidden fixed left-0 right-0 top-0 bottom-0 z-[60] ${drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
@@ -132,7 +153,7 @@ function FloorPlanPage() {
           role="dialog"
           aria-modal="true"
         >
-          {/* Header (hide Close on mobile; drawer itself will have a tab to close) */}
+          {/* Header (hide Close on mobile; drawer uses tab) */}
           <div className="sticky top-0 z-10 flex items-center justify-between p-3 border-b bg-white">
             <div className="text-sm font-semibold">Options</div>
             <button
@@ -162,23 +183,24 @@ function FloorPlanPage() {
             />
           </div>
 
-          {/* Drawer-edge tab (mobile only) — aligned to drawer's right edge, sits outside, closes drawer */}
-          <button
-            type="button"
-            onClick={() => setDrawerOpen(false)}
-            className="md:hidden absolute top-1/2 right-0 translate-x-full -translate-y-1/2
-                      z-50 w-12 h-28 rounded-l-2xl bg-white border border-l-0 shadow-xl
-                      flex items-center justify-center text-gray-500
-                      focus:outline-none focus:ring-2 focus:ring-blue-500"
-            aria-label="Close options"
-            style={{ touchAction: "manipulation" }}
-          >
-            {/* Chevron faces left when drawer is open */}
-            <span className="transition-transform duration-200 rotate-180">
-              <ChevronRight className="w-7 h-7" aria-hidden="true" />
-            </span>
-          </button>
-
+          {/* DRAWER-EDGE TAB — only when drawer is OPEN; sits outside edge */}
+          {drawerOpen && (
+            <button
+              type="button"
+              onClick={() => setDrawerOpen(false)}
+              className="md:hidden absolute top-1/2 right-0 translate-x-full -translate-y-1/2
+                         z-50 w-12 h-28
+                         rounded-r-2xl rounded-tl-none rounded-bl-none
+                         bg-white border border-l-0 shadow-xl
+                         flex items-center justify-center text-gray-600
+                         focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Close options"
+              style={{ touchAction: "manipulation" }}
+            >
+              {/* Left-facing big chevron */}
+              <BigChevron direction="left" size={25} />
+            </button>
+          )}
         </div>
       </div>
     </>
