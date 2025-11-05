@@ -61,7 +61,7 @@ function FloorPlanPage() {
       <MediaModal />
 
       {/* Desktop ≥ md: sidebar grid; Mobile: plan full-bleed + drawer */}
-      <div className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-3.5rem)] flex-1 overflow-hidden md:grid md:grid-cols-[320px_minmax(0,1fr)] bg-gray-50">
+      <div className="h-[100dvh] flex-1 overflow-hidden md:grid md:grid-cols-[320px_minmax(0,1fr)] bg-gray-50">
 
         {/* Sidebar (desktop/tablet) */}
         <aside className="hidden md:block border-r bg-white overflow-y-auto">
@@ -81,10 +81,10 @@ function FloorPlanPage() {
         </aside>
 
         {/* Floorplan area */}
-        <main className="relative overflow-hidden flex-1 h-[calc(100dvh-3rem)] md:h-auto">
+        <main className="relative overflow-hidden flex-1 h-[100dvh] md:h-auto">
           <FloorPlan active={state.active} SVG={PlanSVG} mirror={state.mirror} />
 
-          {/* Left-edge tab (mobile only) */}
+          {/* Left-edge tab (mobile only) — opens drawer; chevron flips for state hint */}
           <button
             type="button"
             onClick={() => setDrawerOpen(v => !v)}
@@ -112,13 +112,13 @@ function FloorPlanPage() {
         </main>
       </div>
 
-      {/* Mobile drawer (now sits ABOVE topbar and starts below it) */}
+      {/* Mobile drawer (full screen since Topbar is disabled) */}
       <div
         id="mobile-options-drawer"
-        className={`md:hidden fixed left-0 right-0 top-[3rem] bottom-0 z-[60] ${drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
+        className={`md:hidden fixed left-0 right-0 top-0 bottom-0 z-[60] ${drawerOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         aria-hidden={!drawerOpen}
       >
-        {/* Backdrop (does NOT cover Topbar now) */}
+        {/* Backdrop */}
         <div
           className={`absolute inset-0 bg-black/40 transition-opacity ${drawerOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setDrawerOpen(false)}
@@ -132,13 +132,13 @@ function FloorPlanPage() {
           role="dialog"
           aria-modal="true"
         >
-          {/* Drawer header (always visible now) */}
+          {/* Header (hide Close on mobile; drawer itself will have a tab to close) */}
           <div className="sticky top-0 z-10 flex items-center justify-between p-3 border-b bg-white">
             <div className="text-sm font-semibold">Options</div>
             <button
               type="button"
               onClick={() => setDrawerOpen(false)}
-              className="rounded-md border px-2 py-1 text-xs"
+              className="hidden md:inline-flex rounded-md border px-2 py-1 text-xs"
               aria-label="Close options"
             >
               Close
@@ -146,7 +146,7 @@ function FloorPlanPage() {
           </div>
 
           {/* Drawer body */}
-          <div className="h-[calc(100dvh-3rem-49px)] overflow-y-auto">
+          <div className="h-[calc(100dvh-49px)] overflow-y-auto">
             <Sidebar
               planTitle={plan.title}
               planDescription={plan.description}
@@ -162,7 +162,23 @@ function FloorPlanPage() {
             />
           </div>
 
-          <div className="h-[env(safe-area-inset-bottom)]" />
+          {/* Drawer-edge tab (mobile only) — aligned to drawer's right edge, sits outside, closes drawer */}
+          <button
+            type="button"
+            onClick={() => setDrawerOpen(false)}
+            className="md:hidden absolute top-1/2 right-0 translate-x-full -translate-y-1/2
+                      z-50 w-12 h-28 rounded-l-2xl bg-white border border-l-0 shadow-xl
+                      flex items-center justify-center text-gray-500
+                      focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Close options"
+            style={{ touchAction: "manipulation" }}
+          >
+            {/* Chevron faces left when drawer is open */}
+            <span className="transition-transform duration-200 rotate-180">
+              <ChevronRight className="w-7 h-7" aria-hidden="true" />
+            </span>
+          </button>
+
         </div>
       </div>
     </>
