@@ -5605,7 +5605,7 @@ export const dariusD786BasementOptions = [
 export const dariusD786 = {
     code: "dariusD786",
     floors: [
-        { id: "main", name: "Main Level", SVG:DariusD786mainSVG, options: dariusD786AMainOptions },
+        { id: "main", name: "Main Floor", SVG:DariusD786mainSVG, options: dariusD786AMainOptions },
         { id: "basement", name: "Basement", SVG:DariusD786basementSVG, options: dariusD786BasementOptions },
     ],
 };

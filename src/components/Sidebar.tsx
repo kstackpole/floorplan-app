@@ -87,7 +87,7 @@ export default function Sidebar({
               <button
                 type="button"
                 onClick={() => handleFloorClick(idx)}
-                className={`flex w-full items-center justify-between rounded-xl px-3 py-2 transition
+                className={`flex w-full items-center justify-between rounded-tl-xl rounded-tr-xl rounded-bl-none rounded-br-none px-3 py-2 transition
                   ${isActive ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-800 hover:bg-gray-200"}`}
                 aria-expanded={isOpen}
                 aria-controls={`floor-panel-${idx}`}
@@ -98,6 +98,7 @@ export default function Sidebar({
                   className={`transition-transform ${isOpen ? "rotate-180" : ""}`}
                 />
               </button>
+
 
               <div
                 id={`floor-panel-${idx}`}

@@ -4681,7 +4681,7 @@ export const danielD237: Plan = {
     floors: [
         { 
           id: "main", 
-          name: "Main Level", 
+          name: "Main Floor", 
           SVG:DanielD237mainSVG, 
           options: [
             { key: "extendedBed", label: "Extended Bed" },

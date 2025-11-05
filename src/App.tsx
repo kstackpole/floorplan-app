@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useParams, useSearchParams } from "react-route
 import { useEffect, useMemo, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import Sidebar from "./components/Sidebar";
-import Topbar from "./components/Topbar";
+// import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
 import FloorPlan from "./components/FloorPlan";
 import { selectPlan, selectFloor } from "./plans";
@@ -172,9 +172,9 @@ function FloorPlanPage() {
 export default function App() {
   return (
     <div className="min-h-dvh w-screen bg-gray-50">
-      <div className="sticky top-0 z-50">
+      {/* <div className="sticky top-0 z-50">
         <Topbar />
-      </div>
+      </div> */}
 
       <Routes>
         <Route path="/" element={<Navigate to="plana" replace />} />

@@ -1,8 +1,8 @@
 // components/FloorPlan.tsx
-import { Minimize2, ZoomIn, ZoomOut, Download } from "lucide-react";
+import { ZoomIn, ZoomOut } from "lucide-react";
 import usePanZoomPreview from "../hooks/usePanZoomPreview";
 import { useRef, useEffect, useState } from "react";
-import { jsPDF } from "jspdf";
+// import { jsPDF } from "jspdf";
 
 import type { SVGProps } from "../types/floorplan";
 
@@ -50,54 +50,54 @@ function FloorPlan({ active, SVG, mirror = false }: FloorPlanProps) {
     return () => el.removeEventListener("wheel", handler);
   }, [onWheelNative]);
 
-  const downloadPdf = async () => {
-    const svgEl = svgRef.current;
-    if (!svgEl) return;
+  // const downloadPdf = async () => {
+  //   const svgEl = svgRef.current;
+  //   if (!svgEl) return;
 
-    const vb = svgEl.viewBox?.baseVal;
-    const vw = vb?.width || svgEl.clientWidth || 1200;
-    const vh = vb?.height || svgEl.clientHeight || 1200;
+  //   const vb = svgEl.viewBox?.baseVal;
+  //   const vw = vb?.width || svgEl.clientWidth || 1200;
+  //   const vh = vb?.height || svgEl.clientHeight || 1200;
 
-    const svgString = new XMLSerializer().serializeToString(svgEl);
+  //   const svgString = new XMLSerializer().serializeToString(svgEl);
 
-    const scaleFactor = 2;
-    const canvas = document.createElement("canvas");
-    canvas.width = Math.max(1, Math.floor(vw * scaleFactor));
-    canvas.height = Math.max(1, Math.floor(vh * scaleFactor));
-    const ctx = canvas.getContext("2d")!;
+  //   const scaleFactor = 2;
+  //   const canvas = document.createElement("canvas");
+  //   canvas.width = Math.max(1, Math.floor(vw * scaleFactor));
+  //   canvas.height = Math.max(1, Math.floor(vh * scaleFactor));
+  //   const ctx = canvas.getContext("2d")!;
 
-    const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
+  //   const blob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+  //   const url = URL.createObjectURL(blob);
 
-    try {
-      await new Promise<void>((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.fillStyle = "#ffffff";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          URL.revokeObjectURL(url);
-          resolve();
-        };
-        img.onerror = reject;
-        img.src = url;
-      });
+  //   try {
+  //     await new Promise<void>((resolve, reject) => {
+  //       const img = new Image();
+  //       img.onload = () => {
+  //         ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //         ctx.fillStyle = "#ffffff";
+  //         ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  //         URL.revokeObjectURL(url);
+  //         resolve();
+  //       };
+  //       img.onerror = reject;
+  //       img.src = url;
+  //     });
 
-      const pdf = new jsPDF({
-        orientation: vw >= vh ? "landscape" : "portrait",
-        unit: "pt",
-        format: [vw, vh],
-        compress: true,
-      });
+  //     const pdf = new jsPDF({
+  //       orientation: vw >= vh ? "landscape" : "portrait",
+  //       unit: "pt",
+  //       format: [vw, vh],
+  //       compress: true,
+  //     });
 
-      const imgData = canvas.toDataURL("image/png");
-      pdf.addImage(imgData, "PNG", 0, 0, vw, vh);
-      pdf.save("floorplan.pdf");
-    } catch (err) {
-      console.error("Export to PDF failed:", err);
-    }
-  };
+  //     const imgData = canvas.toDataURL("image/png");
+  //     pdf.addImage(imgData, "PNG", 0, 0, vw, vh);
+  //     pdf.save("floorplan.pdf");
+  //   } catch (err) {
+  //     console.error("Export to PDF failed:", err);
+  //   }
+  // };
 
   return (
     <div className="relative h-full w-full bg-white overscroll-none">
@@ -116,21 +116,7 @@ function FloorPlan({ active, SVG, mirror = false }: FloorPlanProps) {
         >
           <ZoomIn size={18} />
         </button>
-        <button
-          onClick={reset}
-          className="rounded-lg p-2 hover:bg-gray-100"
-          title="Reset view"
-        >
-          <Minimize2 size={18} />
-        </button>
-
-        <button
-          onClick={downloadPdf}
-          className="rounded-lg p-2 hover:bg-gray-100"
-          title="Download PDF"
-        >
-          <Download size={18} />
-        </button>
+        
       </div>
 
       <div className="relative h-full w-full bg-white">

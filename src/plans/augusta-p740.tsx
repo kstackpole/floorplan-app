@@ -5596,7 +5596,7 @@ export const AugustaP740: Plan = {
   floors: [
     {
       id: "main",
-      name: "Main Level",
+      name: "Main Floor",
       SVG: AugustaP740mainSVG,
       options: [
         { key: "optionalStudy", label: "Optional Study" },
