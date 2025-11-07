@@ -1,7 +1,6 @@
 // App.tsx
 import { Routes, Route, Navigate, useParams, useSearchParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-// import { ChevronRight } from "lucide-react";  // <- not needed for the tabs anymore
 import Sidebar from "./components/Sidebar";
 // import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";

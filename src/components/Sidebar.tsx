@@ -73,7 +73,7 @@ export default function Sidebar({
                 onChange={(e) => setMirror(e.currentTarget.checked)}
                 className="h-4 w-4"
               />
-              Mirror plan
+              Reverse plan
             </label>
           </div>
         </div>
@@ -202,9 +202,9 @@ export default function Sidebar({
 
       {/* Disclaimer pinned bottom (no right border here) */}
       <div className="mt-auto border-t border-gray-200 bg-white px-3 py-4 text-[11px] leading-tight text-gray-500">
-        Availability of features depicted varies by homesite and may change without
+        <em>Availability of features depicted varies by homesite and may change without
         notice. Ask a sales associate for details. Square footage and dimensions are
-        approximate and drawings may not be to scale. Furniture layouts are suggestions only.
+        approximate and drawings may not be to scale. Furniture layouts are suggestions only.</em>
       </div>
     </div>
   );
