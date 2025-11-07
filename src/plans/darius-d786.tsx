@@ -430,6 +430,56 @@ export function MudroomOrganizerHotspot() {
   );
 }
 
+// Example: Opens the Compare (before/after) modal
+export function BeforeAfterHotspot() {
+  const { openCompare, openModal } = useFPState();
+
+  const open = () => {
+    openCompare({
+      title: "Before vs After",
+      text: "Slide to reveal the upgraded kitchen finish.",
+      before: {
+        src: "https://www.richmondamerican.com/content/plans/media-37161.webp",
+        alt: "Standard finish kitchen",
+        label: "Before",
+      },
+      after: {
+        src: "https://www.richmondamerican.com/content/plans/media-34212.webp",
+        alt: "Upgraded finish kitchen",
+        label: "After",
+      },
+      start: 50, // initial split position
+    });
+    openModal();
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open before and after comparison"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      {/* Adjust cx / cy to place this hotspot where you want on the floor plan */}
+      <circle className="dot" cx={600} cy={120} r={20} fill="#34cceb" opacity={1} />
+      <circle
+        className="pulse"
+        cx={600}
+        cy={120}
+        r={20}
+        stroke="#34cceb"
+        fill="transparent"
+        opacity={1}
+      />
+      <text x={600} y={124} textAnchor="middle" fill="white" fontSize={12}>
+        BA
+      </text>
+    </g>
+  );
+}
+
 // PLAN SVG
 export function DariusD786mainSVG({
   active,
@@ -3384,6 +3434,7 @@ export function DariusD786mainSVG({
           <InsulationHotspot />
           <WindowIRHotspot />
           <MudroomOrganizerHotspot />
+          <BeforeAfterHotspot />
       </g>
     </g>
   </svg>

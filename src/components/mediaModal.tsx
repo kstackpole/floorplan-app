@@ -1,8 +1,18 @@
 // components/MediaModal.tsx
 import { Minimize2, ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import useFPState from "../store/useFPState";
 import type { ImageItem } from "../types/media";
+
+/** Local type so this file is drop-in. If you already added it to ../types/media, feel free to import instead. */
+type ComparePayload = {
+  title: string;
+  text?: string;
+  before: { src: string; alt?: string; label?: string };
+  after: { src: string; alt?: string; label?: string };
+  /** starting split position (0–100), default 50 */
+  start?: number;
+};
 
 function ytId(url: string) {
   const m = url.match(/(?:youtube\.com\/(?:.*[?&]v=|shorts\/)|youtu\.be\/)([\w-]{11})/i);
@@ -90,9 +100,14 @@ export default function MediaModal() {
                 {mediaPanel.payload.render()}
               </div>
             )}
+
+            {/* COMPARE / BEFORE-AFTER */}
+            {mediaPanel.kind === "compare" && (
+              <CompareView payload={mediaPanel.payload as ComparePayload} />
+            )}
           </div>
 
-          {/* blurb (works for video, gallery, app if provided) */}
+          {/* blurb (works for video, gallery, app, compare if provided) */}
           {blurb && <p className="mt-3 text-sm text-gray-700 leading-relaxed">{blurb}</p>}
         </div>
       </div>
@@ -247,3 +262,162 @@ function Dots({
     </div>
   );
 }
+
+/** BEFORE/AFTER SLIDE REVEAL — CROPPING MASK (object-cover) */
+function CompareView({ payload }: { payload: ComparePayload }) {
+  const { before, after, start = 50 } = payload;
+
+  // optional: allow payload.fit = "cover" | "contain" (default cover for crop mask)
+  const fit: "cover" | "contain" = (payload as any).fit ?? "cover";
+
+  const trackRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef(start); // 0–100
+  const [ratio, setRatio] = useState<number | null>(null); // width / height
+
+  // Determine aspect ratio from AFTER image (fallback 16/9)
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setRatio(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = after.src;
+  }, [after.src]);
+
+  const setPos = (v: number) => {
+    posRef.current = Math.max(0, Math.min(100, v));
+    trackRef.current?.style.setProperty("--split", `${posRef.current}%`);
+  };
+
+  // init
+  useEffect(() => setPos(start), [start]);
+
+  // drag logic
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    let active = false;
+    const pctFromClientX = (clientX: number) => {
+      const r = el.getBoundingClientRect();
+      const clamp = (x: number, min: number, max: number) => Math.min(max, Math.max(min, x));
+      return ((clamp(clientX, r.left, r.right) - r.left) / r.width) * 100;
+    };
+
+    const down = (e: PointerEvent) => {
+      active = true;
+      (e.target as Element).setPointerCapture?.(e.pointerId);
+      setPos(pctFromClientX(e.clientX));
+    };
+    const move = (e: PointerEvent) => {
+      if (!active) return;
+      setPos(pctFromClientX(e.clientX));
+    };
+    const up = (e: PointerEvent) => {
+      active = false;
+      (e.target as Element).releasePointerCapture?.(e.pointerId);
+    };
+
+    el.addEventListener("pointerdown", down);
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    return () => {
+      el.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+    };
+  }, []);
+
+  // keyboard on handle
+  const onKey = (e: React.KeyboardEvent) => {
+    const step = 5;
+    if (e.key === "ArrowLeft") setPos(posRef.current - step);
+    if (e.key === "ArrowRight") setPos(posRef.current + step);
+    if (e.key === "Home") setPos(0);
+    if (e.key === "End") setPos(100);
+  };
+
+  const imgFitClass = fit === "cover" ? "object-cover" : "object-contain";
+
+  return (
+    <div className="w-full relative">
+      {/* track: uses CSS var --split to clip the top image */}
+      <div
+        ref={trackRef}
+        className="relative w-full max-h-[75vh] bg-black/5 rounded-xl overflow-hidden"
+        style={{
+          ["--split" as any]: `${start}%`,
+          aspectRatio: ratio ?? 16 / 9, // gives the box height; images will be CROPPED when fit === cover
+        }}
+      >
+        {/* AFTER (base) — fills frame and is CROPPED by the container */}
+        <img
+          src={after.src}
+          alt={after.alt ?? ""}
+          className={`absolute inset-0 w-full h-full ${imgFitClass} select-none`}
+          draggable={false}
+          loading="eager"
+        />
+
+        {/* BEFORE (clipped to --split width) — also fills and is cropped */}
+        <div
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          style={{ width: "var(--split)" }}
+          aria-hidden="true"
+        >
+          <img
+            src={before.src}
+            alt=""
+            className={`absolute inset-0 w-full h-full ${imgFitClass} select-none`}
+            draggable={false}
+            loading="eager"
+          />
+        </div>
+
+        {/* vertical divider */}
+        <div className="absolute top-0 bottom-0" style={{ left: "var(--split)" }} aria-hidden="true">
+          <div className="absolute -translate-x-1/2 top-0 bottom-0 w-px bg-white/80 shadow" />
+        </div>
+
+        {/* handle */}
+        <button
+          type="button"
+          className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full p-2 bg-white/90 hover:bg-white shadow border cursor-col-resize"
+          style={{ left: "var(--split)" }}
+          onKeyDown={onKey}
+          aria-label="Before/after slider"
+          role="slider"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(posRef.current)}
+          aria-valuetext={`${Math.round(posRef.current)} percent`}
+          tabIndex={0}
+        >
+          <div className="flex items-center gap-1">
+            <ChevronLeft className="w-4 h-4 text-gray-700" />
+            <ChevronRight className="w-4 h-4 text-gray-700" />
+          </div>
+        </button>
+
+        {/* labels (optional) */}
+        {(before.label || after.label) && (
+          <>
+            {before.label && (
+              <span className="absolute left-2 bottom-2 text-xs px-2 py-1 rounded bg-black/60 text-white">
+                {before.label}
+              </span>
+            )}
+            {after.label && (
+              <span className="absolute right-2 bottom-2 text-xs px-2 py-1 rounded bg-black/60 text-white">
+                {after.label}
+              </span>
+            )}
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+

@@ -28,18 +28,28 @@ export type GalleryPayload = {
   text?: string;
 };
 
-/** NEW: mini-app payload */
+/** Mini-app payload */
 export type AppPayload = {
   title: string;
   text?: string;            // optional blurb shown under app
-  render: () => ReactNode; // factory that returns a mini-app component
+  render: () => ReactNode;  // factory that returns a mini-app component
 };
 
-/** Unified media state */
+/** NEW: Before/After slide-reveal payload */
+export type ComparePayload = {
+  title: string;
+  text?: string;
+  before: { src: string; alt?: string; label?: string };
+  after:  { src: string; alt?: string; label?: string };
+  start?: number; // 0–100, default 50
+};
+
+/** Unified media state (now includes "compare") */
 export type MediaPanelState =
   | { kind: "video"; item: MediaRef }
   | { kind: "gallery"; payload: GalleryPayload }
-  | { kind: "app"; payload: AppPayload }   // ← NEW
+  | { kind: "app"; payload: AppPayload }
+  | { kind: "compare"; payload: ComparePayload }   // ← NEW
   | null;
 
 export type FPState = {
@@ -59,7 +69,8 @@ export type FPState = {
   mediaPanel: MediaPanelState;
   openVideo: (item: MediaRef) => void;
   openGallery: (payload: GalleryPayload) => void;
-  openApp: (payload: AppPayload) => void;      // ← NEW
+  openApp: (payload: AppPayload) => void;
+  openCompare: (payload: ComparePayload) => void;  // ← NEW
   closeMedia: () => void;
 
   /** Modal controls */
@@ -124,7 +135,7 @@ const useFPState = (() => {
     /** Unified media panel + controls */
     mediaPanel: null,
     openVideo: (item) => {
-      state.video = null; // keep legacy field clear to avoid confusion
+      state.video = null; // keep legacy field clear
       state.mediaPanel = { kind: "video", item };
       notify();
     },
@@ -139,6 +150,11 @@ const useFPState = (() => {
     openApp: (payload) => {
       state.video = null;
       state.mediaPanel = { kind: "app", payload };
+      notify();
+    },
+    openCompare: (payload) => {                      // ← NEW
+      state.video = null;
+      state.mediaPanel = { kind: "compare", payload };
       notify();
     },
     closeMedia: () => {
