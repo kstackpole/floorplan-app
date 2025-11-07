@@ -400,22 +400,6 @@ function CompareView({ payload }: { payload: ComparePayload }) {
             <ChevronRight className="w-4 h-4 text-gray-700" />
           </div>
         </button>
-
-        {/* labels (optional) */}
-        {(before.label || after.label) && (
-          <>
-            {before.label && (
-              <span className="absolute left-2 bottom-2 text-xs px-2 py-1 rounded bg-black/60 text-white">
-                {before.label}
-              </span>
-            )}
-            {after.label && (
-              <span className="absolute right-2 bottom-2 text-xs px-2 py-1 rounded bg-black/60 text-white">
-                {after.label}
-              </span>
-            )}
-          </>
-        )}
       </div>
     </div>
   );
