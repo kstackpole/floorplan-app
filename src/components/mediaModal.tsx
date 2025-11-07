@@ -342,38 +342,39 @@ function CompareView({ payload }: { payload: ComparePayload }) {
 
   return (
     <div className="w-full relative">
-      {/* track: uses CSS var --split to clip the top image */}
       <div
         ref={trackRef}
         className="relative w-full max-h-[75vh] bg-black/5 rounded-xl overflow-hidden"
         style={{
           ["--split" as any]: `${start}%`,
-          aspectRatio: ratio ?? 16 / 9, // gives the box height; images will be CROPPED when fit === cover
+          aspectRatio: ratio ?? 16 / 9,
         }}
       >
-        {/* AFTER (base) — fills frame and is CROPPED by the container */}
+        {/* AFTER (base) — fixed, full frame */}
         <img
           src={after.src}
           alt={after.alt ?? ""}
-          className={`absolute inset-0 w-full h-full ${imgFitClass} select-none`}
+          className={`absolute inset-0 w-full h-full ${imgFitClass} select-none pointer-events-none`}
+          style={{ objectPosition: "center center" }}
           draggable={false}
           loading="eager"
         />
 
-        {/* BEFORE (clipped to --split width) — also fills and is cropped */}
-        <div
-          className="absolute inset-0 overflow-hidden pointer-events-none"
-          style={{ width: "var(--split)" }}
+        {/* BEFORE — fixed, full frame, clipped by clip-path (doesn't move/resize) */}
+        <img
+          src={before.src}
+          alt=""
+          className={`absolute inset-0 w-full h-full ${imgFitClass} select-none pointer-events-none`}
+          style={{
+            objectPosition: "center center",
+            // Reveal left portion up to --split; the right side is masked.
+            clipPath: "inset(0 calc(100% - var(--split)) 0 0)",
+            willChange: "clip-path",
+          }}
+          draggable={false}
+          loading="eager"
           aria-hidden="true"
-        >
-          <img
-            src={before.src}
-            alt=""
-            className={`absolute inset-0 w-full h-full ${imgFitClass} select-none`}
-            draggable={false}
-            loading="eager"
-          />
-        </div>
+        />
 
         {/* vertical divider */}
         <div className="absolute top-0 bottom-0" style={{ left: "var(--split)" }} aria-hidden="true">
