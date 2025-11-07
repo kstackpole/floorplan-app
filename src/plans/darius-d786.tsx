@@ -437,15 +437,15 @@ export function BeforeAfterHotspot() {
   const open = () => {
     openCompare({
       title: "Before vs After",
-      text: "Slide to reveal the upgraded kitchen finish.",
+      text: "Slide to reveal the impressive storage space.",
       before: {
-        src: "https://www.richmondamerican.com/content/plans/media-37161.webp",
-        alt: "Standard finish kitchen",
+        src: "https://onlinedesign.richmondamerican.com/2025_Specials/Images/03_Touchscreen_IFP/after.jpg",
+        alt: "Closet full of clothes",
         label: "Before",
       },
       after: {
-        src: "https://www.richmondamerican.com/content/plans/media-34212.webp",
-        alt: "Upgraded finish kitchen",
+        src: "https://onlinedesign.richmondamerican.com/2025_Specials/Images/03_Touchscreen_IFP/before.jpg",
+        alt: "Empty Closet",
         label: "After",
       },
       start: 50, // initial split position
@@ -463,17 +463,17 @@ export function BeforeAfterHotspot() {
       className="hotspot cursor-pointer"
     >
       {/* Adjust cx / cy to place this hotspot where you want on the floor plan */}
-      <circle className="dot" cx={600} cy={120} r={20} fill="#34cceb" opacity={1} />
+      <circle className="dot" cx={700} cy={350} r={20} fill="#34cceb" opacity={1} />
       <circle
         className="pulse"
-        cx={600}
-        cy={120}
+        cx={700}
+        cy={350}
         r={20}
         stroke="#34cceb"
         fill="transparent"
         opacity={1}
       />
-      <text x={600} y={124} textAnchor="middle" fill="white" fontSize={12}>
+      <text x={700} y={354} textAnchor="middle" fill="white" fontSize={12}>
         BA
       </text>
     </g>
