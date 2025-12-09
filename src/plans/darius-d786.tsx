@@ -13,8 +13,8 @@ export function GreatRoomHotspot() {
   const { openGallery, openModal } = useFPState();
 
   const gallery = {
-    title: "GET GOOD REST",
-    text: "The research is in! TV is a sleep disruptor. But we’ve got you covered. We’ve made sure that our great room TV is thoughtfully placed away from the bedrooms.",
+    title: "TRULY UNPLUG AT THE END OF DAY",
+    text: "Research shows that TV is a sleep disruptor, delaying deep sleep. Thoughtful placement of the great room TV, away from bedroom walls, means you can stop the disruptions and start counting sheep",
     index: 0,
     items: [
       {
@@ -66,8 +66,8 @@ export function MudroomHotspot() {
 
   const media = {
     id: "mudroom",
-    title: "TAME DIRT & CLUTTER",
-    text: "Drop shoes and winter gear coming in from the garage. Then wash up in the bathroom before entering the house.",
+    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
+    text: "You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.",
     src: "https://www.youtube.com/shorts/UG5inwV76dg",
     thumb: "/assets/thumbs/mudroom.png",
   };
@@ -3430,11 +3430,11 @@ export function DariusD786mainSVG({
           <GuestHotspot />
           <TowelHotspot />
           <StorageHotspot />
-          <ShowerWaterSaverHotspot />
+          {/* <ShowerWaterSaverHotspot />
           <InsulationHotspot />
           <WindowIRHotspot />
-          <MudroomOrganizerHotspot />
-          <BeforeAfterHotspot />
+          <MudroomOrganizerHotspot /> */}
+          {/* <BeforeAfterHotspot /> */}
       </g>
     </g>
   </svg>
