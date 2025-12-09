@@ -4677,17 +4677,21 @@ export const danielD237: Plan = {
     code: "danield237",
     title: "Meet the Daniel",
     description:
-      "As life changes, so do the ways in which we use our home. This plan was designed to grow and shift with you, whether you’re raising kids, hosting guests, or simply enjoying a quieter season. Designed for balance, this home offers privacy for peaceful moments and open spaces that bring people together. Your next chapter starts here.",
+      `Life evolves—and so does the way you live. This thoughtfully
+designed home offers ample storage, spaces for shared
+moments, and plenty of private corners to relax, reflect, and
+recharge. Whether you’re enjoying quiet mornings, lively
+family gatherings, or a peaceful evening retreat, calm meets
+connection here. This is more than a house—this is home.`,
     floors: [
         { 
           id: "main", 
           name: "Main Floor", 
           SVG:DanielD237mainSVG, 
           options: [
-            { key: "extendedBed", label: "Extended Bed" },
             { key: "optionalPowder", label: "Optional Powder Bath" },
             { key: "masterBathTwo", label: "Deluxe Master Bath Two" },
-            { key: "slidingGlass", label: "Optional Multi-slide Door in Great Room" },
+            { key: "slidingGlass", label: "Multi-slide Door at Great Room" },
           ]
         },
         { 
