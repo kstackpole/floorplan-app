@@ -13,8 +13,9 @@ export function GreatRoomHotspot() {
   const { openGallery, openModal } = useFPState();
 
   const gallery = {
+    id: "greatroom",
     title: "TRULY UNPLUG AT THE END OF DAY",
-    text: "Research shows that TV is a sleep disruptor, delaying deep sleep. Thoughtful placement of the great room TV, away from bedroom walls, means you can stop the disruptions and start counting sheep",
+    text: `Research shows that TV is a sleep disruptor, delaying deep sleep. Thoughtful placement of the great room TV, away from bedroom walls, means you can stop the disruptions and start counting sheep.`,
     index: 0,
     items: [
       {
@@ -62,21 +63,39 @@ export function GreatRoomHotspot() {
   );
 }
 export function MudroomHotspot() {
-  const { setVideo, openModal } = useFPState();
+  const { openGallery, openModal } = useFPState();
 
-  const media = {
+  const gallery = {
     id: "mudroom",
-    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
-    text: "You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg",
-    thumb: "/assets/thumbs/mudroom.png",
-  };
+    title: `FIND YOUR LOST-AND-FOUND AT-HOME ZONE`,
+    text: `You know the feeling… everyone walks in, drops their bags, 
+    coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
+    index: 0,
+    items: [
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
+        alt: "Great room — view 1",
+        meta: "View toward TV",
+      },
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
+        alt: "Great room — view 2",
+        meta: "View toward kitchen",
+      },
+      {
+        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
+        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
+        alt: "Great room — view 3",
+        meta: "Seating layout",
+      },
+    ],
+  } as const;
 
   const open = () => {
-    setVideo(media);
-    openModal(); // open right away
-    // If your state store batches and the modal needs content first, use:
-    // setVideo(media); setTimeout(openModal, 0);
+    openGallery({ ...gallery, items: [...gallery.items] });
+    openModal(); 
   };
 
   return (
@@ -3372,7 +3391,7 @@ export function DariusD786mainSVG({
               <text transform="translate(762.3 223.7)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Primary Bedroom 1</tspan></text>
               <text transform="translate(330.5 255.3)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Great Room</tspan></text>
               <text transform="translate(272.3 353.2) rotate(-90)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Fireplace</tspan></text>
-              <text transform="translate(523.9 397.3)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Gourmet Kitchen</tspan></text>
+              <text transform="translate(523.9 397.3)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="-25" y="5">Gourmet Kitchen</tspan></text>
               <text transform="translate(525.7 455.4)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Ref</tspan></text>
               <text transform="translate(607.6 431.7)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Walk-in</tspan><tspan x="3.2" y="10">Pantry</tspan></text>
               <text transform="translate(643.5 392.2)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">DO</tspan></text>
@@ -3388,7 +3407,7 @@ export function DariusD786mainSVG({
               <text transform="translate(393.7 845.9) rotate(-90)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Linen</tspan></text>
               <text transform="translate(257.4 910.9)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Walk-in</tspan><tspan x="4.2" y="10">Closet</tspan></text>
               <text transform="translate(451.1 891.4)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Entry</tspan></text>
-              <text transform="translate(443.8 1016.9)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Covered</tspan><tspan x="9.4" y="16">Entry</tspan></text>
+              <text transform="translate(443.8 1016.9)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="-5" y="0">Covered</tspan><tspan x="5" y="16">Entry</tspan></text>
               <text transform="translate(299 1001.2)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Bedroom 2</tspan></text>
               <text transform="translate(571.6 803.5)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">3-Car Garage</tspan></text>
               <text transform="translate(760.8 749.4)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Living Room</tspan></text>
@@ -3400,7 +3419,7 @@ export function DariusD786mainSVG({
               <text transform="translate(692 365.4)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Walk-in</tspan><tspan x="4.2" y="10">Closet</tspan></text>
               <text transform="translate(791.7 317.2)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Deluxe </tspan><tspan x="-3.5" y="16">Primary </tspan><tspan x="4.3" y="32">Bath 1</tspan></text>
             </g>
-            <g id="Room_Dimensions">
+            {/* <g id="Room_Dimensions">
               <text transform="translate(524 96.9)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">13’8” x 9’6”</tspan></text>
               <text transform="translate(793.1 240)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">15’4” x 13’10”</tspan></text>
               <text transform="translate(343 269.9)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">19’3” x 19’6”</tspan></text>
@@ -3410,7 +3429,7 @@ export function DariusD786mainSVG({
               <text transform="translate(588.6 818.1)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">29’6” x 21’3”</tspan></text>
               <text transform="translate(774.6 762.7)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">17’8” x 12’8”</tspan></text>
               <text transform="translate(814.5 574.8)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">12’7” x 12’1”</tspan></text>
-            </g>
+            </g> */}
           </g>
 
           {/* OPTION: Guest Entry */}
@@ -5655,8 +5674,27 @@ export const dariusD786BasementOptions = [
 ];
 export const dariusD786 = {
     code: "dariusD786",
+
+    title: "Meet the Darius",
+    description:
+      `Life never stands still, and neither do your needs. That’s why
+this home offers flexible spaces that grow with you, storage
+right where you need it, and welcoming areas made for
+bringing people together. A place to quiet the chaos, find a
+little tranquility, and share more moments with the ones you
+love most. Welcome home.`,
     floors: [
-        { id: "main", name: "Main Floor", SVG:DariusD786mainSVG, options: dariusD786AMainOptions },
-        { id: "basement", name: "Basement", SVG:DariusD786basementSVG, options: dariusD786BasementOptions },
+        { 
+          id: "main", 
+          name: "Main Floor", 
+          SVG:DariusD786mainSVG, 
+          options: dariusD786AMainOptions 
+        },
+        { 
+          id: "basement", 
+          name: "Basement", 
+          SVG:DariusD786basementSVG, 
+          options: dariusD786BasementOptions 
+        },
     ],
 };

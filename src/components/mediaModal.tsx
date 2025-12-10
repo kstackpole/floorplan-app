@@ -23,6 +23,13 @@ function vimeoId(url: string) {
   return m?.[1] ?? null;
 }
 
+function toTitleCase(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+
 export default function MediaModal() {
   const {
     mediaPanel,
@@ -65,14 +72,17 @@ export default function MediaModal() {
       {/* modal card */}
       <div className="relative z-[101] w-[min(92vw,1100px)] max-h-[99vh] rounded-2xl bg-white shadow-2xl overflow-hidden">
         <div className="flex items-center justify-between px-4 py-3 border-b">
-          <h2 className="font-semibold text-gray-900 truncate">{title}</h2>
+          <h2 className="font-semibold text-gray-900 truncate">
+            {toTitleCase(title)}
+          </h2>
+
           <button onClick={closeModal} aria-label="Minimize modal" className="rounded-lg p-1 hover:bg-gray-100">
             <Minimize2 size={18} />
           </button>
         </div>
 
         {/* make inner scrollable if content is tall */}
-        <div className="p-4 overflow-auto">
+        <div className="p-4 pb-8 overflow-auto">
           <div className={wrapperClass}>
             {/* VIDEO */}
             {mediaPanel.kind === "video" && (
@@ -108,7 +118,11 @@ export default function MediaModal() {
           </div>
 
           {/* blurb (works for video, gallery, app, compare if provided) */}
-          {blurb && <p className="mt-3 text-sm text-gray-700 leading-relaxed">{blurb}</p>}
+            {blurb && (
+              <p className="mt-3 text-base text-gray-700 leading-relaxed">
+                {blurb}
+              </p>
+            )}
         </div>
       </div>
     </div>
