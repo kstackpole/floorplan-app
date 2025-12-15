@@ -6,7 +6,7 @@ export default function PlanRepository() {
 
   return (
     <div className="max-w-5xl mx-auto p-8">
-      <h1 className="text-3xl font-semibold mb-6">
+      <h1 className="text-3xl font-semibold mb-6 text-gray-800">
         Floor Plan Repository
       </h1>
 
