@@ -557,21 +557,20 @@ export function DillonD399mainSVG({
 
         <defs>
             <filter id="ds-soft" x="-20%" y="-20%" width="140%" height="140%">
-            
-            <feOffset dx="0" dy="3" />
-            <feGaussianBlur stdDeviation="6" result="blur"/>
-            <feColorMatrix
-                in="blur"
-                type="matrix"
-                values="
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0.4 0" />
-            <feMerge>
-                <feMergeNode />       {/* shadow */}
-                <feMergeNode in="SourceGraphic" />
-            </feMerge>
+                <feOffset dx="0" dy="3" />
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0.4 0" />
+                <feMerge>
+                    <feMergeNode /> 
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
             </filter>
         </defs>
 
@@ -862,7 +861,7 @@ export function DillonD399mainSVG({
                 <text transform="translate(930.05 586.65)" fill="#425563" font-family="Fredoka, arial, sans-serif" font-size="14"><tspan x="0" y="0">Bathroom</tspan></text>
                 </g>
                 <g id="Furniture">
-                <g id="Dining_Room_table" filter="url(#drop-shadow-7)">
+                <g id="Dining_Room_table"  filter="url(#ds-soft)">
                     <g>
                     <path d="M277.61,971.15h8.71c2.35,0,4.26,1.91,4.26,4.26v6.84c0,2.35-1.91,4.26-4.26,4.26h-8.7c-2.35,0-4.26-1.91-4.26-4.26v-6.84c0-2.35,1.91-4.26,4.26-4.26Z" transform="translate(-696.86 1260.79) rotate(-90)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M289.82,973.34v10.97c0,1.82-1.48,3.31-3.31,3.31h-9.1c-1.82,0-3.31-1.48-3.31-3.31v-10.97c0-1.82,1.48-3.31,3.31-3.31h9.1c1.82,0,3.31,1.48,3.31,3.31ZM274.47,984.31c0,1.62,1.32,2.94,2.94,2.94h9.1c1.62,0,2.94-1.32,2.94-2.94v-10.97c0-1.62-1.32-2.94-2.94-2.94h-9.1c-1.62,0-2.94,1.32-2.94,2.94v10.97Z" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1385,7 +1384,7 @@ export function DillonD399mainSVG({
                     <path d="M916.19,1104.03c-.45,0-.91-.08-1.29-.19-.84-.25-1.46-.7-1.7-1.22-.42-.87-.79-1.77-1.11-2.68-.2-.59.08-1.14.71-1.4,3.72-1.5,6.74-4.06,8.5-7.2,0,0,0,0,0,0,.27-.47.74-.78,1.28-.83.54-.05,1.06.15,1.42.56.53.62,1.1,1.21,1.71,1.75.42.38.55.94.33,1.46-1.58,3.74-4.57,7.07-8.42,9.4-.4.26-.91.36-1.42.36ZM921.83,1091.64c-1.82,3.26-4.95,5.91-8.8,7.47-.34.14-.46.35-.36.63.31.88.67,1.76,1.08,2.62.16.36.67.7,1.32.9.84.25,1.73.21,2.22-.1,3.75-2.26,6.65-5.5,8.18-9.12.12-.28.06-.56-.17-.77-.63-.56-1.22-1.17-1.76-1.8-.23-.26-.56-.39-.9-.35-.34.03-.63.23-.81.53Z" fill="none" stroke="#cab394" stroke-miterlimit="10" stroke-width=".5"/>
                     </g>
                 </g>
-                <g id="Round_table_alt" filter="url(#drop-shadow-8)">
+                <g id="Round_table_alt"  filter="url(#ds-soft)">
                     <g>
                     <g>
                         <path d="M256.52,305.85c-.26-.37-.76-.48-1.15-.26l-7.17,4.01-7.17,4.01c-.39.22-.56.7-.38,1.12l6.75,15.66c.21.48.78.68,1.24.42l8.7-4.87,8.7-4.87c.46-.26.59-.85.29-1.28l-9.81-13.95Z" fill="#f2f0ed" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1435,7 +1434,7 @@ export function DillonD399mainSVG({
                     <path d="M266.42,386.41l-.09-.02c-3.6-.66-7.04-1.88-10.24-3.63l-.06-.03v-.07c.05-2.52.49-4.87,1.3-7,1.21-3.17,2.81-4.69,4.35-6.16,1.57-1.49,3.05-2.9,3.88-5.94,1.13-4.12-.1-7.1-1.28-9.98-1.16-2.81-2.36-5.72-1.32-9.64.92-3.49,2.85-5.03,4.89-6.67,2.12-1.7,4.31-3.46,5.62-7.58,1.04-3.29.86-5.97.7-8.33-.06-.8-.11-1.56-.1-2.27v-.12s.12,0,.12,0c5.12.27,10.21,1.72,14.7,4.2l.06.03v.07c-.12,3-.78,6.4-1.82,9.35-1.39,3.99-3.14,6.1-4.69,7.97-1.66,2-3.09,3.73-3.68,7.23-.61,3.62.26,5.86,1.1,8.02.83,2.12,1.68,4.32,1.09,7.79-.63,3.66-2.29,5.41-4.59,7.82-1.86,1.95-4.17,4.37-6.74,8.64h0c-1.23,2.03-2.26,4.06-3.18,6.21l-.04.09ZM256.26,382.59c3.13,1.7,6.5,2.9,10.02,3.55.91-2.13,1.94-4.14,3.16-6.16h0c2.59-4.29,4.91-6.73,6.77-8.68,2.27-2.38,3.91-4.11,4.53-7.7.58-3.4-.23-5.47-1.08-7.66-.85-2.19-1.74-4.45-1.12-8.14.6-3.56,2.05-5.31,3.73-7.34,1.53-1.85,3.27-3.95,4.65-7.9,1.02-2.91,1.67-6.26,1.8-9.22-4.41-2.42-9.39-3.85-14.41-4.13,0,.67.05,1.38.1,2.13.16,2.38.35,5.08-.71,8.42-1.33,4.19-3.55,5.97-5.69,7.69-2.01,1.61-3.91,3.13-4.81,6.55-1.02,3.85.11,6.59,1.31,9.49,1.2,2.91,2.44,5.93,1.29,10.13-.85,3.1-2.35,4.53-3.95,6.05-1.53,1.45-3.11,2.96-4.3,6.08-.79,2.08-1.22,4.38-1.28,6.85Z" fill="#f2f0ed" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
                 </g>
-                <g id="Lshaped_Couch">
+                <g id="Lshaped_Couch"  filter="url(#ds-soft)">
                     <g>
                     <g>
                         <path d="M529.39,476.07c-.22,0-.45-.01-.68-.04-2.09-.24-3.24-1.43-4.57-2.8-1.41-1.46-3.01-3.12-6.03-3.87-.91-.23-1.8-.34-2.72-.34-3.08,0-5.71,1.26-8.5,2.6-.98.47-1.99.96-3.01,1.38-3.91,1.61-8.27,2.42-12.96,2.42-10.18,0-20.99-4.03-27.54-10.28-5.29-5.03-9.71-12.88-7.49-17.5,1.12-2.34,3.54-3.06,6.11-3.83,2.71-.81,5.52-1.64,6.91-4.49,1.56-3.19-.04-6.18-1.73-9.34-1.74-3.24-3.71-6.92-2.75-11.57.67-3.27,2.51-5.61,4.13-7.67,1.97-2.5,3.82-4.87,3.1-8.26-.37-1.76-1.19-2.64-1.98-3.48-.74-.79-1.43-1.53-1.82-3.05-.71-2.76.05-6.37,2.03-9.65,2.05-3.4,5.07-5.84,8.08-6.55.61-.14,1.19-.21,1.77-.21,2.34,0,4.23,1.15,6.22,2.36,2.15,1.31,4.37,2.67,7.33,2.67.48,0,.97-.04,1.46-.11,4.53-.67,6.64-3.97,8.67-7.16,1.84-2.89,3.74-5.87,7.49-6.96.86-.25,1.73-.37,2.6-.37,3.96,0,7.61,2.56,11.46,5.26,4.39,3.08,8.93,6.27,14.57,6.26.98,0,1.98-.1,2.97-.3,2.33-.47,4.76-1.41,7.34-2.41,3.69-1.43,7.5-2.91,11.03-2.91,3.22,0,5.82,1.26,7.96,3.86.5.61.97,1.27,1.39,1.97,3.57,5.94,3.85,14.59.66,20.57-.55,1.02-1.21,1.94-1.84,2.83-1.32,1.83-2.68,3.73-2.91,6.46-.38,4.63,1.74,8.03,3.62,11.03,1.69,2.7,3.02,4.83,2.03,7.07-.92,2.07-3.22,2.75-5.44,3.4-2.24.66-4.55,1.34-5.25,3.52-.79,2.46,1.19,4.53,3.47,6.93,2.48,2.6,5.29,5.55,5.91,9.93.95,6.73-3.79,15.02-9.39,16.44-.54.14-1.04.2-1.55.2h0c-1.83,0-3.35-.9-4.95-1.84-1.9-1.12-4.05-2.39-7.09-2.39-.31,0-.64.01-.97.04-4.58.39-7.47,3.29-10.03,5.85-2.31,2.31-4.3,4.31-7.09,4.31Z" fill="#fff"/>
@@ -1589,7 +1588,7 @@ export function DillonD399mainSVG({
                     </g>
                     </g>
                 </g>
-                <g id="TV_stand1" data-name="TV_stand" filter="url(#drop-shadow-12)">
+                <g id="TV_stand1" data-name="TV_stand"  filter="url(#ds-soft)">
                     <g>
                     <rect x="565.64" y="285.48" width="37.08" height="28.59" transform="translate(1168.36 599.54) rotate(180)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M565.37,285.21h37.62v29.13h-37.62v-29.13ZM602.45,285.74h-36.54v28.05h36.54v-28.05Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1647,7 +1646,7 @@ export function DillonD399mainSVG({
                     </g>
                     </g>
                 </g>
-                <g id="Desk" filter="url(#drop-shadow-13)">
+                <g id="Desk"  filter="url(#ds-soft)">
                     <g>
                     <g>
                         <polygon points="868.1 393.01 874.35 398.47 875.48 397.49 869.22 392.03 868.1 393.01" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1752,7 +1751,7 @@ export function DillonD399mainSVG({
                     <rect x="202.46" y="259.32" width="104.94" height="12.54" fill="none" stroke="#425563" stroke-dasharray="7 6" stroke-miterlimit="10"/>
                     <text transform="translate(225.8 201.87)" fill="#425563" font-family="Fredoka, arial, sans-serif" font-size="14"><tspan x="0" y="0">Sunroom</tspan></text>
                     <g id="Study_furniture_set">
-                    <g id="Living_Room" filter="url(#drop-shadow-21)">
+                    <g id="Living_Room"  filter="url(#ds-soft)">
                         <g>
                         <rect x="288.91" y="78.57" width="26.06" height="32.02" rx="2.98" ry="2.98" transform="translate(396.52 -207.36) rotate(90)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M285.78,105.78v-22.41c0-1.09.89-1.98,1.98-1.98h28.36c1.09,0,1.98.89,1.98,1.98v22.41c0,1.09-.89,1.98-1.98,1.98h-28.36c-1.09,0-1.98-.89-1.98-1.98ZM317.8,83.38c0-.92-.75-1.68-1.68-1.68h-28.36c-.92,0-1.68.75-1.68,1.68v22.41c0,.92.75,1.68,1.68,1.68h28.36c.92,0,1.68-.75,1.68-1.68v-22.41Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1838,7 +1837,7 @@ export function DillonD399mainSVG({
                         <path d="M297.38,96.85c0-.47.38-.85.85-.85s.85.38.85.85-.38.85-.85.85-.85-.38-.85-.85ZM298.77,96.85c0-.3-.24-.54-.54-.54s-.54.24-.54.54.24.54.54.54.54-.24.54-.54Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         </g>
                     </g>
-                    <g id="Living_Room1" data-name="Living_Room" filter="url(#drop-shadow-22)">
+                    <g id="Living_Room1" data-name="Living_Room"  filter="url(#ds-soft)">
                         <g>
                         <rect x="192.27" y="130.65" width="26.06" height="32.02" rx="2.98" ry="2.98" transform="translate(58.65 351.97) rotate(-90)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M221.47,135.46v22.41c0,1.09-.89,1.98-1.98,1.98h-28.36c-1.09,0-1.98-.89-1.98-1.98v-22.41c0-1.09.89-1.98,1.98-1.98h28.36c1.09,0,1.98.89,1.98,1.98ZM189.45,157.86c0,.92.75,1.68,1.68,1.68h28.36c.92,0,1.68-.75,1.68-1.68v-22.41c0-.92-.75-1.68-1.68-1.68h-28.36c-.92,0-1.68.75-1.68,1.68v22.41Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -1924,11 +1923,11 @@ export function DillonD399mainSVG({
                         <path d="M209.86,144.39c0,.47-.38.85-.85.85s-.85-.38-.85-.85.38-.85.85-.85.85.38.85.85ZM208.47,144.39c0,.3.24.54.54.54s.54-.24.54-.54-.24-.54-.54-.54-.54.24-.54.54Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         </g>
                     </g>
-                    <g id="Plant4" data-name="Plant" filter="url(#drop-shadow-23)">
+                    <g id="Plant4" data-name="Plant"  filter="url(#ds-soft)">
                         <path d="M234.7,104.91h37.85c4.24,0,7.68,3.44,7.68,7.68v18.25c0,4.24-3.44,7.68-7.68,7.68h-37.85c-4.24,0-7.68-3.44-7.68-7.68v-18.25c0-4.24,3.44-7.68,7.68-7.68Z" transform="translate(375.34 -131.9) rotate(90)" fill="#fff" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M236.61,141.8v-40.16c0-3.71,3.02-6.73,6.73-6.73h20.57c3.71,0,6.73,3.02,6.73,6.73v40.16c0,3.71-3.02,6.73-6.73,6.73h-20.57c-3.71,0-6.73-3.02-6.73-6.73ZM270.22,101.64c0-3.48-2.83-6.31-6.31-6.31h-20.57c-3.48,0-6.31,2.83-6.31,6.31v40.16c0,3.48,2.83,6.31,6.31,6.31h20.57c3.48,0,6.31-2.83,6.31-6.31v-40.16Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
-                    <g id="Plant5" data-name="Plant" filter="url(#drop-shadow-24)">
+                    <g id="Plant5" data-name="Plant"  filter="url(#ds-soft)">
                         <g>
                         <path d="M253.85,126.34c-2.75,0-4.98-2.21-4.98-4.94s2.23-4.94,4.98-4.94,4.98,2.21,4.98,4.94-2.23,4.94-4.98,4.94Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M248.65,121.4c0-2.84,2.33-5.15,5.19-5.15s5.19,2.31,5.19,5.15-2.33,5.15-5.19,5.15-5.19-2.31-5.19-5.15ZM258.62,121.4c0-2.61-2.14-4.73-4.77-4.73s-4.77,2.12-4.77,4.73,2.14,4.73,4.77,4.73,4.77-2.12,4.77-4.73Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2015,7 +2014,7 @@ export function DillonD399mainSVG({
                     <text transform="translate(872.52 488.84)" fill="#425563" font-family="Fredoka, arial, sans-serif" font-size="14"><tspan x="0" y="0">Bedroom 4</tspan></text>
                     <text transform="translate(877.3 586.71)" fill="#425563" font-family="Fredoka, arial, sans-serif" font-size="14"><tspan x="0" y="0">Bathroom 4</tspan></text>
                     </g>
-                    <g id="Full_bed3" data-name="Full_bed" filter="url(#drop-shadow-25)">
+                    <g id="Full_bed3" data-name="Full_bed"  filter="url(#ds-soft)">
                     <g>
                         <path d="M909.95,353.01h69.72c2.32,0,4.2,1.88,4.2,4.2v96.06c0,.44-.35.79-.79.79h-76.29c-.57,0-1.04-.47-1.04-1.04v-95.81c0-2.32,1.88-4.2,4.2-4.2Z" transform="translate(1348.34 -541.27) rotate(90)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M894.04,441.63v-75.89c0-.87.55-1.57,1.23-1.57h96.04c2.35,0,4.26,2.44,4.26,5.44v67.86c0,3-1.91,5.44-4.26,5.44h-96.28c-.55,0-1-.57-1-1.27ZM995.09,369.6c0-2.66-1.7-4.83-3.78-4.83h-96.04c-.42,0-.75.43-.75.96v75.89c0,.37.23.66.52.66h96.28c2.08,0,3.78-2.17,3.78-4.83v-67.86Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2104,21 +2103,20 @@ export function DillonD399SecondSVG({
 
         <defs>
             <filter id="ds-soft" x="-20%" y="-20%" width="140%" height="140%">
-            
-            <feOffset dx="0" dy="3" />
-            <feGaussianBlur stdDeviation="6" result="blur"/>
-            <feColorMatrix
-                in="blur"
-                type="matrix"
-                values="
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0.4 0" />
-            <feMerge>
-                <feMergeNode />       {/* shadow */}
-                <feMergeNode in="SourceGraphic" />
-            </feMerge>
+                <feOffset dx="0" dy="3" />
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0.4 0" />
+                <feMerge>
+                    <feMergeNode /> 
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
             </filter>
         </defs>
 
@@ -2610,7 +2608,7 @@ export function DillonD399SecondSVG({
                 </g>
                 <g id="Furniture1" data-name="Furniture">
                 <g id="Primary_Bed">
-                    <g id="TV_stand2" data-name="TV_stand" filter="url(#drop-shadow-14)">
+                    <g id="TV_stand2" data-name="TV_stand" filter="url(#ds-soft)">
                     <g>
                         <rect x="821.97" y="512.06" width="73.28" height="28.59" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                         <path d="M895.64,540.92h-74.07v-29.13s74.07,0,74.07,0v29.13ZM822.36,540.38h72.49s0-28.05,0-28.05h-72.49s0,28.05,0,28.05Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2648,7 +2646,7 @@ export function DillonD399SecondSVG({
                         </g>
                     </g>
                     </g>
-                    <g filter="url(#drop-shadow-15)">
+                    <g filter="url(#ds-soft)">
                     <line x1="904.42" y1="378.49" x2="904.42" y2="378.49" fill="#e0ceb3" stroke="#cab394" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
                     <line x1="904.42" y1="393.7" x2="904.42" y2="393.7" fill="#e0ceb3" stroke="#cab394" stroke-linecap="round" stroke-linejoin="round" stroke-width=".25"/>
                     <g>
@@ -2693,7 +2691,7 @@ export function DillonD399SecondSVG({
                     <path d="M913.56,368c-.04.13-.07.26-.11.37-1.75-.26-3.51-.5-5.26-.76-1.5-.22-2.99-.43-4.49-.65-.12-.02-.26-.04-.39-.06-1.89-.26-3.78-.54-5.66-.8-1.29-.18-2.57-.35-3.86-.51-.13-.02-.26-.04-.4-.05-2.94-.39-5.9-.74-8.85-1.04-.13-.02-.26-.02-.39-.04-2.67-.27-5.34-.5-8.02-.68-.29-.02-.58-.04-.88-.05-.13,0-.26-.02-.39-.02h0c-2.67-.16-5.34-.26-8.01-.29-.13,0-.26,0-.39,0-2.93-.03-5.87.03-8.8.19-.12,0-.26.02-.39.02-.76.05-1.53.09-2.29.16-2.08.16-4.15.38-6.22.66-.13.02-.26.04-.39.05-1.33.19-2.65.4-3.96.64-1.61.29-3.2.64-4.79,1.01-.12.03-.26.06-.38.09-1.72.4-3.45.84-5.17,1.27-1.32.33-2.65.66-3.97.95-.12.03-.26.06-.38.09-1.9.41-3.81.76-5.74.99-.92.1-1.83.18-2.75.21-.13,0-.26.02-.39.02-2.38.08-4.76-.07-7.12-.43,0-.13-.02-.26-.02-.4.85.13,1.71.25,2.57.32,1.5.13,3,.17,4.49.12.13,0,.26,0,.4,0,1.85-.09,3.69-.29,5.52-.61,1.01-.17,2.01-.37,3.01-.59.13-.02.26-.05.39-.09,2.21-.49,4.41-1.06,6.6-1.62.85-.21,1.69-.41,2.54-.61.13-.03.26-.06.38-.09,2.89-.65,5.8-1.2,8.74-1.61.13-.02.26-.05.39-.05,2.7-.39,5.41-.67,8.15-.84.13,0,.26-.02.39-.02.13,0,.26-.02.39-.02,2.93-.17,5.86-.23,8.79-.2h.39c2.67.04,5.34.14,8,.3.12,0,.26.02.39.02.78.05,1.54.1,2.32.16,2.2.16,4.41.36,6.61.58.13,0,.26.02.39.04,2.97.3,5.93.65,8.89,1.04.13.02.26.03.4.05,1.4.19,2.8.37,4.21.57,1.77.24,3.53.5,5.3.75.13.02.26.04.39.06,1.55.22,3.11.45,4.66.67,1.71.25,3.44.5,5.16.74Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
                 </g>
-                <g id="Full_bed" filter="url(#drop-shadow-16)">
+                <g id="Full_bed" filter="url(#ds-soft)">
                     <g>
                     <path d="M186.38,357.49h69.72c2.32,0,4.2,1.88,4.2,4.2v96.06c0,.44-.35.79-.79.79h-76.29c-.57,0-1.04-.47-1.04-1.04v-95.81c0-2.32,1.88-4.2,4.2-4.2Z" transform="translate(-186.78 629.26) rotate(-90)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M272.01,369.92v75.89c0,.87-.55,1.57-1.23,1.57h-96.04c-2.35,0-4.26-2.44-4.26-5.44v-67.86c0-3,1.91-5.44,4.26-5.44h96.28c.55,0,1,.57,1,1.27ZM170.95,441.95c0,2.66,1.7,4.83,3.78,4.83h96.04c.42,0,.75-.43.75-.96v-75.89c0-.37-.23-.66-.52-.66h-96.28c-2.08,0-3.78,2.17-3.78,4.83v67.86Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2715,7 +2713,7 @@ export function DillonD399SecondSVG({
                     <path d="M200.81,413.31c0,6.09-.3,11.83-1.06,16.05-.78,4.38-2,6.68-3.64,6.84-.27.03-.76.1-1.41.2-3.72.57-12.42,1.9-15.53-.24-1.7-1.17-2.74-14.58-2.86-26.61-.13-12.8.77-26.67,1.17-28.35.13-.53.56-.97,1.31-1.34,4.01-2,16.91-1.64,18.67-.34,1.43,1.06,3.33,18.51,3.33,33.79ZM176.79,407.01c0,.85,0,1.69.01,2.54.15,14.63,1.47,25.3,2.61,26.08h0c2.97,2.04,11.57.73,15.24.17.66-.1,1.15-.18,1.43-.2,1.4-.14,2.48-2.28,3.21-6.37,2.75-15.4-.55-48.06-2.05-49.17-1.71-1.27-14.33-1.58-18.26.38-.75.37-.97.73-1.03.96-.37,1.54-1.17,13.64-1.17,25.62Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
                 </g>
-                <g id="Full_bed1" data-name="Full_bed" filter="url(#drop-shadow-17)">
+                <g id="Full_bed1" data-name="Full_bed" filter="url(#ds-soft)">
                     <g>
                     <path d="M208.02,930.87h69.72c2.32,0,4.2,1.88,4.2,4.2v96.06c0,.44-.35.79-.79.79h-76.29c-.57,0-1.04-.47-1.04-1.04v-95.81c0-2.32,1.88-4.2,4.2-4.2Z" transform="translate(485.75 1962.79) rotate(-180)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M204.78,930.63h75.89c.87,0,1.57.55,1.57,1.23v96.04c0,2.35-2.44,4.26-5.44,4.26h-67.86c-3,0-5.44-1.91-5.44-4.26v-96.28c0-.55.57-1,1.27-1ZM276.8,1031.69c2.66,0,4.83-1.7,4.83-3.78v-96.04c0-.42-.43-.75-.96-.75h-75.89c-.37,0-.66.23-.66.52v96.28c0,2.08,2.17,3.78,4.83,3.78h67.86Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2737,7 +2735,7 @@ export function DillonD399SecondSVG({
                     <path d="M248.17,1001.83c6.09,0,11.83.3,16.05,1.06,4.38.78,6.68,2,6.84,3.64.03.27.1.76.2,1.41.57,3.72,1.9,12.42-.24,15.53-1.17,1.7-14.58,2.74-26.61,2.86-12.8.13-26.67-.77-28.35-1.17-.53-.13-.97-.56-1.34-1.31-2-4.01-1.64-16.91-.34-18.67,1.06-1.43,18.51-3.33,33.79-3.33ZM241.87,1025.84c.85,0,1.69,0,2.54-.01,14.63-.15,25.3-1.47,26.08-2.61h0c2.04-2.97.73-11.57.17-15.24-.1-.66-.18-1.15-.2-1.43-.14-1.4-2.28-2.48-6.37-3.21-15.4-2.75-48.06.55-49.17,2.05-1.27,1.71-1.58,14.33.38,18.26.37.75.73.97.96,1.03,1.54.37,13.64,1.17,25.62,1.17Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
                 </g>
-                <g id="Full_bed2" data-name="Full_bed" filter="url(#drop-shadow-18)">
+                <g id="Full_bed2" data-name="Full_bed" filter="url(#ds-soft)">
                     <g>
                     <path d="M527.67,1001.53h69.72c2.32,0,4.2,1.88,4.2,4.2v96.06c0,.44-.35.79-.79.79h-76.29c-.57,0-1.04-.47-1.04-1.04v-95.81c0-2.32,1.88-4.2,4.2-4.2Z" transform="translate(1125.06 2104.12) rotate(-180)" fill="#ede3d6" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M524.44,1001.29h75.89c.87,0,1.57.55,1.57,1.23v96.04c0,2.35-2.44,4.26-5.44,4.26h-67.86c-3,0-5.44-1.91-5.44-4.26v-96.28c0-.55.57-1,1.27-1ZM596.46,1102.35c2.66,0,4.83-1.7,4.83-3.78v-96.04c0-.42-.43-.75-.96-.75h-75.89c-.37,0-.66.23-.66.52v96.28c0,2.08,2.17,3.78,4.83,3.78h67.86Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2759,7 +2757,7 @@ export function DillonD399SecondSVG({
                     <path d="M567.82,1072.49c6.09,0,11.83.3,16.05,1.06,4.38.78,6.68,2,6.84,3.64.03.27.1.76.2,1.41.57,3.72,1.9,12.42-.24,15.53-1.17,1.7-14.58,2.74-26.61,2.86-12.8.13-26.67-.77-28.35-1.17-.53-.13-.97-.56-1.34-1.31-2-4.01-1.64-16.91-.34-18.67,1.06-1.43,18.51-3.33,33.79-3.33ZM561.53,1096.51c.85,0,1.69,0,2.54-.01,14.63-.15,25.3-1.47,26.08-2.61h0c2.04-2.97.73-11.57.17-15.24-.1-.66-.18-1.15-.2-1.43-.14-1.4-2.28-2.48-6.37-3.21-15.4-2.75-48.06.55-49.17,2.05-1.27,1.71-1.58,14.33.38,18.26.37.75.73.97.96,1.03,1.54.37,13.64,1.17,25.62,1.17Z" fill="#e0ceb3" stroke="#cab394" stroke-miterlimit="10" stroke-width=".25"/>
                     </g>
                 </g>
-                <g id="Plant2" data-name="Plant" filter="url(#drop-shadow-19)">
+                <g id="Plant2" data-name="Plant" filter="url(#ds-soft)">
                     <g>
                     <path d="M973.43,505.21c2.43.39,4.68,1.27,5.57,3.15-.66-.09-1.72.16-2.46.39-1.02.32-2.72.93-3.24,2.9-.51,1.97.36.48,1.96-.97,1.12-1.02,2.75-1.3,4.15-.75.01.1.02.19.02.29.03,1.42-.34,2.66-.88,3.62-.87,1.56-2.19,2.37-2.96,2-2.79-1.35-.8,5.08-3.17,5.78-.85.25-1.85.09-2.83-.37-.45-1.44-.77-2.65-.24-3.99.41-1.03.84-2.28.61-2.58-.19-.24-.97.31-1.26.68-1.17,1.52-1.03,3.59-.44,5.08-1.24-.95-2.31-2.33-2.87-3.94-.24-.68-.54-1.46-.85-2.28,1.26-1.07,3.2-2.09,2.97-2.31-.34-.32-2.27.3-3.41,1.2-1.16-2.99-2.36-6.14-1.87-6.82.4-.55,2.32-.99,4.59-1.21-.28,1.89.28,3.93.74,4.1.45.16-.1-2.49-.08-4.15,1.48-.1,3.04-.12,4.4,0h.05c-1.28,2.03-1.27,5.71-.78,5.79.49.08.2-3.31,2.29-5.6Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M971.56,521.91c-.64,0-1.34-.17-2.05-.51l-.07-.03-.02-.08c-.47-1.49-.78-2.74-.23-4.11.83-2.06.66-2.38.63-2.4-.1-.03-.69.32-.97.68-1.14,1.49-.97,3.51-.42,4.9l.24.61-.52-.4c-1.34-1.03-2.38-2.45-2.93-4.02-.24-.69-.55-1.49-.85-2.27l-.05-.12.1-.08c.56-.47,1.26-.94,1.82-1.32.39-.26.87-.58,1.05-.76-.44-.07-1.97.38-3.07,1.24l-.19.15-.09-.23c-1.41-3.64-2.37-6.27-1.85-6.99.6-.84,3.76-1.19,4.72-1.28l.23-.02-.03.23c-.26,1.76.23,3.5.55,3.84.04-.28-.03-1.06-.1-1.7-.07-.73-.16-1.56-.15-2.23v-.17s.17-.01.17-.01c1.12-.08,2.8-.14,4.42,0l.33.05-.15.23c-1.18,1.87-1.17,4.9-.92,5.45.06-.16.13-.51.18-.82.22-1.18.58-3.15,1.96-4.66l.07-.07.1.02c2.99.49,4.91,1.58,5.71,3.25l.14.3-.33-.05c-.75-.11-2.01.27-2.38.39-.85.27-2.61.82-3.12,2.78-.09.33-.12.53-.13.64.15-.13.38-.37.6-.6.33-.34.73-.77,1.2-1.19,1.16-1.05,2.87-1.36,4.34-.79l.1.04v.1c.03.11.04.21.04.32.03,1.68-.47,2.94-.9,3.71-.89,1.59-2.3,2.51-3.19,2.07-.38-.18-.65-.22-.85-.1-.46.26-.56,1.32-.65,2.35-.14,1.49-.3,3.18-1.53,3.54-.29.08-.6.12-.91.12ZM969.74,521.11c.95.44,1.86.55,2.63.33,1-.29,1.14-1.85,1.27-3.23.12-1.22.21-2.28.84-2.63.31-.18.7-.15,1.19.09.63.3,1.87-.4,2.72-1.92.41-.73.88-1.93.85-3.53,0-.05,0-.11,0-.16-1.32-.47-2.82-.18-3.86.76-.46.41-.86.84-1.18,1.17-.6.63-.85.89-1.09.76-.19-.11-.19-.37,0-1.14.57-2.15,2.46-2.74,3.37-3.03.43-.14,1.42-.42,2.21-.42h0c-.81-1.38-2.56-2.31-5.19-2.75-1.26,1.43-1.6,3.29-1.81,4.41-.15.79-.23,1.23-.58,1.17-.12-.02-.21-.11-.28-.26-.37-.81-.21-3.72.79-5.55-1.15-.09-2.55-.09-3.96,0,0,.62.08,1.36.15,2.03.14,1.41.17,1.92-.05,2.09-.07.06-.17.07-.26.04-.57-.2-1.09-2.24-.89-4.06-2.23.23-3.91.67-4.23,1.11-.44.6.88,4.03,1.81,6.43,1.14-.81,3.02-1.46,3.45-1.04.05.05.08.12.07.2-.02.23-.33.45-1.27,1.08-.55.37-1.17.78-1.69,1.21.29.74.58,1.5.81,2.16.46,1.31,1.28,2.51,2.33,3.45-.4-1.43-.4-3.25.67-4.65.25-.32.88-.81,1.26-.81h0c.15,0,.24.07.28.13.16.21.24.71-.58,2.76-.5,1.24-.23,2.36.22,3.8Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2785,7 +2783,7 @@ export function DillonD399SecondSVG({
                     </g>
                     <path d="M980.44,517.18c-.48-1.08-.78-2.23-.88-3.4-.05-.65-.01-1.16.56-1.56.46-.33.99-.57,1.51-.78,1.03-.41,2.1-.7,3.16-1.03,1.14-.36,2.27-.71,3.41-1.07.22-.07.13-.42-.1-.35-1.3.41-2.6.81-3.9,1.22-1.2.37-2.44.7-3.56,1.28-.44.23-.94.49-1.23.91-.3.43-.25.96-.21,1.47.11,1.22.43,2.39.92,3.51.09.21.41.03.31-.18h0Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
                 </g>
-                <g id="Plant3" data-name="Plant" filter="url(#drop-shadow-20)">
+                <g id="Plant3" data-name="Plant" filter="url(#ds-soft)">
                     <g>
                     <circle cx="347.09" cy="340.09" r="4.73" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M347.09,344.93c-2.67,0-4.84-2.17-4.84-4.84s2.17-4.84,4.84-4.84,4.84,2.17,4.84,4.84-2.17,4.84-4.84,4.84ZM347.09,335.47c-2.55,0-4.62,2.07-4.62,4.62s2.07,4.62,4.62,4.62,4.62-2.07,4.62-4.62-2.07-4.62-4.62-4.62Z" fill="#d9ebd8" stroke="#aebfac" stroke-miterlimit="10" stroke-width=".25"/>
@@ -2902,7 +2900,6 @@ export function DillonD399SecondSVG({
 }
 
 export function DillonD399basementSVG({
-  active,
   mirror = false,
   svgRef,
 }: SVGProps) {
@@ -2965,205 +2962,22 @@ export function DillonD399basementSVG({
       </defs>
 
       <defs>
-        <filter id="drop-shadow-1" x="530" y="71" width="147" height="151" filterUnits="userSpaceOnUse">
-          <feOffset dx="0" dy="0"/>
-          <feGaussianBlur result="blur" stdDeviation="3"/>
-          <feFlood flood-color="#000" flood-opacity=".5"/>
-          <feComposite in2="blur" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-2" x="553" y="100" width="97" height="97" filterUnits="userSpaceOnUse">
-          <feOffset dx="0" dy="0"/>
-          <feGaussianBlur result="blur1" stdDeviation="3"/>
-          <feFlood flood-color="#000" flood-opacity=".5"/>
-          <feComposite in2="blur1" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-3" x="801" y="92" width="120" height="127" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur2" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur2" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-4" x="270" y="647" width="141" height="97" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur3" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur3" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-5" x="827" y="630" width="47" height="100" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur4" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur4" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-6" x="290" y="1022" width="84" height="126" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur5" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur5" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-7" x="730" y="630" width="47" height="100" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur6" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur6" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-8" x="237" y="202" width="61" height="60" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur7" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur7" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-9" x="778" y="648" width="48" height="67" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur8" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur8" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-10" x="786" y="662" width="36" height="39" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur9" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur9" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <clipPath id="clippath">
-          <rect x="488.8" y="265.7" width="42.2" height="110" fill="none"/>
-        </clipPath>
-        <filter id="drop-shadow-11" x="501" y="339" width="42" height="42" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur10" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur10" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-12" x="499" y="303" width="44" height="44" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur11" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur11" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-13" x="501" y="266" width="42" height="42" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur12" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur12" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-14" x="647" y="62" width="60" height="60" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur13" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur13" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-15" x="276" y="303" width="196" height="152" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur14" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur14" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-16" x="356" y="343" width="39" height="39" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur15" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur15" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-17" x="334" y="319" width="49" height="49" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur16" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur16" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-18" x="854" y="717" width="66" height="63" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur17" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur17" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-19" x="785" y="436" width="125" height="84" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur18" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur18" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-20" x="241.8" y="76.9" width="78" height="112" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur19" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur19" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-21" x="289" y="235" width="106" height="200" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur20" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur20" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-22" x="844" y="483" width="69" height="63" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur21" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur21" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-23" x="696" y="571" width="82" height="109" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur22" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur22" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-24" x="586" y="228" width="119" height="226" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur23" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur23" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-25" x="836" y="242" width="55" height="189" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur24" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur24" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-26" x="249" y="818" width="91" height="110" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur25" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur25" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-27" x="248" y="872" width="53" height="59" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur26" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur26" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
-        <filter id="drop-shadow-28" x="236.6" y="419" width="57" height="49" filterUnits="userSpaceOnUse">
-          <feOffset dx="2" dy="2"/>
-          <feGaussianBlur result="blur27" stdDeviation="2"/>
-          <feFlood flood-color="#000" flood-opacity=".4"/>
-          <feComposite in2="blur27" operator="in"/>
-          <feComposite in="SourceGraphic"/>
-        </filter>
+            <filter id="ds-soft" x="-20%" y="-20%" width="140%" height="140%">
+                <feOffset dx="0" dy="3" />
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feColorMatrix
+                    in="blur"
+                    type="matrix"
+                    values="
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0 0 
+                    0 0 0 0.4 0" />
+                <feMerge>
+                    <feMergeNode />       {/* shadow */}
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
       </defs>
 
       {/* keep background outside world transform */}
@@ -4081,7 +3895,7 @@ export function DillonD399basementSVG({
                     </g>
                     </g>
                 </g>
-                <g id="Couch">
+                <g id="Couch" filter="url(#ds-soft)">
                     <g>
                     <rect x="438.28" y="460.25" width="52.36" height="52.36" rx="8.6" ry="8.6" transform="translate(-21.96 950.89) rotate(-90)" fill="#efe5d8" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M491.02,463.32v46.22c0,1.9-1.55,3.45-3.45,3.45h-46.22c-1.9,0-3.45-1.55-3.45-3.45v-46.22c0-1.9,1.55-3.45,3.45-3.45h46.22c1.9,0,3.45,1.55,3.45,3.45ZM438.66,509.54c0,1.48,1.21,2.69,2.69,2.69h46.22c1.48,0,2.69-1.21,2.69-2.69v-46.22c0-1.48-1.21-2.69-2.69-2.69h-46.22c-1.48,0-2.69,1.21-2.69,2.69v46.22Z" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4193,7 +4007,7 @@ export function DillonD399basementSVG({
                     <path d="M490.26,311.13c0-1.42,1.16-2.58,2.58-2.58h47.95c1.42,0,2.58,1.16,2.58,2.58v49.46c0,1.42-1.16,2.58-2.58,2.58s-2.58-1.16-2.58-2.58v-46.88h-45.37c-1.42,0-2.58-1.16-2.58-2.58" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M491.02,311.13c0,1,.82,1.82,1.82,1.82h46.13v47.64c0,1,.82,1.82,1.82,1.82s1.82-.82,1.82-1.82v-49.46c0-1-.82-1.82-1.82-1.82h-47.95c-1,0-1.82.82-1.82,1.82" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                 </g>
-                <g id="TV_stand">
+                <g id="TV_stand" filter="url(#ds-soft)">
                     <g>
                     <rect x="577.53" y="442.7" width="37.08" height="28.59" transform="translate(139.07 1053.07) rotate(-90)" fill="#efe5d8" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M610.64,438.19v37.62h-29.13v-37.62h29.13ZM610.1,475.27v-36.54h-28.05v36.54h28.05Z" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4251,7 +4065,7 @@ export function DillonD399basementSVG({
                     </g>
                     </g>
                 </g>
-                <g id="Bedroom_2">
+                <g id="Bedroom_2" filter="url(#ds-soft)">
                     <g>
                     <path d="M895.42,363.96h73.75c2.32,0,4.2,1.88,4.2,4.2v101.27c0,.44-.35.79-.79.79h-80.32c-.57,0-1.04-.47-1.04-1.04v-101.03c0-2.32,1.88-4.2,4.2-4.2Z" transform="translate(1349.38 -515.2) rotate(90)" fill="#efe5d8" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M878.9,457.15v-79.8c0-.91.58-1.66,1.3-1.66h101c2.47,0,4.48,2.57,4.48,5.72v71.36c0,3.15-2.01,5.72-4.48,5.72h-101.25c-.58,0-1.05-.6-1.05-1.34ZM985.17,381.41c0-2.8-1.78-5.08-3.97-5.08h-101c-.44,0-.79.45-.79,1.01v79.8c0,.38.24.7.54.7h101.25c2.19,0,3.97-2.28,3.97-5.08v-71.36Z" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4601,7 +4415,7 @@ export function DillonD399basementSVG({
                     </g>
                     </g>
                 </g>
-                <g id="Plant">
+                <g id="Plant" filter="url(#ds-soft)">
                     <g>
                     <path d="M163.17,388.54c3.36.54,6.46,1.75,7.69,4.34-.91-.12-2.37.22-3.4.54-1.41.44-3.76,1.28-4.48,4-.71,2.72.49.66,2.71-1.34,1.55-1.4,3.8-1.79,5.73-1.04.02.13.03.27.03.4.04,1.96-.47,3.67-1.21,4.99-1.2,2.15-3.02,3.27-4.08,2.76-3.85-1.86-1.1,7.02-4.37,7.97-1.18.34-2.55.13-3.91-.51-.62-1.99-1.07-3.66-.33-5.51.57-1.43,1.16-3.15.84-3.56-.26-.33-1.35.43-1.74.94-1.61,2.09-1.42,4.96-.61,7.01-1.71-1.3-3.18-3.21-3.96-5.43-.33-.93-.74-2.01-1.18-3.14,1.73-1.48,4.42-2.88,4.1-3.18-.46-.45-3.13.41-4.71,1.65-1.6-4.12-3.26-8.48-2.58-9.41.55-.76,3.21-1.37,6.33-1.66-.38,2.6.39,5.43,1.02,5.65.62.22-.14-3.44-.11-5.73,2.04-.14,4.2-.16,6.06,0h.07c-1.76,2.8-1.75,7.88-1.07,7.99.68.11.27-4.57,3.16-7.73Z" fill="#dbedda" stroke="#b0c1ae" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M160.59,411.59c-.89,0-1.85-.23-2.82-.7l-.1-.05-.03-.1c-.64-2.06-1.08-3.79-.32-5.68,1.14-2.85.91-3.28.87-3.32-.14-.05-.95.44-1.34.94-1.58,2.05-1.33,4.84-.58,6.76l.33.84-.71-.55c-1.85-1.42-3.29-3.39-4.05-5.55-.33-.95-.76-2.06-1.18-3.14l-.06-.17.13-.12c.77-.65,1.73-1.3,2.51-1.82.54-.37,1.2-.81,1.45-1.04-.61-.1-2.72.52-4.24,1.72l-.27.21-.12-.31c-1.95-5.02-3.27-8.65-2.55-9.65.83-1.15,5.19-1.64,6.51-1.77l.32-.03-.05.31c-.36,2.44.31,4.84.76,5.3.06-.39-.05-1.46-.14-2.34-.1-1.01-.22-2.16-.2-3.08v-.23s.23-.02.23-.02c1.55-.11,3.86-.19,6.1,0l.46.07-.2.32c-1.63,2.58-1.61,6.76-1.27,7.52.08-.22.17-.7.25-1.13.3-1.63.8-4.35,2.71-6.43l.09-.1.13.02c4.13.67,6.78,2.18,7.88,4.48l.2.42-.46-.06c-1.03-.15-2.78.37-3.29.53-1.17.37-3.6,1.14-4.31,3.83-.12.46-.17.73-.19.88.21-.18.53-.52.83-.83.45-.47,1.01-1.06,1.66-1.65,1.61-1.45,3.95-1.88,5.98-1.09l.14.05.02.14c.02.15.03.29.03.44.04,2.31-.65,4.06-1.24,5.11-1.23,2.2-3.17,3.46-4.41,2.86-.52-.25-.9-.3-1.18-.14-.63.35-.77,1.82-.9,3.24-.19,2.06-.41,4.39-2.12,4.89-.4.12-.82.17-1.26.17ZM158.08,410.48c1.31.6,2.57.76,3.63.45,1.38-.4,1.58-2.55,1.76-4.45.16-1.69.3-3.15,1.15-3.63.43-.24.97-.2,1.64.13.86.41,2.58-.56,3.75-2.66.56-1,1.22-2.66,1.18-4.87,0-.08,0-.15,0-.22-1.82-.65-3.9-.25-5.33,1.05-.63.57-1.19,1.15-1.63,1.62-.83.87-1.17,1.23-1.5,1.05-.27-.15-.26-.52.01-1.58.78-2.96,3.39-3.79,4.64-4.18.6-.19,1.97-.58,3.04-.58h0c-1.12-1.91-3.53-3.19-7.17-3.8-1.74,1.97-2.21,4.54-2.49,6.09-.2,1.09-.32,1.69-.8,1.62-.16-.03-.3-.15-.39-.36-.51-1.12-.3-5.14,1.09-7.66-1.59-.12-3.52-.12-5.47,0,0,.86.11,1.88.2,2.79.2,1.94.24,2.64-.07,2.88-.1.08-.23.1-.36.05-.79-.28-1.51-3.09-1.23-5.61-3.07.31-5.4.92-5.84,1.53-.6.83,1.21,5.56,2.49,8.87,1.58-1.12,4.16-2.02,4.77-1.43.07.07.11.17.1.27-.03.31-.45.62-1.75,1.5-.76.51-1.61,1.08-2.33,1.68.4,1.03.8,2.08,1.12,2.98.63,1.8,1.76,3.47,3.21,4.76-.56-1.97-.56-4.48.93-6.41.35-.45,1.22-1.12,1.74-1.12h0c.21,0,.33.1.39.18.22.29.33.98-.81,3.81-.69,1.71-.32,3.26.3,5.24Z" fill="#dbedda" stroke="#b0c1ae" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4627,7 +4441,7 @@ export function DillonD399basementSVG({
                     </g>
                     <path d="M172.85,405.05c-.66-1.49-1.08-3.07-1.22-4.7-.07-.9-.02-1.6.77-2.16.64-.45,1.37-.79,2.09-1.08,1.42-.56,2.9-.97,4.35-1.43,1.57-.49,3.14-.98,4.71-1.47.31-.1.18-.58-.13-.48-1.79.56-3.59,1.12-5.38,1.68-1.65.52-3.36.97-4.91,1.77-.6.31-1.3.68-1.7,1.25-.42.6-.35,1.33-.29,2.02.15,1.68.59,3.3,1.28,4.84.13.29.56.04.43-.25h0Z" fill="#dbedda" stroke="#b0c1ae" stroke-miterlimit="10" stroke-width=".25"/>
                 </g>
-                <g id="Piano">
+                <g id="Piano" filter="url(#ds-soft)">
                     <g>
                     <path d="M177.49,515.99c-10.09,7.82-11.94,22.33-4.12,32.43.02.03.05.06.07.09,3.61,4.62,5.01,10.62,3.54,16.3-1.73,6.69-.46,14.08,4.1,19.96,7.82,10.09,22.33,11.94,32.43,4.12.25-.19.49-.39.72-.59l13.18-10.21v.02s24.3-18.81,24.3-18.81l-48.8-63-24.28,18.81.03.04c-.39.27-.78.55-1.16.84Z" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M202.95,495.94l49.11,63.4-24.69,19.12v-.02s-12.99,10.05-12.99,10.05c-.26.22-.5.41-.72.59-10.19,7.89-24.89,6.02-32.78-4.17-4.46-5.76-5.97-13.12-4.14-20.18,1.42-5.46.1-11.47-3.49-16.08l-.07-.09c-7.89-10.19-6.02-24.89,4.17-32.78.3-.23.62-.47.95-.7l-.02-.02,24.69-19.12ZM251.34,559.25l-48.48-62.6-23.88,18.5.04.05-.22.15c-.4.27-.79.55-1.15.83-9.97,7.72-11.79,22.11-4.07,32.07l.07.09c3.7,4.73,5.04,10.9,3.58,16.52-1.79,6.91-.31,14.11,4.05,19.75,7.72,9.97,22.1,11.79,32.07,4.08.22-.17.45-.36.72-.58l13.39-10.37v.02s23.9-18.5,23.9-18.5Z" fill="#e2d0b5" stroke="#ccb596" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4827,7 +4641,7 @@ export function DillonD399basementSVG({
                     </g>
                     </g>
                 </g>
-                <g id="Plant1" data-name="Plant">
+                <g id="Plant1" filter="url(#ds-soft)">
                     <g>
                     <circle cx="194.63" cy="575.6" r="9.97" transform="translate(-220.98 132.36) rotate(-24.48)" fill="#dbedda" stroke="#b0c1ae" stroke-miterlimit="10" stroke-width=".25"/>
                     <path d="M202.69,569.35c3.44,4.44,2.63,10.86-1.82,14.3s-10.86,2.63-14.3-1.82c-3.44-4.44-2.63-10.86,1.82-14.3s10.86-2.63,14.3,1.82ZM186.93,581.56c3.29,4.25,9.42,5.03,13.67,1.74,4.25-3.29,5.03-9.42,1.74-13.67s-9.42-5.03-13.67-1.74-5.03,9.42-1.74,13.67Z" fill="#dbedda" stroke="#b0c1ae" stroke-miterlimit="10" stroke-width=".25"/>
@@ -4909,85 +4723,6 @@ export function DillonD399basementSVG({
                 </g>
                 </g>
             </g>
-
-          {/* OPTION: Guest Entry */}
-          <g id="optionalBar" data-option="optionalBar" style={{ display: active.optionalBar ? "block" : "none" }} fill="#CC0001">
-            <g id="f0_optional_bar">
-              <g id="Lines">
-                <path d="M511.3,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h7.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-7.2v-.7c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.1" fill="#425563"/>
-                <path d="M511.8,196.7c0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M511.6,192.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-1.1h7c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-7.2c0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.3c0,0,0,.2.1.2,0,0,.1,0,.2,0" fill="#425563"/>
-                <path d="M687.9,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M675.5,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M662.6,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M662.6,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M683.7,191.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M687.7,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M649.9,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M637.1,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M633.4,210.5c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M624.3,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M649.7,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M637.2,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M612,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M599.1,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M586.7,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M573.8,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M573.8,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M611.6,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M594.9,191.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M598.9,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M569.8,210.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M548.6,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M535.7,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M531.7,210.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M535.7,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M531.7,191.2c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M560.9,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M557.1,191.2c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M854.9,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M842.4,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M829.4,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M830.2,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M851.4,191.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M855.4,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M816.7,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M804.3,210.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M791.4,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M792.2,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M817.3,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M813.5,191.2c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M778.8,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M766,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M762.3,210.5c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M753.9,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M779.3,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M766.6,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M740.6,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M728,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M715.9,210.9c0,0,.1,0,.2,0h7.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-7.9c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M709.5,210.5c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M700.4,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M741.4,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M728.8,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M724.7,191.2c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M905.5,210.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2" fill="#425563"/>
-                <path d="M901.6,210.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M880.2,210.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2" fill="#425563"/>
-                <path d="M876.2,210.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5" fill="#425563"/>
-                <path d="M881,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5" fill="#425563"/>
-                <path d="M877,191.2c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2" fill="#425563"/>
-                <path d="M906.3,191.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8" fill="#425563"/>
-                <path d="M893.4,191.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2Z" fill="#425563"/>
-                <path d="M863.5,203.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M838.4,203.4c0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0M842.2,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M830.1,186.7c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M829.7,182.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M851.5,186.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M855.3,187.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M851.1,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M863.7,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M817,203.4h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0M800.1,203.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M804.1,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M792.1,186.7c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M800.3,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M825.9,187.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M813.2,187.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M813,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M807.6,176.8c0,0,0,.1-.1.2v3.1c0,.5.3,1,.6,1.3h0c.4.4.9.6,1.5.5h5.8c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-5.8c-.4,0-.8-.1-1.1-.4h-.1c-.2-.2-.4-.5-.4-1v-3c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M825.7,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M819.3,181.7c0,0,0,.2.1.2,0,0,.1,0,.2,0h3.8c.6,0,1.1-.1,1.4-.5h.1c.4-.4.6-.8.5-1.4v-1.9c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.9c0,.4-.1.7-.4,1h0c-.2.3-.6.5-1.1.4h-3.8c0,0-.2,0-.2.1,0,0,0,.1-.1.2M819.1,178.9s0,0,0-.1c0-.5-.3-.7-.8-.7-.5,0-.8.3-.8.8,0,.5.3.8.7.8,0,0,.1,0,.1,0,.5,0,.8-.3.8-.8M818.3,178.5c.2,0,.3.1.3.3,0,.2-.1.3-.3.3-.2,0-.3-.1-.3-.3,0-.2.1-.3.3-.3M818,171.3s0,0,0-.1c-.1-.8-.6-1.3-1.4-1.4h0c-.9.1-1.4.6-1.5,1.5h0c.1.9.6,1.3,1.5,1.4h0c.8,0,1.2-.5,1.4-1.4M816.5,172.2c-.5,0-.7-.3-.8-.8,0-.5.4-.8,1-1,.5.1.7.4.8,1-.1.5-.4.8-1,.8M824.6,176c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v4c0,.3-.3.5-.7.5h-2.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h2.7c.7,0,1.1-.4,1.2-1.1v-4M823.7,174.3c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.1c0,.6-.1,1-.5,1.4h0c-.4.5-.8.7-1.4.6h-3.9v-3.4c0,0,0-.2,0-.2l-.3-.3c0,0-.1,0-.2-.1h-.5s0,0-.1.1l-.3.3s0,0-.1,0c0,0,0,.2-.1.2v3.4h-3.7c-.6,0-1.1-.2-1.5-.6h0c-.2-.2-.4-.4-.5-.6,0,0,0-.1-.1-.2,0,0-.1,0-.2.1,0,0-.1,0-.2.1,0,0,0,.1.1.2.1.3.3.6.5.8h0c.5.5,1.1.8,1.9.7h3.7v.8c0-.5-.3-.7-.8-.7-.5,0-.8.3-.8.8,0,.5.3.8.7.8,0,0,.1,0,.1,0,.5,0,.8-.3.8-.8v1.2c0,.3.2.4.3.5h-6.3c-.4,0-.6-.2-.7-.6,0,0,0,0-.1-.1,0,0,0,0-.2-.1,0,0,0,0-.1.1,0,0,0,.2-.1.2.1.7.5,1,1.2,1.1h7c0,0,.2,0,.2,0,0,0,0-.1,0-.2.5-.1.7-.4.6-.8v-2.1h3.9c.7,0,1.3-.3,1.8-.8h0c.5-.4.7-1,.6-1.7v-1.1M816.3,173.9h.3l.2.2v5.9c0,.2,0,.3-.2.3-.2,0-.3-.1-.4-.3v-2.3c0,0,0-.1,0-.2,0,0,0,0,0-.1v-3.4h.1M815.1,178.9c0,.2-.1.3-.3.3-.2,0-.3-.1-.3-.3,0-.2.1-.3.3-.3.2,0,.3.1.3.3M825.4,165.4c0,0,0-.1-.1-.2,0,0-.1,0-.2.1,0,0-.1,0-.2.1,0,0,0,.1.1.2,0,.1,0,.3,0,.4v7.8c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-7.8c0-.3,0-.5-.1-.6M817.7,166.3c0,0,.1,0,.2,0h3.3c.6.1,1.1.4,1.5.7.4.4.6.8.5,1.4v1.7c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-1.7c0-.7-.2-1.3-.6-1.8-.5-.5-1.1-.7-1.8-.8h-3.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M822.1,165c0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h1.2c.4,0,.6.3.6.6v5.7c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-5.8c0-.7-.4-1-1.2-1.1h-1.2c0,0-.2,0-.2.1M812.6,164.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M810,166.6h0c-.5.5-.7,1.1-.7,1.8v3.6c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-3.6c0-.6.3-1,.6-1.4h0c.4-.5.9-.7,1.5-.7h1.7c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-1.7c-.8,0-1.4.3-1.9.8M808.5,167.1c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M809,164.5c0,0,0-.1-.1-.2,0,0-.1,0-.2.1-.1,0-.3.1-.4.2h-.1c-.4.4-.6.9-.6,1.5v6.8c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-6.8c0-.4.2-.8.5-1.1h-.1c.1,0,.3-.1.4-.2,0,0,.1,0,.1-.1,0,0,0-.1,0-.2M809.4,165.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M825.7,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M804.3,154.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M800.3,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M863.7,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M838.4,155.2c0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0M842.2,155.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M774.7,203.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M778.8,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M753.4,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M762.7,186.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M753.6,182.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M779.2,187.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M766.5,187.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M774.9,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M779,182.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M723.1,206.3c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h6c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-2.4c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v2.1h-5.7M740.6,203.2c0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2M705.2,200.9c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M710.3,206.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M709.2,194.8c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M705.6,188.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M709.2,182.1c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M705.6,175.8c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M733.4,194.7c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v16c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-7.3h3.3c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-3.3v-8.1M741.1,187.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M729.2,191.2c0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.2h3.8c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-4.3h3.7c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-3.9c0,0-.2,0-.2.1,0,0,0,.1-.1.2v4.2h-3.7M729.4,181.4c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M740.9,182.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M733,177.8c0,0,0,.1-.1.2v4.9c0,0,0,.2.1.2,0,0,.1,0,.2,0h3.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-3.3v-4.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M733,165.1c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M729.4,168.7c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M727.3,158.1h1.6v6.3c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-6.6c0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-1.9c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0M733.4,153.9c0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-7.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h7.1v7c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-5.9h3.3c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-3.3v-.7M714.4,158.1c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M709.4,169.3c0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1M705.4,162.8c0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1M709.2,157.7c0,0,0,.1-.1.2v7.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-7.3h.7c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-1c0,0-.2,0-.2.1M705.4,153.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2v5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-4.8h3.3c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-3.5M712.9,154.1c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M779,154.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M774.9,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M749.4,155.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M753.4,155.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M774.7,91.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M745.3,104c0,0,.1,0,.2,0h3.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-5.3c0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-4.9c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h4.5v4.8h-2.9c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M762,91.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M748.9,90.3c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v6.8h-1.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h1.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-7.1M750.8,81.9c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M748.5,77.4c0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1M750.8,69.2c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M730.4,97.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M739.8,98.3c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M732.9,103.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M734.5,97.6c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M720.2,103.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M716,104c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M718.5,98.2c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M714.5,98.3c0,0-.1,0-.2-.1h-7.1c0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.3c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-1.1h6.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M717.8,97.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M707.4,86.8c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M707.4,73.9c0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2M727.6,64.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M714.9,64.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M710.7,64.6h-3.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2v5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-4.8h3.3c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1M750.6,63.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.2c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-1.2c0,0,0-.2,0-.2,0,0-.1,0-.2-.1M748.9,64.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.1v8.2c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2M863.5,91.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M838.4,91.9c0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0M842.2,91.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M851.1,77.5c0,0-.1,0-.2-.1h-5.4v-2.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v2.9c0,0,0,.2.1.2,0,0,.1,0,.2,0h5.6c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M863.7,77.5c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M825.7,91.4c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M787.6,91.4c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M804.1,91.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M800.3,91.4c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M845.2,63.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2v6.8c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-6.8c0,0,0-.2,0-.2,0,0-.1,0-.2-.1M892.9,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M905.6,203.4c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M876.2,203.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M888.9,203.4c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M880.7,187.2c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M876.6,187.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M876.4,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M889.1,182.7c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M906.2,186.7c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8M902,187.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M901.6,182.6h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1M905.8,182.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M893.1,154.6c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M876.4,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M888.9,155.2c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M914.5,154.8c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M901.8,91.4c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M905.6,91.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2M876.2,91.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M888.9,91.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M876.2,77.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M888.9,77.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M893.1,77.4c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5M905.6,77.9c0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2Z" fill="#425563"/>
-                <path d="M750.8,77.5c0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2M763.5,77.9c0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0M775.8,77.1c0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2h0c0,.1-7.7.1-7.7.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8c0,0,.2,0,.2,0,0,0,0-.1,0-.2v-.4c0,0,0-.2,0-.2M712.6,77.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-7v-1c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v1.3c0,0,0,.2.1.2,0,0,.1,0,.2,0h7.2M725.3,77.9c0,0,.2,0,.2,0,0,0,0-.1,0-.2,0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5M738.2,77.7c0,0,0-.2,0-.2,0,0-.1,0-.2-.1h-8.5c0,0-.2,0-.2.1,0,0,0,.1-.1.2,0,0,0,.2.1.2,0,0,.1,0,.2,0h8.5c0,0,.2,0,.2,0,0,0,0-.1,0-.2M705.6,63.7c0,0,0-.2,0-.2,0,0-.1,0-.2-.1,0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5M775.6,64.3c0,0-.2,0-.2.1,0,0,0,.1-.1.2v8.5c0,0,0,.2.1.2,0,0,.1,0,.2,0,0,0,.2,0,.2,0,0,0,0-.1,0-.2v-8.5c0,0,0-.2,0-.2,0,0-.1,0-.2-.1Z" fill="#425563"/>
-              </g>
-              <g id="Text">
-                <text transform="translate(788.7 138)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">27’ 10” x 10’ 0”</tspan></text>
-                <text transform="translate(779.9 119.4)" fill="#425563" font-family="Fredoka, sans-serif" font-size="16"><tspan x="0" y="0">Optional Bar</tspan></text>
-              </g>
-            </g>
-          </g>
       </g>
     </g>
   </svg>
