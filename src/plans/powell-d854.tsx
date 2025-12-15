@@ -7551,7 +7551,6 @@ export const PowellD854BasementOptions = [
 ];
 export const PowellD854 = {
     code: "PowellD854",
-
     title: "Meet the Powell",
     description:
       `Shared time is all the more precious when you’re also given
