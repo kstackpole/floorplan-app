@@ -101,7 +101,7 @@ export function MudroomHotspot() {
   return (
     <g
       role="button"
-      aria-label="Open mudroom video"
+      aria-label="Open mudroom gallary"
       tabIndex={0}
       onClick={open}
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open()}
@@ -2133,6 +2133,7 @@ export function DillonD399SecondSVG({
           transform={mirror ? `translate(${VBW} 0) scale(-1 1)` : undefined}
         >
             <g id="second_floor">
+                <polygon id="BG" points="719.6 292.82 719.6 260.32 648.91 260.32 648.91 259.72 463.55 259.72 463.55 260.04 125.69 260.04 125.69 1179.43 465.53 1179.43 465.53 1147.14 643.63 1147.14 643.63 1180.08 1016.45 1180.08 1016.45 292.82 719.6 292.82" fill="#fff"/>
                 <g id="flooring1" data-name="flooring">
                 <g id="Flooring1" data-name="Flooring">
                     <rect x="195.39" y="567.6" width="20.78" height="21.53" fill="#bcd3dd"/>
@@ -3176,6 +3177,7 @@ export function DillonD399basementSVG({
           transform={mirror ? `translate(${VBW} 0) scale(-1 1)` : undefined}
         >
             <g id="basement">
+                <polygon id="BG" points="719.6 292.82 719.6 260.32 648.91 260.32 648.91 259.72 463.55 259.72 463.55 260.04 125.69 260.04 125.69 1179.43 465.53 1179.43 465.53 1147.14 643.63 1147.14 643.63 1180.08 1016.45 1180.08 1016.45 292.82 719.6 292.82" fill="#fff"/>
                 <g id="flooring">
                 <rect x="721.91" y="366.98" width="21.14" height="21.9" fill="#bcd3dd"/>
                 <rect x="700.38" y="366.98" width="21.14" height="21.9" fill="#bcd3dd"/>
