@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 // import Topbar from "./components/Topbar";
 import useFPState from "./store/useFPState";
 import FloorPlan from "./components/FloorPlan";
+import PlanRepository from "./pages/PlanRepository";
 import { selectPlan, selectFloor } from "./plans";
 import MediaModal from "./components/mediaModal";
 
@@ -212,11 +213,10 @@ export default function App() {
       {/* <div className="sticky top-0 z-50">
         <Topbar />
       </div> */}
-
       <Routes>
-        <Route path="/" element={<Navigate to="raleighp741" replace />} />
-        <Route path=":planId" element={<FloorPlanPage />} />
-        <Route path="*" element={<Navigate to="raleighp741" replace />} />
+        <Route path="/plans" element={<PlanRepository />} />
+        <Route path="/plans/:planId" element={<FloorPlanPage />} />
+        <Route path="*" element={<Navigate to="/plans" replace />} />
       </Routes>
     </div>
   );

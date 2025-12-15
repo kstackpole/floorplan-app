@@ -8,6 +8,7 @@ import { danielD237 } from "./daniel-d237";
 import { AugustaP740 } from "./augusta-p740";
 import { RaleighP741 } from "./raleigh-p741";
 import { DillonD399 } from "./dillon-d399";
+import { PowellD854 } from "./powell-d854";
 
 
 const toLowerKey = (code: string) => code.toLowerCase();
@@ -21,6 +22,7 @@ export const plans: Record<string, Plan> = {
   [toLowerKey(AugustaP740.code)]: AugustaP740,
   [toLowerKey(RaleighP741.code)]: RaleighP741,
   [toLowerKey(DillonD399.code)]: DillonD399,
+  [toLowerKey(PowellD854.code)]: PowellD854,
 };
 
 const humanize = (s: string) =>
@@ -28,7 +30,7 @@ const humanize = (s: string) =>
 
 export function selectPlan(planId?: string): Plan & { title: string; description: string } {
   const key = toLowerKey(planId ?? "plana");
-  const plan = plans[key] ?? plans["plana"] ?? Object.values(plans)[0];
+  const plan = plans[key] ?? plans["plana"] ?? Object.values(plans)[0];  
 
   // guarantee fields for UI
   return {
@@ -37,6 +39,16 @@ export function selectPlan(planId?: string): Plan & { title: string; description
     description: plan.description ?? "",
   };
 }
+
+export function getAllPlans(): (Plan & { title: string })[] {
+  return Object.values(plans)
+    .map((plan) => ({
+      ...plan,
+      title: plan.title ?? humanize(plan.code),
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
 
 export function selectFloor(plan: Plan, floorIndex: number) {
   return plan.floors[floorIndex] ?? plan.floors[0];
