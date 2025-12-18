@@ -311,6 +311,9 @@ export function DariusD786mainSVG({
         >
           
           <g id="main_floor">
+            <g id="background">
+              
+            </g>
             <g id="f1_structural">
               <g id="Flooring">
                 <rect x="670.6" y="259.6" width="20.8" height="21.5" fill="#bcd3dd"/>
