@@ -142,8 +142,8 @@ export function FlexSpaceHotspot() {
   
   const media = {
     id: "dropzone",
-    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
-    text: `You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
+    title: "FLEX IT YOUR WAY",
+    text: `Flexible spaces empower multiple generations with different needs living under the same roof. Need an extra bedroom? A second office? More storage? Flex spaces are designed to put you in control.`,
     src: `${base}videos/FlexSpace_hotspot.mp4`,
     thumb: `${base}assets/thumbs/drop-zone.png`,
   };
@@ -179,8 +179,8 @@ export function StorageBAHotspot() {
 
   const open = () => {
     openCompare({
-      title: "Before vs After",
-      text: "Slide to reveal the impressive storage space.",
+      title: "STORE IT OUT OF THE WAY",
+      text: "When our spaces are too full or messy, it stresses us out and makes it difficult to relax. Unfinished storage is perfect for stashing holiday deco, ski equipment, and luggage—keeping your garage clutter-free and ready for everyday needs.",
       before: {
         src: `${base}/images/ext-stg-af.jpg`,
         alt: "Full Closet",
@@ -5390,12 +5390,7 @@ export const dariusD786 = {
 
     title: "Meet the Darius",
     description:
-      `Life never stands still, and neither do your needs. That’s why
-this home offers flexible spaces that grow with you, storage
-right where you need it, and welcoming areas made for
-bringing people together. A place to quiet the chaos, find a
-little tranquility, and share more moments with the ones you
-love most. Welcome home.`,
+      `Life never stands still, and neither do your needs. That’s why this home offers flexible spaces that grow with you, storage right where you need it, and welcoming areas made for bringing people together. A place to quiet the chaos, find a little tranquility, and share more moments with the ones you love most. Welcome home.`,
     floors: [
         { 
           id: "main", 
