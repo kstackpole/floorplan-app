@@ -2,41 +2,25 @@ import { useEffect, } from "react";
 import type { SVGProps } from "../types/floorplan";
 import type { Plan } from "../types/floorplan"
 import useFPState from "../store/useFPState";
-import WaterSaverGame from "../components/games/WaterSaverGame";
-import InsulationSavingsGame from "../components/games/InsulationSavingsGame";
-import WindowIRGame from "../components/games/WindowIRGame";
-import MudroomMiniGame from "../components/games/MudroomMiniGame";
 
 
 // LIFESTYLE FEATURES
-export function KitchenHotspot() {
+
+export function GarageHotspot() {
   const { openGallery, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
 
   const gallery = {
-    title: "SERVE UP SUBSTANTIAL STORAGE",
-    text: `Tuck it away before you tuck into your meal! An
-extended wall of cabinetry in the open dining
-area provides smart storage for dishware,
-linens, and all your entertaining essentials.`,
+    id: "greatroom",
+    title: "ENJOY PLAY TIME (AND SPACE) FOR GROWN-UPS",
+    text: `With a 3-car garage, you have extra space to accommodate your lifestyle. Showcase your favorite grown-up toys in their own spaces, happily coexisting with extra storage, a hobby zone, or guest parking.`,
     index: 0,
     items: [
       {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
+        src: `${base}images/3-carGarage_S.gif`,
+        thumb: `${base}images/3-carGarage_S.gif`,
+        alt: "3 car garage — view 1",
+        meta: "3 car garage filling with cars",
       },
     ],
   } as const;
@@ -56,545 +40,45 @@ linens, and all your entertaining essentials.`,
       // make sure SVG transforms scale from the element center
       style={{ transformOrigin: "center", transformBox: "fill-box" }}
     >
-      <circle className="dot" cx={275} cy={280} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={275} cy={280} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={275} y={284} textAnchor="middle" fill="white" fontSize={12}>
-        1
-      </text>
-    </g>
-  );
-}
-export function PantryHotspot() {
-  const { openGallery, openModal } = useFPState();
-  
-  const gallery = {
-    title: "CONTAIN THE CHAOS, KEEP THE CALM",
-    text: `While kitchen countertops can be a magnet for
-clutter, this corner walk-in pantry keeps it all out
-of sight. Stow dog food, small appliances, and
-baking supplies so your counters stay clear and
-ready for mixing up culinary magic`,
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
-      },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      // make sure SVG transforms scale from the element center
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={275} cy={490} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={275} cy={490} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={275} y={494} textAnchor="middle" fill="white" fontSize={12}>
+      <circle className="dot" cx={650} cy={850} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={650} cy={850} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
+      <text x={650} y={854} textAnchor="middle" fill="white" fontSize={12}>
         2
       </text>
     </g>
   );
 }
-export function CleaningClosetHotspot() {
-  const { openGallery, openModal } = useFPState();
+export function PantryHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
   
-  const gallery = {
-    title: "HIDE-AND-SWEEP SPOT",
-    text: `A spacious walk-in closet in the hallway is the
-perfect hideaway for your broom and vacuum,
-keeping your cleaning tools hidden but within
-easy reach. It also offers ample room for
-storing boots, coats, bags, and more.`,
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
-      },
-    ],
-  } as const;
+  const media = {
+    id: "Pantry",
+    title: "CONTAIN THE CHAOS, KEEP THE CALM",
+    text: `While kitchen countertops can be a magnet for clutter, this corner walk-in pantry keeps it all out of sight. Stow dog food, small appliances, and baking supplies so your counters stay clear and ready for mixing up culinary magic.`,
+    src: `${base}videos/Pantry_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
 
   const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
+    setVideo(media);
     openModal(); 
   };
 
   return (
     <g
       role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      // make sure SVG transforms scale from the element center
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={525} cy={510} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={525} cy={510} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={525} y={514} textAnchor="middle" fill="white" fontSize={12}>
-        3
-      </text>
-    </g>
-  );
-}
-export function StudyHotspot() {
-  const { openGallery, openModal, active } = useFPState(); // ← add active
-
-  const gallery = {
-    title: "YOUR AT-HOME HQ",
-    text: `Skip the stressful commute and enjoy the
-convenience of a private home office. Perfect
-for working, studying, or planning projects, this
-smart space helps you stay productive without
-compromising your work-life balance.`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 4 - (!active?.optionalPowder ? 2 : 0);
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={490} cy={840} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={490} cy={840} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={490} y={844} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-export function MBRHotspot() {
-  const { openGallery, openModal, active } = useFPState(); // ← add active
-
-  const gallery = {
-    title: "YOUR RETREAT WITHIN YOUR HOME",
-    text: `Situated away from the other bedrooms, this
-primary suite is your private retreat. The en-
-suite bath adds to the spa-like feel, featuring a
-separate water closet and a generous walk-in closet—the perfect setup for one partner to get
-ready without disturbing the other’s rest.`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 5 - (!active?.optionalPowder ? 2 : 0);
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={750} cy={320} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={750} cy={320} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={750} y={324} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-export function BRTwoHotspot() {
-  const { openGallery, openModal, active } = useFPState(); // ← add active
-
-  const gallery = {
-    title: "START MORNINGS LESS MESSY",
-    text: `No matter who is sharing this secondary
-bathroom, everyone gets their own space and
-privacy. With double sinks, abundant storage,
-and a separate water closet, mornings run
-smoothly—no waiting, no hassle.`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 6 - (!active?.optionalPowder ? 2 : 0);
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={490} cy={650} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={490} cy={650} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={490} y={654} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-export function GreatRoomHotspot() {
-  const { openGallery, openModal, active } = useFPState(); // ← add active
-
-  const gallery = {
-    title: "ENJOY ROOM TO ROAM",
-    text: `This home is airy and open, with space to
-spare! Soaring ceilings in the main living
-areas bring a sense of freedom, while wide
-stairs make moving furniture effortless. Large
-basement windows fill the lower level with
-light, making every corner feel welcoming
-and spacious.`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 7 - (!active?.optionalPowder ? 2 : 0);
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={550} cy={250} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={550} cy={250} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={550} y={254} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-export function GarageHotspot() {
-  const { openGallery, openModal, active } = useFPState(); // ← add active
-
-  const gallery = {
-    title: "ROOM FOR WHAT MOVES YOU",
-    text: `With an extra-deep 2-car garage plus
-a convenient third bay, there’s room for
-everything that fuels your lifestyle. Store your
-vehicles, park your toys, build your projects, or
-stash your gear—your space, your rules!`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 8 - (!active?.optionalPowder ? 2 : 0);
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={750} cy={900} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={750} cy={900} r={20} stroke="#af272f" fill="transparent" opacity={0.90} />
-      <text x={750} y={904} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-export function RecRoomHotspot() {
-  const { openGallery, openModal } = useFPState();
-
-  const gallery = {
-    title: "RELAX AND RECHARGE",
-    text: `With an extra-deep 2-car garage plus
-a convenient third bay, there’s room for
-everything that fuels your lifestyle. Store your
-vehicles, park your toys, build your projects, or
-stash your gear—your space, your rules!`,
-    index: 0,
-    items: [
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1", meta: "View toward TV" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2", meta: "View toward kitchen" },
-      { src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3", meta: "Seating layout" },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal();
-  };
-
-  // If the <g id="fifthBed"> group is active (i.e., active.fifthBed === true), decrement the label
-  const label = 1
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-      style={{ transformOrigin: "center", transformBox: "fill-box" }}
-    >
-      <circle className="dot" cx={350} cy={350} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={350} cy={350} r={20} stroke="#af272f" fill="transparent" opacity={0.90} />
-      <text x={350} y={354} textAnchor="middle" fill="white" fontSize={12}>
-        {label}
-      </text>
-    </g>
-  );
-}
-// GAMES
-export function WindowIRHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "IR Window Efficiency",
-      text: "Point the virtual IR laser at a standard window vs our high-efficiency window and see interior surface temperature, heat flow, and $/hr impact under today’s weather.",
-      render: () => <WindowIRGame />,
-    });
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open IR window efficiency game"
+      aria-label="Open drop zone video"
       tabIndex={0}
       onClick={open}
       onKeyDown={(e) => e.key === "Enter" && open()}
       className="hotspot cursor-pointer"
     >
-      {/* Set these to the window location you want */}
-      <circle className="dot" cx={800} cy={60} r={20} fill="#ebde34" opacity={1} />
-      <circle className="pulse" cx={800} cy={60} r={20} stroke="#ebde34" fill="transparent" opacity={1} />
-      <text x={800} y={64} textAnchor="middle" fill="white" fontSize={12}>IR</text>
-    </g>
-  );
-}
-export function ShowerWaterSaverHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Save Water in the Shower",
-      text:
-        "Adjust your shower length, press Play, and see how our efficient fixtures compare to standard ones.",
-      render: () => (
-        <WaterSaverGame
-          gpmStandard={2.5}   // standard shower head
-          gpmEfficient={1.8}  // your fixture
-          costPerGallon={0.015}
-        />
-      ),
-    });
-    openModal(); // bring the app front-and-center by default
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open water saver game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={890} cy={320} r={20} fill="#049dcc" opacity={1} />
-      <circle className="pulse" cx={890} cy={320} r={20} stroke="#049dcc" fill="transparent" opacity={1} />
-      <text x={890} y={324} textAnchor="middle" fill="white" fontSize={12}>
-        W
-      </text>
-    </g>
-  );
-}
-export function InsulationHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Insulation Savings",
-      text:
-        "Compare seasonal heating & cooling costs between standard insulation and our specialized system. Adjust R-value, climate, and rates—then press Play.",
-      render: () => <InsulationSavingsGame />,
-    });
-    openModal(); // front and center by default
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open insulation savings mini-game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      {/* set these to the wall/attic you want */}
-      <circle className="dot" cx={220} cy={820} r={20} fill="#cca104" opacity={1} />
-      <circle className="pulse" cx={220} cy={820} r={20} stroke="#cca104" fill="transparent" opacity={1} />
-      <text x={220} y={824} textAnchor="middle" fill="white" fontSize={12}>
-        I
-      </text>
-    </g>
-  );
-}
-
-export function MudroomOrganizerHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Mudroom Organizer",
-      text:
-        "Drag coats, backpacks, shoes and more into hooks and cubbies to see how much this mudroom can hold.",
-      render: () => <MudroomMiniGame width={960} height={560} />,
-    });
-    openModal(); // bring the game front-and-center
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open Mudroom Organizer game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={560} cy={690} r={20} fill="#f59e0b" opacity={1} />
-      <circle className="pulse" cx={560} cy={690} r={20} stroke="#f59e0b" fill="transparent" opacity={0.9} />
-      <text x={560} y={694} textAnchor="middle" fill="white" fontSize={12} fontWeight={700}>
-        O
+      <circle className="dot" cx={280} cy={501} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={280} cy={501} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={280} y={505} textAnchor="middle" fill="white" fontSize={12}>
+        1
       </text>
     </g>
   );
@@ -3017,9 +2501,8 @@ export function DanielD237mainSVG({
                 <path d="M293.4,493.9c-.2,0-.3,0-.3,0,0,0-.1-.1-.1-.2,0,0,0-.2,0-.3v-3.1c0,0,0-.2,0-.3,0,0,0-.1.1-.2,0,0,.2,0,.3,0s.3,0,.3,0c0,0,.1,0,.1.2,0,0,0,.1,0,.2v.2s0,0,0-.2c0,0,.1-.1.2-.2,0,0,.2-.1.3-.2.1,0,.3,0,.4,0s.1,0,.2,0c0,0,.2,0,.2,0,0,0,.1,0,.2,0,0,0,.1,0,.1.1s0,.1,0,.2c0,.2,0,.3-.1.5,0,.1-.2.2-.3.2s-.1,0-.2,0c0,0,0,0,0,0s0,0-.1,0c0,0-.1,0-.2,0s-.2,0-.3,0c0,0-.2,0-.2.1,0,0-.1.1-.2.2,0,0,0,.2,0,.3v2.1c0,0,0,.2,0,.3,0,0,0,.1-.1.2,0,0-.2,0-.4,0Z" fill="#425563"/>
                 <path d="M298.2,493.5l-2-3c0-.2-.1-.3-.1-.4,0-.1.1-.2.3-.3.2-.1.3-.1.4-.1,0,0,.2.1.3.3l1.6,2.4-.4,1.1ZM297.5,495.6c-.2,0-.3-.2-.3-.3,0,0,0-.2,0-.4l2.2-4.9c0-.2.2-.3.3-.3,0,0,.2,0,.4,0,.2,0,.3.2.3.3,0,0,0,.2,0,.4l-2.2,4.9c0,.2-.2.3-.2.3s-.2,0-.4,0Z" fill="#425563"/>
               </g>
-              <PantryHotspot/>
-              <CleaningClosetHotspot/>
             </g>
+            <PantryHotspot/>
           </g>
           {/* OPTION: Master Bath Layout 2 */}
           <g id="masterBathTwo" data-option="masterBathTwo" style={{ display: active.masterBathTwo ? "block" : "none" }} fill="#CC0001">
@@ -3087,12 +2570,6 @@ export function DanielD237mainSVG({
             </g>
           </g>
           {/* HOTSPOTS */}
-          <KitchenHotspot/>
-          <StudyHotspot/>
-          <MBRHotspot/>
-          <BRTwoHotspot/>
-          <GreatRoomHotspot/>
-          <GarageHotspot/>
       </g>
     </g>
   </svg>
@@ -4841,7 +4318,6 @@ export function DanielD237basementSVG({
 
           <g id="slidingGlass" data-option="slidingGlass" style={{ display: active.slidingGlass ? "block" : "none" }} fill="#CC0001">
           </g>
-          <RecRoomHotspot/>
       </g>
     </g>
   </svg>
@@ -4857,12 +4333,13 @@ export const danielD237: Plan = {
     code: "danield237",
     title: "Meet the Daniel",
     description:
-      `Life evolves—and so does the way you live. This thoughtfully
-      designed home offers ample storage, spaces for shared
-      moments, and plenty of private corners to relax, reflect, and
-      recharge. Whether you’re enjoying quiet mornings, lively
-      family gatherings, or a peaceful evening retreat, calm meets
-      connection here. This is more than a house—this is home.`,
+      `Life evolves—and so does the way you live. 
+      This thoughtfully designed home offers ample storage, 
+      spaces for shared moments, and plenty of private corners 
+      to relax, reflect, and recharge. Whether you’re enjoying 
+      quiet mornings, lively family gatherings, or a peaceful 
+      evening retreat, calm meets connection here. This is 
+      more than a house—this is home.`,
     floors: [
         { 
           id: "main", 
