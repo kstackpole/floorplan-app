@@ -159,11 +159,18 @@ function VideoEmbed({ title, src, thumb }: { title: string; src: string; thumb?:
   }
   if (isMp4) {
     return (
-      <video className="w-full h-full" controls poster={thumb} preload="metadata">
+      <video
+        className="w-full aspect-video rounded-lg bg-black"
+        controls
+        poster={thumb}
+        preload="metadata"
+        playsInline
+      >
         <source src={src} type="video/mp4" />
       </video>
     );
   }
+
   return <div className="flex items-center justify-center h-[50vh] text-sm text-gray-500">Unsupported video</div>;
 }
 

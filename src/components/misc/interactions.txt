@@ -1,0 +1,128 @@
+
+// GAMES
+export function WindowIRHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "IR Window Efficiency",
+      text: "Point the virtual IR laser at a standard window vs our high-efficiency window and see interior surface temperature, heat flow, and $/hr impact under today’s weather.",
+      render: () => <WindowIRGame />,
+    });
+    openModal();
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open IR window efficiency game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      {/* Set these to the window location you want */}
+      <circle className="dot" cx={800} cy={60} r={20} fill="#ebde34" opacity={1} />
+      <circle className="pulse" cx={800} cy={60} r={20} stroke="#ebde34" fill="transparent" opacity={1} />
+      <text x={800} y={64} textAnchor="middle" fill="white" fontSize={12}>IR</text>
+    </g>
+  );
+}
+export function ShowerWaterSaverHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "Save Water in the Shower",
+      text:
+        "Adjust your shower length, press Play, and see how our efficient fixtures compare to standard ones.",
+      render: () => (
+        <WaterSaverGame
+          gpmStandard={2.5}   // standard shower head
+          gpmEfficient={1.8}  // your fixture
+          costPerGallon={0.015}
+        />
+      ),
+    });
+    openModal(); // bring the app front-and-center by default
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open water saver game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={890} cy={320} r={20} fill="#049dcc" opacity={1} />
+      <circle className="pulse" cx={890} cy={320} r={20} stroke="#049dcc" fill="transparent" opacity={1} />
+      <text x={890} y={324} textAnchor="middle" fill="white" fontSize={12}>
+        W
+      </text>
+    </g>
+  );
+}
+export function InsulationHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "Insulation Savings",
+      text:
+        "Compare seasonal heating & cooling costs between standard insulation and our specialized system. Adjust R-value, climate, and rates—then press Play.",
+      render: () => <InsulationSavingsGame />,
+    });
+    openModal(); // front and center by default
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open insulation savings mini-game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      {/* set these to the wall/attic you want */}
+      <circle className="dot" cx={220} cy={820} r={20} fill="#cca104" opacity={1} />
+      <circle className="pulse" cx={220} cy={820} r={20} stroke="#cca104" fill="transparent" opacity={1} />
+      <text x={220} y={824} textAnchor="middle" fill="white" fontSize={12}>
+        I
+      </text>
+    </g>
+  );
+}
+
+export function MudroomOrganizerHotspot() {
+  const { openApp, openModal } = useFPState();
+
+  const open = () => {
+    openApp({
+      title: "Mudroom Organizer",
+      text:
+        "Drag coats, backpacks, shoes and more into hooks and cubbies to see how much this mudroom can hold.",
+      render: () => <MudroomMiniGame width={960} height={560} />,
+    });
+    openModal(); // bring the game front-and-center
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open Mudroom Organizer game"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={560} cy={690} r={20} fill="#f59e0b" opacity={1} />
+      <circle className="pulse" cx={560} cy={690} r={20} stroke="#f59e0b" fill="transparent" opacity={0.9} />
+      <text x={560} y={694} textAnchor="middle" fill="white" fontSize={12} fontWeight={700}>
+        O
+      </text>
+    </g>
+  );
+}

@@ -1,20 +1,16 @@
 import { useEffect, useRef } from "react";
 import type { SVGProps } from "../types/floorplan";
 import useFPState from "../store/useFPState";
-import WaterSaverGame from "../components/games/WaterSaverGame";
-import InsulationSavingsGame from "../components/games/InsulationSavingsGame";
-import WindowIRGame from "../components/games/WindowIRGame";
-import MudroomMiniGame from "../components/games/MudroomMiniGame";
 import usePanZoomPreview from "../hooks/usePanZoomPreview";
 
 
 // LIFESTYLE FEATURES
-export function GreatRoomHotspot() {
+export function PictureHotspot() {
   const { openGallery, openModal } = useFPState();
 
   const gallery = {
     id: "greatroom",
-    title: "TRULY UNPLUG AT THE END OF DAY",
+    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
     text: `Research shows that TV is a sleep disruptor, delaying deep sleep. Thoughtful placement of the great room TV, away from bedroom walls, means you can stop the disruptions and start counting sheep.`,
     index: 0,
     items: [
@@ -62,408 +58,136 @@ export function GreatRoomHotspot() {
     </g>
   );
 }
-export function MudroomHotspot() {
-  const { openGallery, openModal } = useFPState();
 
-  const gallery = {
-    id: "mudroom",
-    title: `FIND YOUR LOST-AND-FOUND AT-HOME ZONE`,
-    text: `You know the feeling… everyone walks in, drops their bags, 
-    coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
-      },
-    ],
-  } as const;
+export function DropZoneHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+  
+  const media = {
+    id: "dropzone",
+    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
+    text: `You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
+    src: `${base}videos/DropZone_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
 
   const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
+    setVideo(media);
     openModal(); 
   };
 
   return (
     <g
       role="button"
-      aria-label="Open mudroom video"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={530} cy={720} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={530} cy={720} r={20} fill="transparent" stroke="#af272f" opacity={1} />
-      <text x={530} y={724} textAnchor="middle" fill="white" fontSize={12}>
-        2
-      </text>
-    </g>
-  );
-}
-
-export function GuestHotspot() {
-  const { openGallery, openModal } = useFPState();
-
-  const gallery = {
-    title: "MAKE ROOM FOR GUESTS",
-    text: "This guest suite has an attached living area and bath, perfect for a mother-in-law, live-in nanny or frequent out of town visitors.",
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41334.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41334.webp",
-        alt: "Guest suite — view 1",
-        meta: "View toward bed",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41335.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41335.webp",
-        alt: "Guest suite — view 2",
-        meta: "View toward sitting area",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45982.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45982.webp",
-        alt: "Guest suite — view 3",
-        meta: "View toward bath",
-      },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open guest suite gallery"
+      aria-label="Open drop zone video"
       tabIndex={0}
       onClick={open}
       onKeyDown={(e) => e.key === "Enter" && open()}
       className="hotspot cursor-pointer"
     >
-      <circle className="dot" cx={900} cy={601} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={900} cy={601} r={20} stroke="#af272f" fill="transparent" opacity={0.95} />
-      <text x={900} y={605} textAnchor="middle" fill="white" fontSize={12}>
+      <circle className="dot" cx={540} cy={681} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={540} cy={681} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={540} y={685} textAnchor="middle" fill="white" fontSize={12}>
+        1
+      </text>
+    </g>
+  );
+}
+export function GarageHotspot() {
+  const { openGallery, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+
+  const gallery = {
+    id: "greatroom",
+    title: "ENJOY PLAY TIME (AND SPACE) FOR GROWN-UPS",
+    text: `With a 3-car garage, you have extra space to accommodate your lifestyle. Showcase your favorite grown-up toys in their own spaces, happily coexisting with extra storage, a hobby zone, or guest parking.`,
+    index: 0,
+    items: [
+      {
+        src: `${base}images/3-carGarage_S.gif`,
+        thumb: `${base}images/3-carGarage_S.gif`,
+        alt: "3 car garage — view 1",
+        meta: "3 car garage filling with cars",
+      },
+    ],
+  } as const;
+
+  const open = () => {
+    openGallery({ ...gallery, items: [...gallery.items] });
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+      // make sure SVG transforms scale from the element center
+      style={{ transformOrigin: "center", transformBox: "fill-box" }}
+    >
+      <circle className="dot" cx={650} cy={850} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={650} cy={850} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
+      <text x={650} y={854} textAnchor="middle" fill="white" fontSize={12}>
+        2
+      </text>
+    </g>
+  );
+}
+export function FlexSpaceHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+  
+  const media = {
+    id: "dropzone",
+    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
+    text: `You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
+    src: `${base}videos/FlexSpace_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
+
+  const open = () => {
+    setVideo(media);
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open flex space video"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={740} cy={681} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={740} cy={681} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={740} y={685} textAnchor="middle" fill="white" fontSize={12}>
         3
       </text>
     </g>
   );
 }
 
-export function TowelHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "towels",
-    title: "TUCK AWAY TOWELS",
-    text: "A linen closet in the laundry makes putting away sheets and towels a breeze.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open towel storage video"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={640} cy={501} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={640} cy={501} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={640} y={505} textAnchor="middle" fill="white" fontSize={12}>
-        4
-      </text>
-    </g>
-  );
-}
-
-export function StorageHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "storage",
-    title: "UNLOCK EXTRA STORAGE",
-    text: "With a 3-car garage, you have extra space to accomodate your lifestyle. Use the bonus bay for storage, a hobby zone or guest parking.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={740} cy={911} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={740} cy={911} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={740} y={915} textAnchor="middle" fill="white" fontSize={12}>5</text>
-    </g>
-  );
-}
-export function QualityTimeHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "qualitytime",
-    title: "MAXIMIZE QUALITY TIME",
-    text: "The basement recreation room is the perfect place to gather with family, play games, watch movies and connect.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={500} cy={301} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={500} cy={301} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={500} y={305} textAnchor="middle" fill="white" fontSize={12}>1</text>
-    </g>
-  );
-}
-export function FlexHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "flex",
-    title: "FLEX IT YOUR WAY",
-    text: "Need an extra bedroom? A second office? More storage? Flex space puts you in control.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={710} cy={601} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={710} cy={601} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={710} y={605} textAnchor="middle" fill="white" fontSize={12}>2</text>
-    </g>
-  );
-}
-export function StoreTwoHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "storetwo",
-    title: "STORE IT OUT OF THE WAY",
-    text: "Perfect for stashing your Christmas tree, ski equipment, and luggage—this 2 space helps keep your garage clutter-free and ready for everyday needs.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={310} cy={1001} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={310} cy={1001} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={310} y={1005} textAnchor="middle" fill="white" fontSize={12}>3</text>
-    </g>
-  );
-}
-// GAMES
-export function WindowIRHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "IR Window Efficiency",
-      text: "Point the virtual IR laser at a standard window vs our high-efficiency window and see interior surface temperature, heat flow, and $/hr impact under today’s weather.",
-      render: () => <WindowIRGame />,
-    });
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open IR window efficiency game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      {/* Set these to the window location you want */}
-      <circle className="dot" cx={800} cy={60} r={20} fill="#ebde34" opacity={1} />
-      <circle className="pulse" cx={800} cy={60} r={20} stroke="#ebde34" fill="transparent" opacity={1} />
-      <text x={800} y={64} textAnchor="middle" fill="white" fontSize={12}>IR</text>
-    </g>
-  );
-}
-export function ShowerWaterSaverHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Save Water in the Shower",
-      text:
-        "Adjust your shower length, press Play, and see how our efficient fixtures compare to standard ones.",
-      render: () => (
-        <WaterSaverGame
-          gpmStandard={2.5}   // standard shower head
-          gpmEfficient={1.8}  // your fixture
-          costPerGallon={0.015}
-        />
-      ),
-    });
-    openModal(); // bring the app front-and-center by default
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open water saver game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={890} cy={320} r={20} fill="#049dcc" opacity={1} />
-      <circle className="pulse" cx={890} cy={320} r={20} stroke="#049dcc" fill="transparent" opacity={1} />
-      <text x={890} y={324} textAnchor="middle" fill="white" fontSize={12}>
-        W
-      </text>
-    </g>
-  );
-}
-export function InsulationHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Insulation Savings",
-      text:
-        "Compare seasonal heating & cooling costs between standard insulation and our specialized system. Adjust R-value, climate, and rates—then press Play.",
-      render: () => <InsulationSavingsGame />,
-    });
-    openModal(); // front and center by default
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open insulation savings mini-game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      {/* set these to the wall/attic you want */}
-      <circle className="dot" cx={220} cy={820} r={20} fill="#cca104" opacity={1} />
-      <circle className="pulse" cx={220} cy={820} r={20} stroke="#cca104" fill="transparent" opacity={1} />
-      <text x={220} y={824} textAnchor="middle" fill="white" fontSize={12}>
-        I
-      </text>
-    </g>
-  );
-}
-
-export function MudroomOrganizerHotspot() {
-  const { openApp, openModal } = useFPState();
-
-  const open = () => {
-    openApp({
-      title: "Mudroom Organizer",
-      text:
-        "Drag coats, backpacks, shoes and more into hooks and cubbies to see how much this mudroom can hold.",
-      render: () => <MudroomMiniGame width={960} height={560} />,
-    });
-    openModal(); // bring the game front-and-center
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open Mudroom Organizer game"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={560} cy={690} r={20} fill="#f59e0b" opacity={1} />
-      <circle className="pulse" cx={560} cy={690} r={20} stroke="#f59e0b" fill="transparent" opacity={0.9} />
-      <text x={560} y={694} textAnchor="middle" fill="white" fontSize={12} fontWeight={700}>
-        O
-      </text>
-    </g>
-  );
-}
-
 // Example: Opens the Compare (before/after) modal
-export function BeforeAfterHotspot() {
+export function StorageBAHotspot() {
   const { openCompare, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
 
   const open = () => {
     openCompare({
       title: "Before vs After",
       text: "Slide to reveal the impressive storage space.",
       before: {
-        src: "https://onlinedesign.richmondamerican.com/2025_Specials/Images/03_Touchscreen_IFP/after.jpg",
-        alt: "Closet full of clothes",
+        src: `${base}/images/ext-stg-af.jpg`,
+        alt: "Full Closet",
         label: "Before",
       },
       after: {
-        src: "https://onlinedesign.richmondamerican.com/2025_Specials/Images/03_Touchscreen_IFP/before.jpg",
+        src: `${base}/images/ext-stg-bf.jpg`,
         alt: "Empty Closet",
         label: "After",
       },
@@ -482,18 +206,18 @@ export function BeforeAfterHotspot() {
       className="hotspot cursor-pointer"
     >
       {/* Adjust cx / cy to place this hotspot where you want on the floor plan */}
-      <circle className="dot" cx={700} cy={350} r={20} fill="#34cceb" opacity={1} />
+      <circle className="dot" cx={300} cy={970} r={20} fill="#af272f" opacity={1} />
       <circle
         className="pulse"
-        cx={700}
-        cy={350}
+        cx={300}
+        cy={970}
         r={20}
-        stroke="#34cceb"
+        stroke="#af272f"
         fill="transparent"
         opacity={1}
       />
-      <text x={700} y={354} textAnchor="middle" fill="white" fontSize={12}>
-        BA
+      <text x={300} y={974} textAnchor="middle" fill="white" fontSize={12}>
+        4
       </text>
     </g>
   );
@@ -3443,17 +3167,9 @@ export function DariusD786mainSVG({
               <text transform="translate(935.9 731.3)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">Opt.</tspan><tspan x="-4" y="10">Living</tspan><tspan x="-3.4" y="20">Room</tspan><tspan x="-2.3" y="30">Entry</tspan></text>
             </g>
           </g>
-          {/* Hotspots: Mudroom Hotspot */}
-          <MudroomHotspot />
-          <GreatRoomHotspot />
-          <GuestHotspot />
-          <TowelHotspot />
-          <StorageHotspot />
-          {/* <ShowerWaterSaverHotspot />
-          <InsulationHotspot />
-          <WindowIRHotspot />
-          <MudroomOrganizerHotspot /> */}
-          {/* <BeforeAfterHotspot /> */}
+          {/* Hotspots */}
+          <DropZoneHotspot/>
+          <GarageHotspot />
       </g>
     </g>
   </svg>
@@ -3736,7 +3452,6 @@ export function DariusD786basementSVG({
           ref={worldRef}
           transform={mirror ? `translate(${VBW} 0) scale(-1 1)` : undefined}
         >
-          
         <g id="f0_basement" >
           <g id="f0_structural">
             <path d="M236.6,853h-9.3v55.7h9.3v-55.7M190,873.9h-3.5v14h3.5v-14M186.6,872.7v1.2h3.5v14h-3.5v1.2h4.7v-16.3h-4.7M192.9,854.8c-1.9,1.1-3.4,2.6-4.5,4.5-1.1,2-1.7,4.1-1.8,6.4v7h4.7v16.3h-4.7v7c0,2.3.7,4.5,1.8,6.4,1.1,1.9,2.6,3.4,4.5,4.5,2,1.1,4.1,1.7,6.4,1.7h27.9v-55.7h-27.9c-2.3,0-4.5.7-6.4,1.8M227.3,848.1h-1.3v3.7h-26.6c-2.6,0-4.9.7-7,1.9-2.1,1.3-3.8,3-5,5.1-1.3,2-1.9,4.4-2,7v30.2c0,2.5.7,4.9,2,7,1.2,2.1,2.9,3.8,5,5,2,1.3,4.4,1.9,7,1.9h26.6v3.7h1.3v-4.9h-27.9c-2.3,0-4.5-.6-6.4-1.7-1.9-1.1-3.4-2.6-4.5-4.5-1.1-2-1.7-4.1-1.8-6.4v-30.2c0-2.3.7-4.5,1.8-6.4,1.1-1.9,2.6-3.4,4.5-4.5,2-1.1,4.1-1.7,6.4-1.8h27.9v-4.9M303.8,539h-.8v59.2h11.6v-59.2h-10.8M317.3,537.8l-.2-1.7h-13.3v1.7h13.5M317.3,538.7v-.8h-13.5v1.2h13.5v-.3M317.4,539h-2.9v59.2h9.7l-3.5-28.8,3.4-1.7-7.5-1.7,3.5-1.8-2.7-25.3M317.4,539v-.3c-.1,0-.1.3-.1.3h.1M317.3,536.1h-.2l.2,1.7v-1.7M316.9,535h6.3v-55.7h-11.6v55.7h5.3M317.3,535h-.4l.2,1.2h.2v-1.2M303.8,535h-4v4h4v-4M311.6,535h-7.8v1.2h13.3l-.2-1.2h-5.3M311.6,479.3h-1.7v-3.5h-65.9v122.4h58.9v-59.2h-3.2v-4h11.8v-55.7M346.5,479.3h-11.6v55.7h11.6v-55.7M334.9,479.3h-11.6v55.7h11.6v-55.7M334.9,475.8v1.7h11.6v-1.7h-11.6M323.2,475.8v1.7h11.6v-1.7h-11.6M323.2,477.5v-1.7h-11.6v1.7h11.6M358.1,535v-55.7h-11.6v55.7h11.6M381.3,479.3h-11.6v55.7h11.6v-55.7M369.7,479.3h-11.5v55.7h11.5v-55.7M369.7,477.5h-58v-1.7h-1.7v3.5h73.2v-3.5h-1.8v1.7h-11.6M358.1,477.5v-1.7h-11.6v1.7h11.6M369.7,475.8v1.7h11.6v-1.7h-11.6M369.7,477.5v-1.7h-11.5v1.7h11.5M445.4,523.9v2.3h41.8v-2.3h-41.8M445.4,526.2v-2.3h41.8c-.3-4.9-1.4-9.5-3.3-13.8-2.1-5.1-5.1-9.5-9-13.3-3.8-3.8-8.2-6.8-13.2-9-5.1-2.1-10.5-3.2-16.3-3.3h-4.1v-8.7h-58.2v3.5h-1.8v55.7h60v-8.8h4.1M236.6,305.2h-9.3v55.7h9.3v-55.7M190,326h-3.5v14h3.5v-14M191.2,324.8h-4.7v1.2h3.5v14h-3.5v1.2h4.7v-16.3M192.9,306.9c-1.9,1.1-3.4,2.7-4.5,4.7-1.1,1.9-1.7,4.1-1.8,6.4v6.9h4.7v16.3h-4.7v7c0,2.4.7,4.5,1.8,6.4,1.1,1.9,2.6,3.4,4.5,4.5,2,1.1,4.1,1.7,6.4,1.8h27.9v-55.7h-27.9c-2.3,0-4.5.6-6.4,1.7M227.3,300.2h-1.3v3.7h-26.6c-2.6.1-4.9.7-7,2-2.1,1.2-3.8,2.9-5,5-1.3,2.1-1.9,4.5-2,7.1v30.1c0,2.6.7,4.9,2,7,1.2,2.1,2.9,3.8,5,5.1,2,1.2,4.4,1.8,7,1.9h26.6v3.7h1.3v-4.9h-27.9c-2.3,0-4.5-.7-6.4-1.8-1.9-1.1-3.4-2.6-4.5-4.5-1.1-1.9-1.7-4.1-1.8-6.4v-30.1c0-2.4.7-4.5,1.8-6.4,1.1-2,2.6-3.5,4.5-4.7,2-1.1,4.1-1.7,6.4-1.7h27.9v-5M606.8,13.8h-14v3.5h14v-3.5M607.9,13.8h-1.2v3.5h-14v-3.5h-1.2v4.7h16.3v-4.7M627.7,63.7v-9.3h-55.7v9.3h55.7M614.9,13.8c2.4,0,4.5.6,6.4,1.7,1.9,1.1,3.4,2.7,4.5,4.7,1.1,1.9,1.7,4.1,1.8,6.4v27.8h4.9v-1.3h-3.7v-26.5c0-2.6-.7-5-1.9-7.1-1.3-2-3-3.7-5.1-5-2-1.3-4.4-1.9-7-1.9h-30.1c-2.6,0-5,.6-7.1,1.9-2.1,1.3-3.8,2.9-5,5-1.3,2.1-1.9,4.5-1.9,7.1v26.5h-3.7v1.3h4.9v-27.8c0-2.4.6-4.5,1.7-6.4,1.1-2,2.7-3.5,4.7-4.7,1.9-1.1,4.1-1.7,6.4-1.7h30.1M621.3,15.5c-1.9-1.1-4.1-1.7-6.4-1.7h-7v4.7h-16.3v-4.7h-6.9c-2.4,0-4.5.6-6.4,1.7-2,1.1-3.5,2.7-4.7,4.7-1.1,1.9-1.7,4.1-1.7,6.4v27.8h55.7v-27.8c0-2.4-.7-4.5-1.8-6.4-1.1-2-2.6-3.5-4.5-4.7M816.8,17.3v-3.5h-13.8v3.5h13.8M818,18.5v-4.7h-1.2v3.5h-13.8v-3.5h-1.2v4.7h16.2M837.7,63.7v-9.3h-55.7v9.3h55.7M837.7,26.6c0-2.4-.6-4.5-1.7-6.4-1.1-2-2.7-3.5-4.7-4.7-1.9-1.1-4.1-1.7-6.4-1.7h-7v4.7h-16.2v-4.7h-7c-2.4,0-4.5.6-6.4,1.7-2,1.1-3.5,2.7-4.5,4.7-1.1,1.9-1.7,4.1-1.8,6.4v27.8h55.7v-27.8M837,19.6c-1.3-2-2.9-3.7-5-5-2.1-1.3-4.5-1.9-7.1-1.9h-30.1c-2.6,0-5,.6-7.1,1.9-2,1.3-3.7,2.9-5,5-1.2,2.1-1.8,4.5-1.9,7.1v26.5h-3.7v1.3h4.9v-27.8c0-2.4.7-4.5,1.8-6.4,1.1-2,2.6-3.5,4.5-4.7,1.9-1.1,4.1-1.7,6.4-1.7h30.1c2.4,0,4.5.6,6.4,1.7,2,1.1,3.5,2.7,4.7,4.7,1.1,1.9,1.7,4.1,1.7,6.4v27.8h4.9v-1.3h-3.7v-26.5c0-2.6-.6-5-1.9-7.1M960.8,546.6h3.5v-1.2h-4.7v16.2h4.7v-1.2h-3.5v-13.8M964.3,546.6h-3.5v13.8h3.5v-13.8M664.3,787.9v-37.6h-152.6v297.7h146.2v27.8h256.6v-287.8h-250.1M923.7,525.7h-9.3v55.7h9.3v-55.7M962.5,532c-1.1-2-2.6-3.5-4.5-4.7-1.9-1.1-4.1-1.6-6.4-1.7h-27.8c0-.1,0,0,0,0v55.7h27.8c2.4,0,4.5-.6,6.4-1.7,2-1.1,3.5-2.7,4.5-4.7,1.1-1.9,1.7-4.1,1.8-6.4v-7h-4.7v-16.2h4.7v-7c0-2.4-.7-4.5-1.8-6.4M957.9,527.4c2,1.1,3.5,2.7,4.5,4.7,1.1,1.9,1.7,4.1,1.8,6.4v30.1c0,2.4-.7,4.5-1.8,6.4-1.1,2-2.6,3.5-4.5,4.7-1.9,1.1-4.1,1.6-6.4,1.7h-27.8v4.9h1.2v-3.7h26.7c2.5,0,4.9-.7,7-1.9,2-1.3,3.7-2.9,5-5,1.2-2.1,1.8-4.5,1.9-7.1v-30.1c0-2.6-.7-5-1.9-7.1-1.3-2-2.9-3.7-5-5-2.1-1.2-4.4-1.8-7-1.9h-26.6v-3.8h-1.3v4.9h27.8c2.4.2,4.5.7,6.4,1.8M914.4,360.9V63.7h-402.8v139.3H236.6v266.3h208.9v15.1c5.8,0,11.2,1.2,16.3,3.3,5,2.2,9.4,5.2,13.2,9,3.9,3.8,6.9,8.2,9,13.3,1.9,4.4,3,9,3.3,13.8v2.3h-41.8v12.8h-128l2.7,25.3-3.5,1.8,7.5,1.7-3.4,1.7,3.5,28.8h78.2v4.1h-166v543.1h186.8v-157.8h79v-246.6h171.1v37.7h240.9v-417.9M714.7,196.1c0,.5-.2.9-.5,1.2-.3.4-.7.5-1.2.5-.5,0-.9-.2-1.3-.5-.4-.3-.5-.7-.5-1.2s.2-.9.5-1.3c.4-.4.8-.5,1.3-.5s.9.2,1.2.5c.4.4.5.8.5,1.3M371.1,774.1c0,.5-.2.9-.5,1.2-.3.4-.7.5-1.2.5-.5,0-.9-.2-1.3-.5-.4-.3-.5-.7-.5-1.2,0-.5.2-.9.5-1.3.4-.4.8-.5,1.3-.5.5,0,.9.2,1.2.5.4.4.5.8.5,1.3M669.6,471.3c.4.3.5.7.5,1.3s-.2.9-.5,1.2c-.4.4-.8.5-1.3.5-.5,0-.9-.2-1.2-.5-.4-.3-.5-.7-.5-1.2,0-.6.2-1,.5-1.3.3-.4.7-.5,1.2-.5s.9.2,1.3.5M627.8,505.8v-24.4h33.4v24.4h-33.4M667.9,548.3c0,2.2-.6,4.2-1.6,5.9-1.1,1.7-2.5,3.1-4.2,4.1-1.7,1-3.6,1.5-5.8,1.6-2.2,0-4.2-.6-5.9-1.6-1.7-1.1-3.1-2.4-4.1-4.1-1-1.8-1.5-3.7-1.6-5.9,0-2.2.6-4.1,1.6-5.8,1.1-1.8,2.4-3.2,4.1-4.2,1.8-1,3.7-1.5,5.9-1.6,2.2,0,4.1.6,5.8,1.6,1.8,1.1,3.2,2.5,4.2,4.2,1,1.7,1.5,3.6,1.6,5.8M666.3,554.2c1-1.8,1.5-3.7,1.6-5.9,0-2.2-.6-4.1-1.6-5.8-1.1-1.8-2.5-3.2-4.2-4.2-1.7-1-3.6-1.5-5.8-1.6-2.2,0-4.2.6-5.9,1.6-1.7,1.1-3.1,2.5-4.1,4.2-1,1.7-1.5,3.6-1.6,5.8,0,2.2.6,4.2,1.6,5.9,1.1,1.7,2.4,3.1,4.1,4.1,1.8,1,3.7,1.5,5.9,1.6,2.2,0,4.1-.6,5.8-1.6,1.8-1.1,3.2-2.4,4.2-4.1M627.8,481.4v24.4h33.4v-24.4h-33.4M631.9,484.4c0,.6-.5,1-1.2,1.2-.7-.1-1.1-.5-1.2-1.2,0-.7.5-1.1,1.2-1.2.7,0,1.1.5,1.2,1.2M631.9,502.9c0,.7-.5,1.1-1.2,1.2-.7,0-1.1-.5-1.2-1.2,0-.7.5-1.1,1.2-1.2.7,0,1.1.5,1.2,1.2M637.5,482.2h22.8v22.6h-22.8v-22.6M648.9,493.5l11.4-11.3h-22.8l11.4,11.3M660.4,482.2l-11.4,11.3,11.4,11.3v-22.6M637.5,504.9l11.4-11.3-11.4-11.3v22.6M648.9,493.5l-11.4,11.3h22.8l-11.4-11.3M630.8,504c.7,0,1.1-.5,1.2-1.2,0-.7-.5-1.1-1.2-1.2-.7,0-1.1.5-1.2,1.2,0,.7.5,1.1,1.2,1.2M630.8,485.5c.7-.1,1.1-.5,1.2-1.2,0-.7-.5-1.1-1.2-1.2-.7,0-1.1.5-1.2,1.2,0,.6.5,1,1.2,1.2M923.7,305.2h-9.3v55.7h9.3v-55.7M964.3,324.8v-6.9c0-2.4-.7-4.5-1.8-6.4-1.1-2-2.6-3.5-4.5-4.7-1.9-1.1-4.1-1.7-6.4-1.7h-27.8c0-.1,0,0,0,0v55.7h27.8c2.4,0,4.5-.7,6.4-1.8,2-1.1,3.5-2.6,4.5-4.5,1.1-1.9,1.7-4.1,1.8-6.4v-7h-4.7v-16.3h4.7M964.3,326h-3.5v14h3.5v-14M964.3,326v-1.2h-4.7v16.3h4.7v-1.2h-3.5v-14h3.5M964.3,324.8v23.3c0,2.4-.7,4.5-1.8,6.4-1.1,1.9-2.6,3.4-4.5,4.5-1.9,1.1-4.1,1.7-6.4,1.8h-27.8v4.9h1.2v-3.7h26.7c2.5,0,4.9-.7,7-1.9,2-1.3,3.7-3,5-5.1,1.2-2,1.8-4.4,1.9-7v-30.1c0-2.6-.7-5-1.9-7.1-1.3-2.1-2.9-3.8-5-5-2.1-1.3-4.4-1.9-7-1.9h-26.6v-3.8h-1.3v4.9h27.8c2.4.1,4.5.7,6.4,1.8,2,1.1,3.5,2.7,4.5,4.7,1.1,1.9,1.7,4.1,1.8,6.4v6.9Z" fill="#fff"/>
@@ -5571,7 +5286,6 @@ export function DariusD786basementSVG({
             <text transform="translate(328.2 858.8)" fill="#425563" font-family="Fredoka, sans-serif" font-size="10"><tspan x="0" y="0">13’8”x 11’3”</tspan></text>
           </g>
         </g>
-
           {/* OPTION: Guest Entry */}
           <g id="optionalBar" data-option="optionalBar" style={{ display: active.optionalBar ? "block" : "none" }} fill="#CC0001">
             <g id="f0_optional_bar">
@@ -5650,10 +5364,9 @@ export function DariusD786basementSVG({
               </g>
             </g>
           </g>
-          {/* Hotspots: Mudroom Hotspot */}
-          <QualityTimeHotspot />
-          <FlexHotspot />
-          <StoreTwoHotspot />
+          {/* Hotspots */}
+          <FlexSpaceHotspot/>
+          <StorageBAHotspot/>
       </g>
     </g>
   </svg>
