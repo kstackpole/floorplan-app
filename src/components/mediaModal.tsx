@@ -129,50 +129,80 @@ export default function MediaModal() {
   );
 }
 
-function VideoEmbed({ title, src, thumb }: { title: string; src: string; thumb?: string }) {
+function VideoEmbed({
+  title,
+  src,
+  thumb,
+}: {
+  title: string;
+  src: string;
+  thumb?: string;
+}) {
   const yid = ytId(src);
   const vid = vimeoId(src);
   const isMp4 = /\.mp4(\?|$)/i.test(src);
+
+  // Use a stable key so reopening the modal (or switching hotspots) reliably restarts playback
+  const key = src;
+
   if (yid) {
+    const ytSrc =
+      `https://www.youtube-nocookie.com/embed/${yid}` +
+      `?autoplay=1&mute=1&playsinline=1&controls=1&modestbranding=1&rel=0&iv_load_policy=3`;
+
     return (
       <iframe
+        key={key}
         className="w-full h-full"
-        src={`https://www.youtube-nocookie.com/embed/${yid}?modestbranding=1&rel=0&iv_load_policy=3&controls=1&playsinline=1`}
+        src={ytSrc}
         title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="autoplay; encrypted-media; picture-in-picture"
         allowFullScreen
-        loading="lazy"
+        loading="eager"
       />
     );
   }
+
   if (vid) {
+    const vimeoSrc = `https://player.vimeo.com/video/${vid}?autoplay=1&muted=1`;
+
     return (
       <iframe
+        key={key}
         className="w-full h-full"
-        src={`https://player.vimeo.com/video/${vid}`}
+        src={vimeoSrc}
         title={title}
         allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
-        loading="lazy"
+        loading="eager"
       />
     );
   }
+
   if (isMp4) {
     return (
       <video
+        key={key}
         className="w-full aspect-video rounded-lg bg-black"
+        autoPlay
+        muted
+        playsInline
         controls
         poster={thumb}
-        preload="metadata"
-        playsInline
+        preload="auto"
       >
         <source src={src} type="video/mp4" />
       </video>
     );
   }
 
-  return <div className="flex items-center justify-center h-[50vh] text-sm text-gray-500">Unsupported video</div>;
+  return (
+    <div className="flex items-center justify-center h-[50vh] text-sm text-gray-500">
+      Unsupported video
+    </div>
+  );
 }
+
 
 function GalleryView({
   items,
