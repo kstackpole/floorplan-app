@@ -83,6 +83,41 @@ export function PantryHotspot() {
     </g>
   );
 }
+export function PantryHotspotBase() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+  
+  const media = {
+    id: "Pantry",
+    title: "CONTAIN THE CHAOS, KEEP THE CALM",
+    text: `While kitchen countertops can be a magnet for clutter, this corner walk-in pantry keeps it all out of sight. Stow dog food, small appliances, and baking supplies so your counters stay clear and ready for mixing up culinary magic.`,
+    src: `${base}videos/Pantry_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
+
+  const open = () => {
+    setVideo(media);
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open drop zone video"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={450} cy={531} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={450} cy={531} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={450} y={535} textAnchor="middle" fill="white" fontSize={12}>
+        1
+      </text>
+    </g>
+  );
+}
 
 // PLAN SVG
 export function DanielD237mainSVG({
@@ -151,6 +186,10 @@ export function DanielD237mainSVG({
         >
           
           <g id="main_floor">
+            <g id="background">
+              <polygon points="248.7 1151.47 248.7 66.05 658.94 66.05 658.94 199.62 728.95 199.62 728.95 195.68 733.12 191.51 733.38 191.77 752.73 172.43 752.46 172.16 755.65 168.97 756.15 169.47 756.18 168.76 763.43 168.76 763.93 168.77 844.24 168.77 844.24 168.62 851.47 168.62 851.47 169.33 852.01 168.82 855.21 172.02 855.01 172.22 874.35 191.55 874.55 191.36 878.73 195.54 878.73 199.62 917.76 199.62 917.76 214.13 917.69 214.63 917.69 243.28 917.76 243.28 917.76 348.56 917.69 349.06 917.69 376.93 917.76 376.93 917.76 406.53 917.69 407.03 917.69 461.64 917.76 461.64 917.76 660.72 917.7 661.22 917.7 762.04 918.69 762.04 918.69 976.47 501.58 976.47 501.58 1151.47 248.7 1151.47" fill="#fff"/>
+              <path d="M658.44,66.55v133.57h71.01v-4.24l3.67-3.67.26.26.71-.71,18.64-18.63.71-.71-.27-.27,2.5-2.5,1.04,1.01v-1.41h6.23s1,0,1,0h80.81v-.15h6.23v1.46l1.05-1.05,2.49,2.49-.2.2.71.71,18.64,18.63.69.69.2-.19,3.69,3.69v4.38h39.03v13.51h-.07v30.15h.07v104.28h-.07v29.37h.07v28.6h-.07v56.11h.07v198.08h-.06v102.32h.99v213.43h-417.11v175h-251.88V66.55h409.24M659.44,65.55H248.2v1086.42h253.88v-175h417.11v-215.43h-.99v-100.32h.06v-200.08h-.07v-54.11h.07v-30.6h-.07v-27.37h.07v-106.28h-.07v-28.15h.07v-15.51h-39.03v-3.8h0l-4.66-4.66-.2.19-18.64-18.63.2-.2-3.9-3.9-.05.05v-.05h-8.23v.15h-79.81s-8.23,0-8.23,0v.05l-.05-.05-3.9,3.9.27.27-18.64,18.63-.26-.26-4.66,4.66h-.01v3.66h-69.01V65.55h0Z"/>
+            </g>
             <g id="flooring">
               <g id="sec-br-floor">
                 <rect x="496" y="605.7" width="20.8" height="21.5" fill="#bcd3dd"/>
@@ -2352,6 +2391,7 @@ export function DanielD237mainSVG({
               <text transform="matrix(1 0 0 1 599.8372 735.538)" fill="#425563" fontFamily="Fredoka, sans-serif" fontSize="8.4763px">Entry</text>
               <text transform="matrix(1 0 0 1 582.6396 894.3644)" fill="#425563" fontFamily="Fredoka, sans-serif" fontSize="8.4763px">Covered Entry</text>
             </g>
+            <PantryHotspotBase/>
           </g>
 
           {/* OPTION: Extended Bedroom*/}
@@ -2643,6 +2683,9 @@ export function DanielD237basementSVG({
         >
           
           <g id="basement">
+            <g id="background">
+              <polygon id="background" points="923.77 191.51 923.77 976.85 651.97 976.85 651.97 814.95 571.11 814.95 571.11 977.32 502.89 977.32 502.89 1152.47 245.66 1152.47 245.66 191.51 923.77 191.51" fill="#fff" stroke="#000" stroke-miterlimit="10"/>
+            </g>
             <g id="Rug">
               <g opacity=".6">
                 <g>
