@@ -9,32 +9,127 @@ import usePanZoomPreview from "../hooks/usePanZoomPreview";
 
 
 // LIFESTYLE FEATURES
-export function GreatRoomHotspot() {
+export function DiningRoomHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+
+  const media = {
+    id: "towels",
+    title: "SAVOR WEEKDAY DINNERS AND HOLIDAY FEASTS",
+    text: "This dedicated dining room is a go-to gathering spot for everything from weeknight tacos to holiday chaos and heartfelt celebrations.",
+    src: `${base}videos/DiningRoom_hotspot.mp4`, // or MP4/Vimeo
+    thumb: "/assets/thumbs/mudroom.png",
+  };
+
+  const open = () => {
+    setVideo(media);
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open towel storage video"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={200} cy={901} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={200} cy={901} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={200} y={905} textAnchor="middle" fill="white" fontSize={12}>
+        1
+      </text>
+    </g>
+  );
+}
+export function PantryHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+  
+  const media = {
+    id: "Pantry",
+    title: "HIDE CLUTTER AND HOST WITH EASE",
+    text: `This pantry keeps countertops clutter-free and everything neatly tucked away—from baking essentials to dog treats. An adjoining butler’s pantry with a sink adds extra prep space and makes entertaining effortless.`,
+    src: `${base}videos/Pantry_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
+
+  const open = () => {
+    setVideo(media);
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open drop zone video"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={280} cy={721} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={280} cy={721} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={280} y={725} textAnchor="middle" fill="white" fontSize={12}>
+        2
+      </text>
+    </g>
+  );
+}
+
+export function DropZoneHotspot() {
+  const { setVideo, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
+  
+  const media = {
+    id: "dropzone",
+    title: "FIND YOUR LOST-AND-FOUND AT-HOME ZONE",
+    text: `You know the feeling…everyone walks in, drops their bags, coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
+    src: `${base}videos/DropZone_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
+  };
+
+
+  const open = () => {
+    setVideo(media);
+    openModal(); 
+  };
+
+  return (
+    <g
+      role="button"
+      aria-label="Open drop zone video"
+      tabIndex={0}
+      onClick={open}
+      onKeyDown={(e) => e.key === "Enter" && open()}
+      className="hotspot cursor-pointer"
+    >
+      <circle className="dot" cx={740} cy={681} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={740} cy={681} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={740} y={685} textAnchor="middle" fill="white" fontSize={12}>
+        3
+      </text>
+    </g>
+  );
+}
+
+export function GarageHotspot() {
   const { openGallery, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
 
   const gallery = {
-    id: "greatroom",
-    title: "TRULY UNPLUG AT THE END OF DAY",
-    text: `Research shows that TV is a sleep disruptor, delaying deep sleep. Thoughtful placement of the great room TV, away from bedroom walls, means you can stop the disruptions and start counting sheep.`,
+    id: "garage",
+    title: "PERSONALIZE THE GARAGE AROUND WHAT YOU LOVE",
+    text: `With a 3-car garage, you have extra room to accommodate your lifestyle. Showcase your favorite grown-up toys in their own spaces, happily coexisting with extra storage, a hobby zone, or guest parking.`,
     index: 0,
     items: [
       {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
+        src: `${base}images/3-carGarage_S.gif`,
+        thumb: `${base}images/3-carGarage_S.gif`,
+        alt: "3 car garage — view 1",
+        meta: "3 car garage filling with cars",
       },
     ],
   } as const;
@@ -54,270 +149,96 @@ export function GreatRoomHotspot() {
       // make sure SVG transforms scale from the element center
       style={{ transformOrigin: "center", transformBox: "fill-box" }}
     >
-      <circle className="dot" cx={260} cy={280} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={260} cy={280} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
-      <text x={260} y={284} textAnchor="middle" fill="white" fontSize={12}>
-        1
-      </text>
-    </g>
-  );
-}
-export function MudroomHotspot() {
-  const { openGallery, openModal } = useFPState();
-
-  const gallery = {
-    id: "mudroom",
-    title: `FIND YOUR LOST-AND-FOUND AT-HOME ZONE`,
-    text: `You know the feeling… everyone walks in, drops their bags, 
-    coats and paperwork, and suddenly the entryway turns into chaos. This thoughtful drop zone, complete with organized closets and built-in cabinetry, keeps everything in its place so your home stays calm and clutter-free.`,
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41332.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41332.webp",
-        alt: "Great room — view 1",
-        meta: "View toward TV",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41333.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41333.webp",
-        alt: "Great room — view 2",
-        meta: "View toward kitchen",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45980.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45980.webp",
-        alt: "Great room — view 3",
-        meta: "Seating layout",
-      },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open mudroom gallary"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={530} cy={720} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={530} cy={720} r={20} fill="transparent" stroke="#af272f" opacity={1} />
-      <text x={530} y={724} textAnchor="middle" fill="white" fontSize={12}>
-        2
-      </text>
-    </g>
-  );
-}
-
-export function GuestHotspot() {
-  const { openGallery, openModal } = useFPState();
-
-  const gallery = {
-    title: "MAKE ROOM FOR GUESTS",
-    text: "This guest suite has an attached living area and bath, perfect for a mother-in-law, live-in nanny or frequent out of town visitors.",
-    index: 0,
-    items: [
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41334.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41334.webp",
-        alt: "Guest suite — view 1",
-        meta: "View toward bed",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-41335.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-41335.webp",
-        alt: "Guest suite — view 2",
-        meta: "View toward sitting area",
-      },
-      {
-        src: "https://www.richmondamerican.com//Content/Plans/Media-45982.jpg",
-        thumb: "https://www.richmondamerican.com//Content/Plans/Media-45982.webp",
-        alt: "Guest suite — view 3",
-        meta: "View toward bath",
-      },
-    ],
-  } as const;
-
-  const open = () => {
-    openGallery({ ...gallery, items: [...gallery.items] });
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open guest suite gallery"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={900} cy={601} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={900} cy={601} r={20} stroke="#af272f" fill="transparent" opacity={0.95} />
-      <text x={900} y={605} textAnchor="middle" fill="white" fontSize={12}>
-        3
-      </text>
-    </g>
-  );
-}
-
-export function TowelHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "towels",
-    title: "TUCK AWAY TOWELS",
-    text: "A linen closet in the laundry makes putting away sheets and towels a breeze.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal(); 
-  };
-
-  return (
-    <g
-      role="button"
-      aria-label="Open towel storage video"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={640} cy={501} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={640} cy={501} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={640} y={505} textAnchor="middle" fill="white" fontSize={12}>
+      <circle className="dot" cx={650} cy={850} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={650} cy={850} r={20} stroke="#af272f" fill="transparent" opacity={0.25} />
+      <text x={650} y={854} textAnchor="middle" fill="white" fontSize={12}>
         4
       </text>
     </g>
   );
 }
 
-export function StorageHotspot() {
+export function FlexSpaceHotspot() {
   const { setVideo, openModal } = useFPState();
-
+  const base = import.meta.env.BASE_URL;
+  
   const media = {
-    id: "storage",
-    title: "UNLOCK EXTRA STORAGE",
-    text: "With a 3-car garage, you have extra space to accomodate your lifestyle. Use the bonus bay for storage, a hobby zone or guest parking.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
+    id: "dropzone",
+    title: "UNLOCK THE FREEDOM OF FLEXIBLE LIVING",
+    text: `Flexible spaces empower multiple generations with different needs living under the same roof. Need an extra bedroom? A second office? More storage? Flex spaces are designed to put you in control.`,
+    src: `${base}videos/FlexSpace_hotspot.mp4`,
+    thumb: `${base}assets/thumbs/drop-zone.png`,
   };
+
 
   const open = () => {
     setVideo(media);
-    openModal();
+    openModal(); 
   };
+
   return (
     <g
       role="button"
+      aria-label="Open flex space video"
       tabIndex={0}
       onClick={open}
       onKeyDown={(e) => e.key === "Enter" && open()}
       className="hotspot cursor-pointer"
     >
-      <circle className="dot" cx={740} cy={911} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={740} cy={911} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={740} y={915} textAnchor="middle" fill="white" fontSize={12}>5</text>
+      <circle className="dot" cx={350} cy={901} r={20} fill="#af272f" opacity={1} />
+      <circle className="pulse" cx={350} cy={901} r={20} stroke="#af272f" fill="transparent" opacity={1} />
+      <text x={350} y={905} textAnchor="middle" fill="white" fontSize={12}>
+        1
+      </text>
     </g>
   );
 }
-export function QualityTimeHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "qualitytime",
-    title: "MAXIMIZE QUALITY TIME",
-    text: "The basement recreation room is the perfect place to gather with family, play games, watch movies and connect.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
+export function StorageBAHotspot() {
+  const { openCompare, openModal } = useFPState();
+  const base = import.meta.env.BASE_URL;
 
   const open = () => {
-    setVideo(media);
+    openCompare({
+      title: "STORE IT OUT OF THE WAY",
+      text: "When our spaces are too full or messy, it stresses us out and makes it difficult to relax. Unfinished storage is perfect for stashing holiday deco, ski equipment, and luggage—keeping your garage clutter-free and ready for everyday needs.",
+      before: {
+        src: `${base}/images/ext-stg-af.jpg`,
+        alt: "Full Closet",
+        label: "Before",
+      },
+      after: {
+        src: `${base}/images/ext-stg-bf.jpg`,
+        alt: "Empty Closet",
+        label: "After",
+      },
+      start: 50, // initial split position
+    });
     openModal();
   };
 
   return (
     <g
       role="button"
+      aria-label="Open before and after comparison"
       tabIndex={0}
       onClick={open}
       onKeyDown={(e) => e.key === "Enter" && open()}
       className="hotspot cursor-pointer"
     >
-      <circle className="dot" cx={500} cy={301} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={500} cy={301} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={500} y={305} textAnchor="middle" fill="white" fontSize={12}>1</text>
-    </g>
-  );
-}
-export function FlexHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "flex",
-    title: "FLEX IT YOUR WAY",
-    text: "Need an extra bedroom? A second office? More storage? Flex space puts you in control.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={710} cy={601} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={710} cy={601} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={710} y={605} textAnchor="middle" fill="white" fontSize={12}>2</text>
-    </g>
-  );
-}
-export function StoreTwoHotspot() {
-  const { setVideo, openModal } = useFPState();
-
-  const media = {
-    id: "storetwo",
-    title: "STORE IT OUT OF THE WAY",
-    text: "Perfect for stashing your Christmas tree, ski equipment, and luggage—this 2 space helps keep your garage clutter-free and ready for everyday needs.",
-    src: "https://www.youtube.com/shorts/UG5inwV76dg", // or MP4/Vimeo
-    thumb: "/assets/thumbs/mudroom.png",
-  };
-
-  const open = () => {
-    setVideo(media);
-    openModal();
-  };
-
-  return (
-    <g
-      role="button"
-      tabIndex={0}
-      onClick={open}
-      onKeyDown={(e) => e.key === "Enter" && open()}
-      className="hotspot cursor-pointer"
-    >
-      <circle className="dot" cx={310} cy={1001} r={20} fill="#af272f" opacity={1} />
-      <circle className="pulse" cx={310} cy={1001} r={20} stroke="#af272f" fill="transparent" opacity={1} />
-      <text x={310} y={1005} textAnchor="middle" fill="white" fontSize={12}>3</text>
+      {/* Adjust cx / cy to place this hotspot where you want on the floor plan */}
+      <circle className="dot" cx={240} cy={660} r={20} fill="#af272f" opacity={1} />
+      <circle
+        className="pulse"
+        cx={240}
+        cy={660}
+        r={20}
+        stroke="#af272f"
+        fill="transparent"
+        opacity={1}
+      />
+      <text x={240} y={664} textAnchor="middle" fill="white" fontSize={12}>
+        2
+      </text>
     </g>
   );
 }
@@ -2040,6 +1961,10 @@ export function DillonD399mainSVG({
             </g>
         </g>
             {/* Hotspots: Mudroom Hotspot */}
+        <DiningRoomHotspot/>
+        <PantryHotspot/>
+        <DropZoneHotspot/>
+        <GarageHotspot/>
       </g>
   </svg>
 
@@ -4723,6 +4648,8 @@ export function DillonD399basementSVG({
                 </g>
                 </g>
             </g>
+            <FlexSpaceHotspot/>
+            <StorageBAHotspot/>
       </g>
     </g>
   </svg>
