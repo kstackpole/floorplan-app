@@ -9,6 +9,7 @@ import { AugustaP740 } from "./augusta-p740";
 import { RaleighP741 } from "./raleigh-p741";
 import { DillonD399 } from "./dillon-d399";
 import { PowellD854 } from "./powell-d854";
+import { PinecrestD853 } from "./pinecrest-d853";
 
 
 const toLowerKey = (code: string) => code.toLowerCase();
@@ -23,6 +24,7 @@ export const plans: Record<string, Plan> = {
   [toLowerKey(RaleighP741.code)]: RaleighP741,
   [toLowerKey(DillonD399.code)]: DillonD399,
   [toLowerKey(PowellD854.code)]: PowellD854,
+  [toLowerKey(PinecrestD853.code)]: PinecrestD853,
 };
 
 const humanize = (s: string) =>
