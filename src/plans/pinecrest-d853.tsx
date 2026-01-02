@@ -75,7 +75,7 @@ export function DropZoneHotspot() {
       <circle className="dot" cx={445} cy={671} r={20} fill="#af272f" opacity={1} />
       <circle className="pulse" cx={445} cy={671} r={20} stroke="#af272f" fill="transparent" opacity={1} />
       <text x={445} y={675} textAnchor="middle" fill="white" fontSize={12}>
-        2
+        1
       </text>
     </g>
   );
@@ -125,7 +125,7 @@ export function WalkInClosetHotspot() {
         opacity={1}
       />
       <text x={480} y={394} textAnchor="middle" fill="white" fontSize={12}>
-        3
+        2
       </text>
     </g>
   );
@@ -6063,7 +6063,6 @@ export function PinecrestD853mainSVG({
                     <polyline points="770.72 204.81 761.58 204.81 761.58 211.67 770.72 211.67" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width=".06"/>
                 </g>
             </g>
-            <DiningRoomHotspot/>
             <DropZoneHotspot/>
             <WalkInClosetHotspot/>
       </g>
