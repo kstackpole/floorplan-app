@@ -83,6 +83,13 @@ export default function MediaModal() {
 
         {/* make inner scrollable if content is tall */}
         <div className="p-4 pb-8 overflow-auto">
+
+          {/* blurb (works for video, gallery, app, compare if provided) */}
+            {blurb && (
+              <p className="mb-3 text-base text-gray-700 leading-relaxed">
+                {blurb}
+              </p>
+            )}
           <div className={wrapperClass}>
             {/* VIDEO */}
             {mediaPanel.kind === "video" && (
@@ -116,13 +123,6 @@ export default function MediaModal() {
               <CompareView payload={mediaPanel.payload as ComparePayload} />
             )}
           </div>
-
-          {/* blurb (works for video, gallery, app, compare if provided) */}
-            {blurb && (
-              <p className="mt-3 text-base text-gray-700 leading-relaxed">
-                {blurb}
-              </p>
-            )}
         </div>
       </div>
     </div>
