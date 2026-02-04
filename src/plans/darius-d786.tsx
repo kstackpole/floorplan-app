@@ -280,22 +280,19 @@ export function DariusD786mainSVG({
       </defs>
 
         <defs>
-            <filter id="ds-soft" x="-20%" y="-20%" width="140%" height="140%">
-            <feOffset dx="0" dy="3" />
-            <feGaussianBlur stdDeviation="6" result="blur"/>
-            <feColorMatrix
-                in="blur"
-                type="matrix"
-                values="
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0 0 
-                0 0 0 0.4 0" />
+          <filter id="ds-soft" x="-60%" y="-60%" width="220%" height="220%">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="off"/>
+            <feGaussianBlur in="off" stdDeviation="6" result="blur"/>
+            <feColorMatrix in="blur" type="matrix"
+              values="0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0.4 0" result="shadow"/>
             <feMerge>
-                <feMergeNode />       {/* shadow */}
-                <feMergeNode in="SourceGraphic" />
+              <feMergeNode in="shadow"/>
+              <feMergeNode in="SourceGraphic"/>
             </feMerge>
-            </filter>
+          </filter>
         </defs>
 
       {/* Background stays outside world transform */}
@@ -3301,24 +3298,23 @@ export function DariusD786basementSVG({
         </pattern>
       </defs>
       
-      <defs>
-          <filter id="ds-soft" x="-20%" y="-20%" width="140%" height="140%">
-              <feOffset dx="0" dy="3" />
-              <feGaussianBlur stdDeviation="6" result="blur"/>
-              <feColorMatrix
-                  in="blur"
-                  type="matrix"
-                  values="
-                  0 0 0 0 0 
-                  0 0 0 0 0 
-                  0 0 0 0 0 
-                  0 0 0 0.4 0" />
-              <feMerge>
-                  <feMergeNode /> 
-                  <feMergeNode in="SourceGraphic" />
-              </feMerge>
+      
+
+        <defs>
+          <filter id="ds-soft" x="-60%" y="-60%" width="220%" height="220%">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="off"/>
+            <feGaussianBlur in="off" stdDeviation="6" result="blur"/>
+            <feColorMatrix in="blur" type="matrix"
+              values="0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0 0
+                      0 0 0 0.4 0" result="shadow"/>
+            <feMerge>
+              <feMergeNode in="shadow"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
           </filter>
-      </defs>
+        </defs>
       {/* keep background outside world transform */}
       <rect x={0} y={0} width={VBW} height={VBH} fill="url(#diag)" />
 
